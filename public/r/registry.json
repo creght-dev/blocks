@@ -1,0 +1,590 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "creght",
+  "homepage": "https://github.com/creght-dev/blocks",
+  "items": [
+    {
+      "name": "hero-01",
+      "type": "registry:block",
+      "title": "Hero · 01",
+      "description": "Hero · 01 section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-01/hero-01.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/ParticleCanvas.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/ParticleCanvas.types.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/shaders.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-01.jpg",
+      "dependencies": [
+        "three"
+      ]
+    },
+    {
+      "name": "hero-02",
+      "type": "registry:block",
+      "title": "Hero · 02",
+      "description": "Hero · 02 section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-02/hero-02.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/ParticleCanvas.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/ParticleCanvas.types.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/shaders.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-02.png",
+      "dependencies": [
+        "lucide-react",
+        "three"
+      ]
+    },
+    {
+      "name": "hero-03",
+      "type": "registry:block",
+      "title": "Hero · 03",
+      "description": "Hero · 03 section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-03/hero-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-03.jpg",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "hero-04",
+      "type": "registry:block",
+      "title": "Hero · 04",
+      "description": "Hero · 04 section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-04/hero-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-04.png",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "hero-before-after",
+      "type": "registry:block",
+      "title": "Hero · Before After",
+      "description": "Hero · Before After section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-before-after/hero-before-after.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-before-after.jpg"
+    },
+    {
+      "name": "hero-globe",
+      "type": "registry:block",
+      "title": "Hero · Globe",
+      "description": "Hero · Globe section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-globe/hero-globe.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-globe/Globe.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-globe.jpg",
+      "dependencies": [
+        "cobe",
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "hero-gradientBlinds",
+      "type": "registry:block",
+      "title": "Hero · Gradient Blinds",
+      "description": "Hero · Gradient Blinds section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-gradientBlinds/hero-gradientBlinds.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-gradientBlinds/GradientBlinds.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-gradientBlinds.jpg",
+      "dependencies": [
+        "lucide-react",
+        "ogl"
+      ]
+    },
+    {
+      "name": "hero-laserFlow",
+      "type": "registry:block",
+      "title": "Hero · Laser Flow",
+      "description": "Hero · Laser Flow section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-laserFlow/hero-laserFlow.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-laserFlow/LaserFlow.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-laserFlow.jpg",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "three"
+      ]
+    },
+    {
+      "name": "hero-lightRays",
+      "type": "registry:block",
+      "title": "Hero · Light Rays",
+      "description": "Hero · Light Rays section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-lightRays/hero-lightRays.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-lightRays/LightRays.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-lightRays.png",
+      "dependencies": [
+        "lucide-react",
+        "three"
+      ]
+    },
+    {
+      "name": "hero-mileone",
+      "type": "registry:block",
+      "title": "Hero · Mileone",
+      "description": "Hero · Mileone section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-mileone/hero-mileone.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-mileone/ParticleButterfly.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-mileone.png",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "hero-molecular",
+      "type": "registry:block",
+      "title": "Hero · Molecular",
+      "description": "Hero · Molecular section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-molecular/hero-molecular.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-molecular.jpg",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "hero-neurix",
+      "type": "registry:block",
+      "title": "Hero · Neurix",
+      "description": "Hero · Neurix section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-neurix/hero-neurix.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-neurix/GradientBlinds.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-neurix.jpg",
+      "dependencies": [
+        "lucide-react",
+        "ogl"
+      ]
+    },
+    {
+      "name": "hero-surge",
+      "type": "registry:block",
+      "title": "Hero · Surge",
+      "description": "Hero · Surge section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-surge/hero-surge.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-surge/MeshGradient.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-surge.png",
+      "dependencies": [
+        "lucide-react",
+        "three"
+      ]
+    },
+    {
+      "name": "inner-globe",
+      "type": "registry:block",
+      "title": "Effects · Inner Globe",
+      "description": "Effects · Inner Globe section.",
+      "categories": [
+        "effects"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/effects/inner-globe/inner-globe.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/inner-globe.png"
+    },
+    {
+      "name": "particle",
+      "type": "registry:block",
+      "title": "Effects · Particle",
+      "description": "Effects · Particle section.",
+      "categories": [
+        "effects"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/effects/particle/particle.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/ParticleCanvas.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/ParticleCanvas.types.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/particle/shaders.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/particle.svg",
+      "dependencies": [
+        "three"
+      ]
+    },
+    {
+      "name": "shaderLines",
+      "type": "registry:block",
+      "title": "Effects · Shader Lines",
+      "description": "Effects · Shader Lines section.",
+      "categories": [
+        "effects"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/effects/shaderLines/shaderLines.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/shaderLines/ShaderLinesCanvas.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/shaderLines.png",
+      "dependencies": [
+        "three"
+      ]
+    },
+    {
+      "name": "sphere-wall",
+      "type": "registry:block",
+      "title": "Effects · Sphere Wall",
+      "description": "Effects · Sphere Wall section.",
+      "categories": [
+        "effects"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/effects/sphere-wall/sphere-wall.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/sphere-wall.png"
+    },
+    {
+      "name": "rainbow-stretching-footer",
+      "type": "registry:block",
+      "title": "Footer · Rainbow Stretching",
+      "description": "Footer · Rainbow Stretching section.",
+      "categories": [
+        "footer"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/footer/rainbow-stretching-footer/rainbow-stretching-footer.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2081689097969078272/1785148393646__rainbow_footer.png"
+    },
+    {
+      "name": "about-cursor-trail",
+      "type": "registry:block",
+      "title": "About Us · Cursor Trail",
+      "description": "About Us · Cursor Trail section.",
+      "categories": [
+        "aboutUs"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/aboutUs/about-cursor-trail/about-cursor-trail.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/about-cursor-trail.png",
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "about-us-01",
+      "type": "registry:block",
+      "title": "About Us · Us 01",
+      "description": "About Us · Us 01 section.",
+      "categories": [
+        "aboutUs"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/aboutUs/about-us-01/about-us-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/about-us-01.png",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "button-01",
+      "type": "registry:block",
+      "title": "Button · 01",
+      "description": "Button · 01 component.",
+      "categories": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/button/button-01/button-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/button-01.jpg",
+      "dependencies": [
+        "lucide-react",
+        "tailwind-merge"
+      ]
+    },
+    {
+      "name": "button-galaxy",
+      "type": "registry:block",
+      "title": "Button · Galaxy",
+      "description": "Button · Galaxy component.",
+      "categories": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/button/button-galaxy/button-galaxy.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/button-galaxy.svg",
+      "dependencies": [
+        "tailwind-merge"
+      ]
+    },
+    {
+      "name": "features-01",
+      "type": "registry:block",
+      "title": "Features · 01",
+      "description": "Features · 01 section.",
+      "categories": [
+        "features"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/features/features-01/features-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/features-01.png",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "features-02",
+      "type": "registry:block",
+      "title": "Features · 02",
+      "description": "Features · 02 section.",
+      "categories": [
+        "features"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/features/features-02/features-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/features-02.jpg",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "features-03",
+      "type": "registry:block",
+      "title": "Features · 03",
+      "description": "Features · 03 section.",
+      "categories": [
+        "features"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/features/features-03/features-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/features-03.png",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "pricing-01",
+      "type": "registry:block",
+      "title": "Pricing · 01",
+      "description": "Pricing · 01 section.",
+      "categories": [
+        "pricing"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/pricing/pricing-01/pricing-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/pricing-01.png",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "timeline-01",
+      "type": "registry:block",
+      "title": "Timeline · 01",
+      "description": "Timeline · 01 section.",
+      "categories": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/timeline/timeline-01/timeline-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/project/mDzERvIUUmW/lZKFrnwKLQS__area.gif",
+      "dependencies": [
+        "lucide-react"
+      ]
+    }
+  ]
+}

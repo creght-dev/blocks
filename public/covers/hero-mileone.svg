@@ -1,0 +1,52 @@
+<svg width="1440" height="810" viewBox="0 0 1440 810" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="810" fill="#000000"/>
+  <g opacity="0.7">
+    <ellipse cx="720" cy="350" rx="430" ry="260" fill="url(#glow)"/>
+    <ellipse cx="720" cy="356" rx="220" ry="142" fill="url(#core)"/>
+  </g>
+  <g opacity="0.96">
+    <path d="M723 318C749 210 858 133 1023 172C1037 255 1003 322 899 365C955 414 923 492 796 563C734 496 720 407 723 318Z" fill="url(#rightWing)"/>
+    <path d="M717 318C691 210 582 133 417 172C403 255 437 322 541 365C485 414 517 492 644 563C706 496 720 407 717 318Z" fill="url(#leftWing)"/>
+    <ellipse cx="720" cy="384" rx="18" ry="118" fill="#fff8c7"/>
+  </g>
+  <g opacity="0.34">
+    <path d="M0 637C221 588 403 592 545 649C716 718 857 718 1018 654C1165 596 1305 588 1440 620V810H0V637Z" fill="url(#bottomFade)"/>
+  </g>
+  <g transform="translate(62 54)">
+    <path d="M2.5 18C2.5 13.5 6 9.5 10.5 9.5C15 9.5 18 13.5 18 18" stroke="#eaff80" stroke-width="3" stroke-linecap="round"/>
+    <path d="M10.5 18C10.5 13.5 14 9.5 18.5 9.5C23 9.5 26 13.5 26 18" stroke="#eaff80" stroke-width="3" stroke-linecap="round"/>
+    <text x="40" y="19" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2.5">MILEONE</text>
+  </g>
+  <text x="62" y="668" fill="#f4f4f4" font-family="Georgia, serif" font-size="64">The Intelligent</text>
+  <text x="62" y="736" fill="#a0a0a0" font-family="Georgia, serif" font-size="64">Layer For AI Systems</text>
+  <text x="1060" y="675" fill="#888888" font-family="Inter, Arial, sans-serif" font-size="18">Build, observe, and scale intelligent</text>
+  <text x="1060" y="710" fill="#888888" font-family="Inter, Arial, sans-serif" font-size="18">products with one adaptive AI layer.</text>
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 350) rotate(90) scale(260 430)">
+      <stop stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="0.35" stop-color="#ffd700" stop-opacity="0.24"/>
+      <stop offset="0.67" stop-color="#ff69b4" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#8a2be2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 356) rotate(90) scale(142 220)">
+      <stop stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#ffd700" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rightWing" x1="724" y1="305" x2="1033" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffbd1"/>
+      <stop offset="0.34" stop-color="#ffd700"/>
+      <stop offset="0.68" stop-color="#ff69b4"/>
+      <stop offset="1" stop-color="#8a2be2"/>
+    </linearGradient>
+    <linearGradient id="leftWing" x1="716" y1="305" x2="407" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffbd1"/>
+      <stop offset="0.34" stop-color="#ffd700"/>
+      <stop offset="0.68" stop-color="#ff69b4"/>
+      <stop offset="1" stop-color="#8a2be2"/>
+    </linearGradient>
+    <linearGradient id="bottomFade" x1="720" y1="588" x2="720" y2="810" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="656" viewBox="0 0 1080 656" fill="none">
+  <rect width="1080" height="656" fill="#6978f5"/>
+  <path d="M0 72C116 40 174 83 254 128C369 193 533 226 650 166C770 104 844 17 1080 8V656H0V72Z" fill="url(#a)"/>
+  <path d="M0 176C124 161 231 224 342 272C488 336 609 283 716 221C839 149 931 151 1080 111V656H0V176Z" fill="url(#b)" opacity=".7"/>
+  <path d="M0 65C62 52 126 59 186 88C237 112 282 149 331 177C392 213 467 222 534 201C628 172 697 91 782 40C865 -10 968 -6 1080 16V0H0V65Z" fill="#fff" opacity=".72"/>
+  <circle cx="824" cy="128" r="318" fill="#fff" opacity=".26"/>
+  <circle cx="844" cy="504" r="330" fill="#162aff" opacity=".58"/>
+  <circle cx="124" cy="532" r="260" fill="#fff" opacity=".18"/>
+  <g fill="#fff" font-family="Inter, Arial, sans-serif">
+    <path d="M73 36 60 51l10 2.2-1.9 10.5 15.4-18.1-10.7-2.2.2-7.4Z"/>
+    <text x="101" y="58" font-size="25" font-weight="700">SURGE</text>
+    <text x="244" y="56" font-size="16" font-weight="600" opacity=".62">Product</text>
+    <text x="347" y="56" font-size="16" font-weight="600" opacity=".62">Solutions</text>
+    <text x="461" y="56" font-size="16" font-weight="600" opacity=".62">Resources</text>
+    <text x="585" y="56" font-size="16" font-weight="600" opacity=".62">Customers</text>
+    <text x="716" y="56" font-size="16" font-weight="600" opacity=".62">Pricing</text>
+    <text x="540" y="273" text-anchor="middle" font-size="84" font-weight="300">The Intelligent Layer</text>
+    <text x="540" y="384" text-anchor="middle" font-size="84" font-weight="300">For AI Systems</text>
+    <text x="540" y="469" text-anchor="middle" font-size="24" font-weight="600" opacity=".7">Lorem ipsum dolor sit amet, consectetur adipiscing</text>
+    <text x="540" y="509" text-anchor="middle" font-size="24" font-weight="600" opacity=".7">Phasellus enim tellus, viverra commodo bibendum in elit.</text>
+  </g>
+  <rect x="830" y="22" width="194" height="55" rx="27.5" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".22"/>
+  <text x="927" y="56" fill="#fff" fill-opacity=".78" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">Get Started Free</text>
+  <rect x="408" y="575" width="262" height="70" rx="35" fill="#fff"/>
+  <text x="539" y="618" fill="#111" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Get Started Free</text>
+  <defs>
+    <linearGradient id="a" x1="0" y1="93" x2="1080" y2="656" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset=".42" stop-color="#9ea7ff"/>
+      <stop offset="1" stop-color="#1c28ff"/>
+    </linearGradient>
+    <linearGradient id="b" x1="1080" y1="106" x2="0" y2="656" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0011ff"/>
+      <stop offset=".55" stop-color="#7f91ff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+</svg>

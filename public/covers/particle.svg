@@ -1,0 +1,29 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#050505"/>
+  <g opacity="0.9">
+    <circle cx="640" cy="360" r="2.4" fill="#ffffff"/>
+    <circle cx="568" cy="252" r="2.8" fill="#22c55e"/>
+    <circle cx="724" cy="276" r="2" fill="#ffffff"/>
+    <circle cx="789" cy="407" r="3" fill="#22c55e"/>
+    <circle cx="491" cy="412" r="2.2" fill="#ffffff"/>
+    <circle cx="662" cy="498" r="2.7" fill="#22c55e"/>
+    <circle cx="596" cy="331" r="1.8" fill="#ffffff"/>
+    <circle cx="704" cy="351" r="2.6" fill="#22c55e"/>
+  </g>
+  <g stroke="#22c55e" stroke-opacity="0.22">
+    <ellipse cx="640" cy="360" rx="310" ry="74"/>
+    <ellipse cx="640" cy="360" rx="260" ry="142" transform="rotate(28 640 360)"/>
+    <ellipse cx="640" cy="360" rx="260" ry="142" transform="rotate(-28 640 360)"/>
+    <ellipse cx="640" cy="360" rx="118" ry="286"/>
+  </g>
+  <g filter="url(#glow)">
+    <path d="M420 365C504 288 598 249 702 265C799 280 874 337 920 436" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+    <path d="M438 434C513 499 604 520 711 498C807 478 880 424 940 336" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <defs>
+    <filter id="glow" x="380" y="225" width="600" height="330" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+</svg>

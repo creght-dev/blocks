@@ -1,0 +1,60 @@
+{
+  "name": "@creght/creght-blocks",
+  "version": "0.1.0",
+  "description": "Creght landing blocks as a shadcn-compatible registry (Hero-first).",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creght-dev/blocks.git"
+  },
+  "homepage": "https://github.com/creght-dev/blocks#readme",
+  "bugs": {
+    "url": "https://github.com/creght-dev/blocks/issues"
+  },
+  "files": [
+    "registry.json",
+    "registry",
+    "public/r",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run registry:build && vite build",
+    "preview": "vite preview",
+    "lint": "eslint",
+    "registry:generate": "node scripts/generate-registry.mjs",
+    "registry:build": "npm run registry:generate && shadcn build",
+    "prepublishOnly": "npm run registry:build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "cobe": "^2.0.1",
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.468.0",
+    "ogl": "^1.0.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0",
+    "shadcn": "^3.0.0",
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.170.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "code-inspector-plugin": "^1.5.1",
+    "eslint": "^9",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.5.0",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.50.1",
+    "vite": "^6.3.5"
+  }
+}

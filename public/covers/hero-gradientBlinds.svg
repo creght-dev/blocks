@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0ea5e9"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <text x="72" y="620" fill="white" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="700">Hero · Gradient Blinds</text>
+  <text x="72" y="664" fill="rgba(255,255,255,.9)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24">/hero-gradientBlinds</text>
+</svg>

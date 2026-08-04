@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes hero-ticker-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes hero-ticker-down {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ticker-row {
+  height: 150vh;
+  overflow: hidden;
+}
+
+.ticker-row-up .ticker-track {
+  animation-name: hero-ticker-up;
+}
+
+.ticker-row-down .ticker-track {
+  animation-name: hero-ticker-down;
+}
+
+.ticker-track {
+  animation-duration: 64s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  will-change: transform;
+}
+
+.ticker-speed-fast .ticker-track {
+  animation-duration: 58s;
+}
+
+.ticker-speed-medium .ticker-track {
+  animation-duration: 64s;
+}
+
+.ticker-speed-slow .ticker-track {
+  animation-duration: 70s;
+}
+
+.ticker-row:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
