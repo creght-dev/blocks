@@ -1,6 +1,6 @@
 {
   "name": "@creght/creght-blocks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Creght landing blocks as a shadcn-compatible registry (Hero-first).",
   "private": false,
   "license": "MIT",
