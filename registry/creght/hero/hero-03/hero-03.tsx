@@ -17,7 +17,7 @@ export function Hero03({ className = "" }: Hero03Props) {
     >
       <div className="pointer-events-none absolute inset-x-0 bottom-40 top-52 z-0 mx-auto w-[92vw] max-w-[430px] translate-x-10 sm:bottom-6 sm:top-12 sm:w-[64vw] sm:max-w-[560px] lg:top-10 lg:max-w-[720px]">
         <img
-          src="https://ugc.talizen.com/_assets/site/2052003801170186240/1779179767214__image.png"
+          src="https://fsu.creght.com/site/2083536173505974272/1786355897925__creght_blocks_external_052.png"
           alt=""
           className=" w-full object-contain "
         />

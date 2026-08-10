@@ -8,14 +8,14 @@ import {
 } from "react"
 
 const DEFAULT_IMAGES = [
-  "https://images.unsplash.com/photo-1750655785331-0ef8b1996fa5?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1706699293255-ec640a083fd3?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1624814851118-05103382a770?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1760800185531-2b1da99d7538?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1607332646831-1a8e7f017533?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1748582903437-d9c814153423?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1527428741670-f0bfe11e32f8?w=1200&q=82&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1706973899797-7d02779f5126?w=1200&q=82&auto=format&fit=crop",
+  "https://fsu.creght.com/site/2083536173505974272/1786355882171__creght_blocks_external_047.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355885097__creght_blocks_external_044.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355882901__creght_blocks_external_043.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355881657__creght_blocks_external_048.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355873913__creght_blocks_external_042.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355878294__creght_blocks_external_046.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355856051__creght_blocks_external_030.jpg",
+  "https://fsu.creght.com/site/2083536173505974272/1786355886578__creght_blocks_external_045.jpg",
 ] as const
 
 const VISIBLE_HALF_WINDOW = 1.3

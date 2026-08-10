@@ -35,7 +35,7 @@ const TESTIMONIALS: TestimonialVideoItem[] = [
         id: '1',
         name: "David Chen",
         role: "Product Lead at TechFlow",
-        thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1100&fit=crop&q=80",
+        thumbnail: "https://fsu.creght.com/site/2083536173505974272/1786355840429__creght_blocks_external_023.jpg",
         videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         badge: "CUSTOMER STORY"
     },
@@ -43,7 +43,7 @@ const TESTIMONIALS: TestimonialVideoItem[] = [
         id: '2',
         name: "Maria Rodriguez",
         role: "VP of Design at CreativeLab",
-        thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1100&fit=crop&q=80",
+        thumbnail: "https://fsu.creght.com/site/2083536173505974272/1786355873699__creght_blocks_external_039.jpg",
         videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
         badge: "CUSTOMER STORY"
     },
@@ -51,7 +51,7 @@ const TESTIMONIALS: TestimonialVideoItem[] = [
         id: '3',
         name: "Amelia Brynn",
         role: "Strategy Lead at Forerunner™",
-        thumbnail: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=1100&fit=crop&q=80",
+        thumbnail: "https://fsu.creght.com/site/2083536173505974272/1786355874579__creght_blocks_external_041.jpg",
         videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
         badge: "CUSTOMER STORY"
     },
@@ -59,7 +59,7 @@ const TESTIMONIALS: TestimonialVideoItem[] = [
         id: '4',
         name: "Sarah Mitchell",
         role: "CMO at BrandWorks",
-        thumbnail: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=1100&fit=crop&q=80",
+        thumbnail: "https://fsu.creght.com/site/2083536173505974272/1786355873682__creght_blocks_external_040.jpg",
         videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
         badge: "CUSTOMER STORY"
     }

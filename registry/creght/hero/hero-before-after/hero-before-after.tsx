@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react"
 
 const defaultBeforeImageUrl =
-  "https://ugc.talizen.com/_assets/site/2065353296729608192/1781491402429__before.png"
+  "https://fsu.creght.com/site/2083536173505974272/1786355893198__creght_blocks_external_054.png"
 const defaultAfterImageUrl =
-  "https://ugc.talizen.com/_assets/site/2064928373028687872/1781253416601__after.png"
+  "https://fsu.creght.com/site/2083536173505974272/1786355890312__creght_blocks_external_053.png"
 
 export type HeroBeforeAfterProps = {
   className?: string

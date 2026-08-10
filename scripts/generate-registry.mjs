@@ -6,19 +6,30 @@ const REGISTRY_ROOT = path.join(ROOT_DIR, "registry", "creght")
 const OUTPUT_PATH = path.join(ROOT_DIR, "registry.json")
 const PACKAGE_JSON_PATH = path.join(ROOT_DIR, "package.json")
 const COVERS_DIR = path.join(ROOT_DIR, "public", "covers")
+const CDN_ASSET_MANIFEST_PATH = path.join(ROOT_DIR, "scripts", "creght-cdn-assets.json")
 
 const SCHEMA_URL = "https://ui.shadcn.com/schema/registry.json"
 const REGISTRY_NAME = "creght"
 const HOMEPAGE_URL = "https://github.com/creght-dev/blocks"
-const CATEGORY_ORDER = ["hero", "effects", "footer"]
+const CATEGORY_ORDER = ["hero", "logoWall", "features", "effects", "footer"]
 const COVER_OVERRIDES = {
   "rainbow-stretching-footer": "https://fsu.creght.com/site/2081689097969078272/1785148393646__rainbow_footer.png",
   "timeline-01": "https://fsu.creght.com/project/mDzERvIUUmW/lZKFrnwKLQS__area.gif",
 }
 const TITLE_OVERRIDES = {
+  "3d-split": "Effects · 3D Split",
+  "cards-expand": "Effects · Cards Expand",
+  "image-intro": "Effects · Image Intro",
   "inner-globe": "Effects · Inner Globe",
   "rainbow-stretching-footer": "Footer · Rainbow Stretching",
   "sphere-wall": "Effects · Sphere Wall",
+  "logo-wall-01": "Logo Wall · Trust Grid",
+  "logo-wall-02": "Logo Wall · Infinite Marquee",
+  "logo-wall-03": "Logo Wall · Interactive Spotlight",
+  "logo-wall-04": "Logo Wall · 3D Marquee",
+  "logo-wall-05": "Logo Wall · Integration Ticker",
+  "logo-wall-06": "Logo Wall · Floating Integrations",
+  "logo-wall-07": "Logo Wall · Integration Pills",
 }
 
 function sortCategories(categories) {
@@ -93,9 +104,13 @@ async function listFilesInDir(dirPath) {
     .sort((a, b) => a.localeCompare(b))
 }
 
+function isEntryFileName(fileName, itemName) {
+  const normalized = fileName.toLowerCase()
+  return normalized === `${itemName.toLowerCase()}.tsx` || normalized === `${itemName.toLowerCase()}.ts`
+}
+
 function sortFilesWithEntryFirst(files, itemName) {
-  const preferred = [`${itemName}.tsx`, `${itemName}.ts`]
-  const matchedPreferred = preferred.find((name) => files.includes(name))
+  const matchedPreferred = files.find((name) => isEntryFileName(name, itemName))
   if (!matchedPreferred) return files
 
   return [matchedPreferred, ...files.filter((file) => file !== matchedPreferred)]
@@ -175,27 +190,33 @@ async function collectTransitiveRegistryFiles(itemDir, initialFileNames) {
 }
 
 function sortRegistryFilePaths(filePaths, itemDir, itemName) {
-  const entryTsx = path.join(itemDir, `${itemName}.tsx`)
-  const entryTs = path.join(itemDir, `${itemName}.ts`)
+  const entryFile = filePaths.find(
+    (filePath) => path.dirname(filePath) === itemDir && isEntryFileName(path.basename(filePath), itemName),
+  )
 
   return [...filePaths].sort((a, b) => {
-    if (a === entryTsx || a === entryTs) return -1
-    if (b === entryTsx || b === entryTs) return 1
+    if (a === entryFile) return -1
+    if (b === entryFile) return 1
     return a.localeCompare(b)
   })
 }
 
-async function getCoverPath(itemName) {
+async function getCoverPath(itemName, cdnAssets) {
   if (COVER_OVERRIDES[itemName]) {
     return COVER_OVERRIDES[itemName]
   }
 
   const extensions = [".jpg", ".jpeg", ".png", ".webp", ".svg"]
   for (const ext of extensions) {
+    const localPath = `/covers/${itemName}${ext}`
+    if (cdnAssets[localPath]) {
+      return cdnAssets[localPath]
+    }
+
     const coverFile = path.join(COVERS_DIR, `${itemName}${ext}`)
     try {
       await fs.access(coverFile)
-      return `/covers/${itemName}${ext}`
+      return localPath
     } catch {
       // continue
     }
@@ -205,6 +226,8 @@ async function getCoverPath(itemName) {
 
 async function generate() {
   const packageJson = await readJson(PACKAGE_JSON_PATH)
+  const cdnAssetManifest = await readJson(CDN_ASSET_MANIFEST_PATH)
+  const cdnAssets = cdnAssetManifest.assets ?? {}
   const knownDependencies = new Set([
     ...Object.keys(packageJson.dependencies ?? {}),
     ...Object.keys(packageJson.devDependencies ?? {}),
@@ -232,9 +255,7 @@ async function generate() {
       const files = await listFilesInDir(itemDir)
       if (files.length === 0) continue
 
-      const hasEntryFile = files.some(
-        (fileName) => fileName === `${itemName}.tsx` || fileName === `${itemName}.ts`,
-      )
+      const hasEntryFile = files.some((fileName) => isEntryFileName(fileName, itemName))
       if (!hasEntryFile) continue
 
       const orderedFiles = sortFilesWithEntryFirst(files, itemName)
@@ -267,7 +288,7 @@ async function generate() {
         })),
       }
 
-      const cover = await getCoverPath(itemName)
+      const cover = await getCoverPath(itemName, cdnAssets)
       if (cover) {
         item.cover = cover
       }
@@ -288,14 +309,11 @@ async function generate() {
   }
 
   await fs.writeFile(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`, "utf-8")
-  // eslint-disable-next-line no-console
   console.log(`Generated registry.json with ${items.length} items.`)
 }
 
 generate().catch((error) => {
-  // eslint-disable-next-line no-console
   console.error("Failed to generate registry.json")
-  // eslint-disable-next-line no-console
   console.error(error)
   process.exitCode = 1
 })

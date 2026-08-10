@@ -31,7 +31,7 @@ const AboutUs02Raisedup = () => {
 
                             {/* Image with the clip path applied */}
                             <img
-                                src="https://pub-2df60d97ace544a68c00aa294c98f8e5.r2.dev/Sumon/about%2002.png"
+                                src="https://fsu.creght.com/site/2083536173505974272/1786355873580__creght_blocks_external_037.jpg"
                                 alt="Volunteers distributing canned food"
                                 className="w-full h-full object-cover scale-110"
                                 style={{ clipPath: "url(#torn-paper-mask)" }}

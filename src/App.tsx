@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 
 import { HomePage } from "./pages/HomePage"
 import { IndexPage } from "./pages/IndexPage"
+import { AiSeoLandingPage } from "./pages/ai-seo/AiSeoLandingPage"
 import { PreviewPage } from "./pages/PreviewPage"
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         }
       />
       <Route path="/index" element={<IndexPage />} />
+      <Route path="/ai-seo-landing" element={<AiSeoLandingPage />} />
       <Route path="/preview/:slug" element={<PreviewPage />} />
     </Routes>
   )

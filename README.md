@@ -43,3 +43,7 @@ If `unpkg` is delayed, replace `latest` with a published semver version.
 ## License
 
 MIT
+
+## Design Studies
+
+`landing-ai-seo` and its installable section entries are a React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). Image assets are hosted on the Creght CDN; matching Inter font files and the navbar video temporarily reference source-hosted assets for visual parity. Replace or self-host appropriately licensed project assets before production. No generated Framer page code is embedded or reused.

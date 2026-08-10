@@ -18,6 +18,18 @@ npm-debug.log*
 .DS_Store
 *.pem
 
+# local visual QA evidence
+/docs/*-evidence/
+/docs/*-qa/
+
+# local source copies uploaded to the Creght CDN
+/public/assets/3d-split/
+/public/assets/image-intro/
+/public/assets/logo-wall/
+/public/covers/3d-split.png
+/public/covers/image-intro.png
+/public/covers/logo-wall-*.png
+
 # editors
 .idea
 .vscode

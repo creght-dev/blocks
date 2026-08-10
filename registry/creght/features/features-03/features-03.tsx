@@ -32,7 +32,7 @@ const featureItems: FeatureItem[] = [
     description: "Shape thoughtful portfolios, journals, and personal sites around your strongest visual narrative.",
     icon: Sparkles,
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355826673__creght_blocks_external_016.jpg",
     backdrop:
       "bg-[radial-gradient(circle_at_18%_44%,rgba(78,92,126,0.42),transparent_30%),radial-gradient(circle_at_76%_24%,rgba(71,112,126,0.3),transparent_34%),linear-gradient(135deg,#090b12_0%,#141824_50%,#0b0d13_100%)]",
   },
@@ -44,7 +44,7 @@ const featureItems: FeatureItem[] = [
     description: "Pair expressive art direction with clear storytelling for launches, campaigns, and brand moments.",
     icon: BadgeCheck,
     image:
-      "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355872845__creght_blocks_external_038.jpg",
     backdrop:
       "bg-[radial-gradient(circle_at_22%_45%,rgba(112,76,154,0.4),transparent_32%),radial-gradient(circle_at_78%_24%,rgba(195,104,85,0.28),transparent_35%),linear-gradient(135deg,#100b17_0%,#21172a_52%,#0c0b10_100%)]",
   },
@@ -56,7 +56,7 @@ const featureItems: FeatureItem[] = [
     description: "Present your team, work, and expertise through an editorial experience designed for credibility.",
     icon: Building2,
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355820066__creght_blocks_external_014.jpg",
     backdrop:
       "bg-[radial-gradient(circle_at_18%_45%,rgba(48,66,96,0.5),transparent_34%),radial-gradient(circle_at_76%_28%,rgba(200,158,76,0.2),transparent_33%),linear-gradient(135deg,#08111f_0%,#182339_54%,#090d16_100%)]",
   },
@@ -68,7 +68,7 @@ const featureItems: FeatureItem[] = [
     description: "Create focused multilingual experiences that carry your story confidently across markets.",
     icon: Ship,
     image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355808945__creght_blocks_external_009.jpg",
     backdrop:
       "bg-[radial-gradient(circle_at_21%_42%,rgba(42,125,136,0.38),transparent_32%),radial-gradient(circle_at_78%_31%,rgba(199,88,48,0.24),transparent_34%),linear-gradient(135deg,#071117_0%,#142931_50%,#0b0d10_100%)]",
   },
@@ -80,7 +80,7 @@ const featureItems: FeatureItem[] = [
     description: "Blend tactile imagery, considered details, and frictionless discovery into a modern storefront.",
     icon: ShoppingBag,
     image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355804285__creght_blocks_external_007.jpg",
     imagePosition: "object-center",
     backdrop:
       "bg-[radial-gradient(circle_at_20%_46%,rgba(186,112,62,0.38),transparent_31%),radial-gradient(circle_at_78%_26%,rgba(229,184,114,0.22),transparent_34%),linear-gradient(135deg,#130d0b_0%,#271815_52%,#0d0c0b_100%)]",
@@ -93,7 +93,7 @@ const featureItems: FeatureItem[] = [
     description: "Explain complex products with simple flows, sharp hierarchy, and just enough personality.",
     icon: Code2,
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355863638__creght_blocks_external_036.jpg",
     backdrop:
       "bg-[radial-gradient(circle_at_20%_44%,rgba(41,133,119,0.38),transparent_31%),radial-gradient(circle_at_78%_26%,rgba(70,97,145,0.26),transparent_34%),linear-gradient(135deg,#061114_0%,#112526_52%,#080d11_100%)]",
   },
@@ -105,7 +105,7 @@ const featureItems: FeatureItem[] = [
     description: "Design focused dashboards and internal platforms that help teams move with confidence.",
     icon: PanelsTopLeft,
     image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=86",
+      "https://fsu.creght.com/site/2083536173505974272/1786355873580__creght_blocks_external_037.jpg",
     backdrop:
       "bg-[radial-gradient(circle_at_20%_44%,rgba(55,91,142,0.4),transparent_33%),radial-gradient(circle_at_78%_25%,rgba(91,118,151,0.24),transparent_34%),linear-gradient(135deg,#08101b_0%,#14233b_52%,#080b10_100%)]",
   },

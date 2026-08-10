@@ -15,9 +15,10 @@ type RegistryItem = {
 }
 
 const PAGE_SIZE = 6
-const CATEGORY_ORDER = ["hero", "effects", "footer"]
+const CATEGORY_ORDER = ["hero", "logoWall", "features", "effects", "footer"]
 const CATEGORY_LABELS: Record<string, string> = {
   button: "按钮",
+  logoWall: "Logo Wall",
 }
 
 function getCategoryLabel(category: string) {
@@ -233,7 +234,7 @@ export function HomePage() {
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900">
                   <img
-                    src={item.cover ?? "/logo.svg"}
+                    src={item.cover ?? "https://fsu.creght.com/site/2083536173505974272/1786356116545__creght_blocks_logo.svg"}
                     alt={item.title}
                     loading="lazy"
                     className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"

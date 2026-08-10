@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { Twitter, Instagram, Linkedin, Menu, X } from 'lucide-react'
 import GradientBlinds from './GradientBlinds'
 
+const WAITLIST_AVATARS = [
+  'https://fsu.creght.com/site/2083536173505974272/1786355777812__creght_blocks_external_001.svg',
+  'https://fsu.creght.com/site/2083536173505974272/1786355777479__creght_blocks_external_002.svg',
+  'https://fsu.creght.com/site/2083536173505974272/1786355777464__creght_blocks_external_003.svg',
+] as const
+
 export function HeroGradientBlinds() {
   const navItems = ['Features', 'About', 'Newsletter', 'Newsletter']
   const [menuOpen, setMenuOpen] = useState(false)
@@ -94,12 +100,12 @@ export function HeroGradientBlinds() {
         {/* Waitlist Badge */}
         <div className="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full mb-8">
           <div className="flex -space-x-2">
-            {[1, 2, 3].map((i) => (
+            {WAITLIST_AVATARS.map((avatar) => (
               <div
-                key={i}
+                key={avatar}
                 className="w-6 h-6 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center overflow-hidden"
               >
-                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="User" />
+                <img src={avatar} alt="User" />
               </div>
             ))}
           </div>
