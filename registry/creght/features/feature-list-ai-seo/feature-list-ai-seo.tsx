@@ -3,15 +3,14 @@
 import type { LucideIcon } from "lucide-react"
 import {
   BellRing,
-  ClipboardCheck,
+  Files,
   Gauge,
-  LayoutDashboard,
   LineChart,
-  Link2,
-  MousePointerClick,
-  Radar,
+  ListChecks,
+  MousePointer2,
   Sparkles,
   Target,
+  WandSparkles,
 } from "lucide-react"
 import { FadeIn } from "../../shared/ai-seo/ai-seo-shared"
 
@@ -28,101 +27,101 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: "Priority workspace",
-    description: "Bring urgent opportunities into one clear decision queue.",
-    icon: LayoutDashboard,
+    title: "User-friendly dashboard",
+    description: "Perform complex SEO audits and optimizations with a single click.",
+    icon: Gauge,
   },
   {
-    title: "Progress narratives",
-    description: "Turn changing performance into a story everyone understands.",
+    title: "Visual reports",
+    description: "Visual insights into your site’s performance.",
     icon: LineChart,
   },
   {
-    title: "Demand discovery",
-    description: "Spot valuable themes while they are still gaining momentum.",
+    title: "Smart Keyword Generator",
+    description: "Automatic suggestions and the best keywords to target.",
     icon: Sparkles,
     isNew: true,
   },
   {
-    title: "Content scorecards",
-    description: "Review clarity and coverage with guidance for the next edit.",
-    icon: ClipboardCheck,
+    title: "Content evaluation",
+    description: "Simple corrections for immediate improvemens.",
+    icon: ListChecks,
   },
   {
-    title: "Outcome roadmaps",
-    description: "Connect each optimization to a result and stay on course.",
+    title: "SEO goal setting",
+    description: "Helps you set and achieve SEO goals with guided assistance.",
     icon: Target,
   },
   {
-    title: "Risk sensing",
-    description: "Catch unusual drops and warnings before they become costly.",
+    title: "Automated alerts",
+    description: "Automatic notifications about your SEO health, including quick fixes.",
     icon: BellRing,
   },
   {
-    title: "Authority paths",
-    description: "Find stronger internal paths between your most useful pages.",
-    icon: Link2,
+    title: "Link Optimization Wizard",
+    description: "Guides you through the process of creating and managing links.",
+    icon: WandSparkles,
   },
   {
-    title: "Fast improvements",
-    description: "Apply confident recommendations without another complex workflow.",
-    icon: MousePointerClick,
+    title: "One-click optimization",
+    description: "Perform complex SEO audits and optimizations with a single click.",
+    icon: MousePointer2,
   },
   {
-    title: "Market watch",
-    description: "Track category shifts and see where attention is moving next.",
-    icon: Radar,
+    title: "Competitor reports",
+    description: "Provides insights into competitors’ keyword strategies and ranking.",
+    icon: Files,
   },
 ]
 
-function FeatureItem({ feature, index }: { feature: Feature; index: number }) {
+function FeatureItem({ feature }: { feature: Feature }) {
   const Icon = feature.icon
 
   return (
-    <FadeIn delay={index * 0.035} className="min-h-[79px]">
-      <div className="flex items-center gap-2.5">
-        <Icon className="size-4 shrink-0 text-white/90" strokeWidth={1.8} aria-hidden="true" />
-        <h3 className="text-base font-medium leading-[1.3] tracking-[-0.01em] text-white">{feature.title}</h3>
+    <div className="group min-h-[80px]">
+      <div className="flex min-h-6 items-center gap-2">
+        <Icon
+          className="size-4 shrink-0 text-white/90 transition-colors duration-200 group-hover:text-[#b981ff]"
+          strokeWidth={1.9}
+          aria-hidden="true"
+        />
+        <h3 className="text-base font-medium leading-6 tracking-[-0.015em] text-white">{feature.title}</h3>
         {feature.isNew ? (
-          <span className="ml-0.5 inline-flex h-[17px] items-center rounded-full bg-[#8c45ff] px-2 text-[9px] font-semibold uppercase tracking-[0.06em] text-white shadow-[0_0_18px_rgba(140,69,255,0.5)]">
+          <span className="ml-0.5 inline-flex h-[17px] items-center rounded-full bg-[#8c45ff] px-2 text-[9px] font-semibold uppercase leading-none tracking-[0.04em] text-white shadow-[0_0_16px_rgba(140,69,255,0.38)]">
             New
           </span>
         ) : null}
       </div>
-      <p className="mt-2.5 max-w-[340px] text-sm leading-5 text-white/70 min-[810px]:text-base min-[810px]:leading-6">{feature.description}</p>
-    </FadeIn>
+      <p className="mt-2.5 max-w-[342px] text-base leading-6 text-white/60 transition-colors duration-200 group-hover:text-white/70">
+        {feature.description}
+      </p>
+    </div>
   )
 }
 
 export default function FeatureListAiSeo({ className = "" }: FeatureListAiSeoProps) {
   return (
     <section
-      className={`relative scroll-mt-[68px] bg-black text-white min-[810px]:scroll-mt-[74px] ${className}`}
+      id="feature-list"
+      className={`scroll-mt-[68px] bg-black text-white min-[810px]:scroll-mt-[74px] ${className}`}
       aria-labelledby="ai-seo-feature-list-title"
     >
-      <div className="mx-auto w-[calc(100%_-_2.5rem)] max-w-[1300px]">
-        <div className="relative isolate h-[1276px] overflow-hidden rounded-[10px] border border-white/15 bg-[linear-gradient(135deg,#190d2e_0%,#000_100%)] px-6 py-12 min-[810px]:h-auto min-[810px]:px-10 min-[810px]:py-16 lg:h-[680px] lg:min-h-0 lg:p-[100px]">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-35 [background-image:radial-gradient(circle_at_12%_18%,rgba(140,69,255,0.2),transparent_32%),linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:auto,64px_64px,64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_88%)]"
-            aria-hidden="true"
-          />
-
-          <FadeIn className="relative max-w-[440px]">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#bd91ff]">
-              <Gauge className="size-3.5" aria-hidden="true" />
-              Connected intelligence
-            </div>
+      <div className="mx-auto w-full max-w-[1300px] min-[810px]:w-[calc(100%_-_5rem)]">
+        <div className="h-[1275.6px] overflow-hidden border-y border-white/[0.14] bg-[linear-gradient(112deg,#190d2e_0%,#090414_48%,#000_100%)] px-5 pt-[78px] min-[810px]:h-[679.6px] min-[810px]:rounded-[10px] min-[810px]:border min-[810px]:px-[60px] min-[810px]:py-20 lg:px-[100px] lg:py-[98px]">
+          <FadeIn>
             <h2
               id="ai-seo-feature-list-title"
-              className="max-w-[420px] text-[42px] font-medium leading-[1.1] tracking-[-0.04em] text-white sm:text-[50px] lg:text-[56px]"
+              className="max-w-[380px] text-[32px] font-medium leading-[1.08] tracking-[-0.04em] text-white min-[810px]:text-[56px]"
             >
-              Search signals, connected.
+              Elevate your SEO efforts.
             </h2>
           </FadeIn>
 
-          <div className="relative mt-10 grid gap-x-10 gap-y-9 min-[810px]:grid-cols-3 min-[810px]:gap-y-10">
-            {features.map((feature, index) => (
-              <FeatureItem feature={feature} index={index} key={feature.title} />
+          <div className="mt-[42px] grid gap-y-[33px] min-[810px]:grid-cols-3 min-[810px]:gap-x-10 min-[810px]:gap-y-[38px] lg:gap-x-[52px]">
+            {features.map((feature) => (
+              <FadeIn key={feature.title}>
+                <FeatureItem feature={feature} />
+              </FadeIn>
             ))}
           </div>
         </div>

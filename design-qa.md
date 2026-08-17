@@ -79,6 +79,142 @@ final result: passed
 
 ---
 
+**Design QA — Galaxy Button Source Recreation**
+
+**Comparison Target**
+
+- Source URL: `https://galaxy-wow.learnframer.site/`
+- Source default-state capture: `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/source-default-desktop.png`
+- Density/offset-normalized desktop source: `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/source-desktop-normalized.png`
+- Desktop implementation: `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/implementation-default-full-v2.png`
+- Hover implementation: `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/implementation-hover-full-v2.png`
+- Mobile implementation: `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/implementation-mobile-default.png` and `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/implementation-mobile-hover.png`
+
+**Viewport And Normalization**
+
+- Desktop source and implementation use a `1440 × 900` CSS viewport. The source browser reported DPR 2 while returning a CSS-sized viewport image with a DPR-scaled visual offset, so the valid `721 × 437` source-region capture was placed at the measured DOM crop origin (`359, 231`) to create the normalized `1440 × 900` reference.
+- The implementation screenshots are `1440 × 900` pixels at device scale factor 1. The measured button is `432 × 138` CSS px at `x = 504`, `y = 381`, matching the source DOM bounds within source subpixel rounding.
+- Mobile implementation is `390 × 844` CSS/capture px at device scale factor 1. The responsive button is `326 × 104.13` px with `scrollWidth = innerWidth = 390`.
+- Compared desktop state: default, pointer outside. Hover styling was measured from the source DOM, but the source particle canvas did not produce a valid visible hover frame in the approved browser.
+
+**Full-View Comparison Evidence**
+
+- `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/qa-default-full.png`
+
+**Focused Region Comparison Evidence**
+
+- `/Users/liaomeirong/dev/blocks/artifacts/galaxy-button/qa-default-focused.png`
+- The focused comparison keeps the complete button at 1:1 scale and checks the 432 × 138 geometry, border, radius, inner edge, text raster, and surrounding background.
+
+**Findings**
+
+- Default desktop state has no actionable P0, P1, or P2 mismatch.
+- Fonts and typography: both use Inter Medium at `56 px`, `1.2` line height, `-0.01em` tracking, and the source `#9699a8 → #ffffff` text gradient. Text width and baseline align in the focused comparison.
+- Spacing and layout rhythm: button size, centered placement, 2 px surface inset, pill radius, and content alignment match the measured source.
+- Colors and visual tokens: source `#0a0609` canvas/surface, `#7e85b5` default border, blue-purple inset edge, hover border gradient, and measured hover shadows are reproduced.
+- Image quality and asset fidelity: the source uses no image or SVG asset for the button. The implementation replaces the prior CSS-dot approximation with a real DPR-aware Canvas particle renderer and uses the project's local Inter Medium font.
+- Copy and content: the default `Generate` label matches the source and remains overridable through `children`.
+- Blocking evidence gap: the source browser's particle canvas remained `data-generated=false`; subsequent source script/mobile capture was denied by browser security policy. A valid source hover frame and source mobile screenshot are therefore unavailable for final pixel comparison.
+
+**Comparison History**
+
+1. Initial implementation had an overly bright default outer glow, CSS `span` particles, source-inconsistent text line height, and a `#080c0f` preview background.
+2. Fixes: rebuilt the component around source-measured border and glow layers, added deterministic DPR-aware Canvas particles, matched typography, changed the Galaxy preview canvas to `#0a0609`, and added proportional mobile sizing.
+3. Post-fix default comparison shows matching desktop geometry, typography, border weight, and color with no P0/P1/P2 default-state mismatch.
+4. Hover and mobile implementation states were captured and tested, but their source-side visual comparison remains blocked by the missing approved source captures.
+
+**Interactions And Runtime Checks**
+
+- Pointer enter/leave toggles the galaxy state and animates live particles without console warnings or errors.
+- Keyboard focus keeps the same active visual state; Space activation was exercised while focus remained on the semantic button.
+- Mobile default and hover states were verified at `390 × 844` with no horizontal overflow.
+- Reduced-motion users receive a static particle frame instead of continuous Canvas motion.
+- Scoped ESLint, registry generation/build, and the Vite production build passed. The production build reports only the repository's existing large-chunk advisory.
+- Repository-wide `tsc --noEmit` remains blocked by the existing referenced-project configuration errors `TS6305`, `TS6306`, and `TS6310`, unrelated to this component.
+
+**Implementation Checklist**
+
+- [x] Source-matched default desktop visual.
+- [x] Canvas star field, blue base glow, pulse layer, animated border, and active press feedback.
+- [x] Pointer, keyboard, disabled, and reduced-motion handling.
+- [x] Responsive mobile sizing with no overflow.
+- [x] Updated preview background, 16:9 PNG cover, registry metadata, and install JSON.
+- [ ] Source hover and source mobile pixel comparison after approved captures become available.
+
+final result: blocked
+
+---
+
+**Design QA — Full AI SEO Landing Replica**
+
+**Scope**
+
+- Source: `https://lime-arrow-820805.framer.app/`
+- Implementation: `http://127.0.0.1:5177/ai-seo-landing`
+- Composition: Navbar, Hero, Companies, Bento Features, Feature List, Testimonial, Pricing, CTA, and Footer.
+- Implementation model: from-scratch React components organized by registry group and recomposed by `landing-ai-seo`; Tailwind utilities provide the visible layout and styling.
+
+**Source Truth And Normalization**
+
+| Surface | CSS viewport | Content width | Final page height | Density |
+| --- | --- | --- | --- | --- |
+| Desktop source + implementation | 1440 × 900 | 1425 px | 5804 px | 1 CSS px = 1 capture px |
+| Mobile source + implementation | 390 × 844 | 375 px | approximately 8562 px | 1 CSS px = 1 capture px |
+
+The source and implementation were captured in the same in-app browser, at identical viewports and scroll positions. Each source and implementation screenshot was placed side by side before judging visible differences.
+
+**Comparison Evidence**
+
+- Desktop Hero and orbit system: `source-capture/full-site/qa/compare-desktop-0.jpg`
+- Focused post-adjustment orbit comparison: `source-capture/full-site/qa/compare-desktop-orbit-motion.jpg`
+- Local orbit motion sequence at `T+0.0s` and `T+1.5s`: `source-capture/full-site/qa/compare-local-orbit-motion-sequence.jpg`
+- Desktop companies and transition: `source-capture/full-site/qa/compare-desktop-900.jpg`
+- Desktop Bento grid: `source-capture/full-site/qa/compare-desktop-1485.jpg`
+- Desktop feature dropdown: `source-capture/full-site/qa/compare-desktop-feature-menu.jpg`
+- Desktop CTA and Footer: `source-capture/full-site/qa/compare-desktop-5447.jpg`
+- Mobile menu: `source-capture/full-site/qa/compare-mobile-menu.jpg`
+- Mobile Bento: `source-capture/full-site/qa/compare-mobile-1403.jpg`
+- Mobile Footer: `source-capture/full-site/qa/compare-mobile-7540.jpg`
+- Additional desktop and mobile section pairs remain under `source-capture/full-site/qa/` for the feature list, testimonial, pricing, and CTA boundaries.
+
+**Required-Surface Review**
+
+- Hero: the measured 1574 px orbit container, six 574/774/974/1174/1374/1574 px alternating solid and dashed rings, visible moving orbit nodes, radial purple field, vignette, bottom fade, type treatment, CTA, and source dashboard crop match the desktop reference. The three solid rings carry `4/6/5` nodes and rotate in approximately `60/50/40s`; the dashed rings counter-rotate in approximately `80/100/80s`, matching the measured source motion. The source hides the rings on mobile; the implementation does the same.
+- Typography: local Inter 400/500/700 files are loaded from `public/assets/ai-seo-source/`. Headline, body, label, and pricing metrics were matched at the source breakpoints.
+- Layout rhythm: desktop section boundaries reproduce the measured 73.6/1077.8/334/1155.6/679.6/654.6/918.4/553.8/356.5 px sequence. Mobile sections use the source's 68 px navigation and stacked card layout.
+- Assets: the dashboard, feature renders, testimonial portrait, pattern, animated mark, and poster are localized copies of the user-directed source references. No Framer-generated page code is embedded.
+- Responsive behavior: 320, 390, 1280, and 1440 px checks show no document-level horizontal overflow. The mobile menu closes and restores scrolling when the viewport crosses the 810 px desktop breakpoint.
+- Accessibility: interactive controls use semantic links, buttons, switch state, form labels, focus-visible styles, Escape handling, and responsive menu state cleanup. The English landing route updates document language, title, and description while mounted.
+
+**Interactions And Runtime Checks**
+
+- Features and Company dropdowns open from hover/click, close on a second click or Escape, and preserve keyboard focus flow.
+- Features hover traversal now remains open across the measured 11 px gap between the `52.59 px` button bottom and `63.59 px` panel top; the transparent bridge exactly matches the panel width and adds no visible geometry.
+- Mobile navigation opens with body scroll lock, closes normally, and automatically unlocks when resized to desktop.
+- Pricing switches between yearly `$29/$79/$149` and monthly `$35/$85/$160` values.
+- The CTA exercises native invalid-email focus and reaches the local success state for a valid address.
+- Footer links and primary CTAs navigate to existing landing-page anchors.
+- Orbit node centers remain on their ring radii while their screen positions change across a two-second sample; the `T+0.0s`/`T+1.5s` focused frames visibly confirm the movement. Reduced-motion utilities disable the continuous rotation.
+- Final neutral preview: 1280 × 720 viewport, 5804 px page height, no horizontal overflow, no console errors or warnings.
+- Targeted ESLint, `git diff --check`, registry generation, shadcn registry build, and Vite production build passed. Vite reports only the existing large main-chunk advisory.
+
+**Interaction Fix History**
+
+1. P1: moving the pointer from Features to its dropdown crossed an uncovered 11 px gap, fired `mouseleave`, and removed the panel before it could be reached.
+2. Fix: added an invisible `694 × 11 px` descendant bridge spanning the complete gap without changing the source-matched button or panel positions.
+3. Post-fix evidence: `source-capture/full-site/qa/compare-desktop-feature-menu.jpg` shows the unchanged open visual state. Browser pointer traversal passed button → gap → panel and panel → gap → button; leaving the dropdown still closes it, and click-open/click-close remains functional.
+
+**Residual P3 Notes**
+
+- The source-only Framer editing badge and promotional overlay are intentionally excluded because they are hosting chrome rather than landing-page content.
+- Lucide social/navigation glyphs have tiny path-shape differences from the source's embedded icons, while their size, position, weight, and interaction state are matched.
+- Orbit screenshots may differ by a few rotation degrees because the rings continuously animate.
+- The localized reference media requires permission or replacement before production; this is documented in `README.md`.
+
+final result: passed
+
+---
+
 **Design QA — Logo Wall 06 / Floating Integrations**
 
 **Comparison Target**
@@ -327,5 +463,141 @@ final result: passed
 **Follow-up Polish**
 
 - P3: replace the local serif fallback with the exact source Gloock WOFF2 if the source later exposes a downloadable font asset.
+
+final result: passed
+
+---
+
+**Design QA — Image Carousel**
+
+**Scope**
+
+- Source: `https://imgcarousel.learnframer.site/`
+- Implementation: `registry/creght/effects/image-carousel/image-carousel.tsx`
+- Preview route: `http://127.0.0.1:4173/preview/image-carousel`
+- State compared: initial idle state, CTA not focused, carousel animation running.
+
+**Source Truth And Normalization**
+
+| Surface | Source capture | Implementation capture | CSS viewport | Capture pixels | Density normalization |
+| --- | --- | --- | --- | --- | --- |
+| Desktop | `design-qa-assets/image-carousel/source-desktop-1440x900.png` | `design-qa-assets/image-carousel/implementation-desktop-final-1440x900.png` | 1440 × 900 | 1440 × 900 each | 1 CSS px = 1 capture px |
+| Mobile | `design-qa-assets/image-carousel/source-mobile-390x844.png` | `design-qa-assets/image-carousel/implementation-mobile-final-390x844.jpg` | 390 × 844 | 390 × 844 each | 1 CSS px = 1 capture px |
+| Tablet | Source responsive rules were measured in-browser | `design-qa-assets/image-carousel/implementation-tablet-1024x768.jpg` | 1024 × 768 | 1024 × 768 | 1 CSS px = 1 capture px |
+
+Both pages were captured in the same in-app browser with the same explicit viewport override for each comparison. The animation is continuous, so card rotation phase is intentionally treated as a P3 capture-timing difference; geometry, image order, split behavior, motion duration, and visual treatment are compared instead of requiring identical frames.
+
+**Comparison Evidence**
+
+- Full desktop, source left / implementation right: `design-qa-assets/image-carousel/comparison-desktop-final.png`
+- Full mobile, source left / implementation right: `design-qa-assets/image-carousel/comparison-mobile-final.png`
+- Focused desktop copy + carousel, source left / implementation right: `design-qa-assets/image-carousel/comparison-desktop-focused-final.png`
+- Hover reference: `design-qa-assets/image-carousel/source-desktop-button-hover.png`
+- The full screen is a single hero/effect, so the focused desktop crop covers the only material design region; no additional isolated-region comparison is needed.
+
+**Required-Surface Review**
+
+- Typography: local Inter Display 400/500; exact 60.96/67.056 desktop, 53.34/58.674 tablet, and 34.29/37.719 mobile title metrics. Body is 18/27 and CTA is 14/16.8.
+- Layout and spacing: 124 px root top padding, 335 px stage, fixed 1200 × 400 carousel viewport, 24 px copy gaps, 408 px description width, and 127.2 × 36.8 CTA reproduced.
+- Color and effects: `#050505` background, white title, `#9ba1a5` body, grayscale/color 50% masks, cyan glow, repeated light texture, and the centered divider match the source treatment.
+- Cards and assets: seven 3D arms, 260 × 370 faces, 20 px radius, 800 px perspective, exact source image set, `object-fit: cover`, and locally stored assets. Stable source-host fallbacks keep an installed registry block functional when the local public assets are absent.
+- Copy and iconography: headline, description, CTA label, and the source arrow path match.
+- Responsive behavior: desktop, tablet, and mobile have no document overflow or scroll; the source's deliberately clipped 408 px mobile paragraph and fixed-width carousel geometry are preserved.
+- Accessibility: decorative images and effects are hidden from assistive technology; the CTA is a semantic button with a keyboard focus ring. This adds accessibility without changing the neutral visual state.
+
+**Comparison History**
+
+1. P2: the first desktop capture was 1280 × 720 despite its filename, so it was discarded as invalid comparison evidence. CTA text and arrow also needed a no-wrap constraint. The viewport was verified at 1440 × 900, the CTA was fixed, and `comparison-desktop-pass2.png` was reviewed.
+2. P2: mobile copy initially risked responsive reflow that the source does not use. The source's fixed 1200 px copy container and 408 px paragraph were preserved, including intentional edge clipping. `comparison-mobile-pass1.png` and the final mobile composite verify the result.
+3. P2: the cyan glow read too rectangular and sat in front of cards. The source-sized radial mask, repeated light texture, and divider were matched, and the broad glow moved behind both card masks. `comparison-desktop-pass3.png` and the final desktop composite verify the fix.
+4. Final: neutral desktop and mobile states were re-captured and reviewed together. No actionable P0, P1, or P2 mismatch remains.
+
+**Interactions And Runtime Checks**
+
+- Carousel transform changed over a 500 ms sample and uses the source-matched 50 s linear infinite rotation.
+- The CTA click was exercised; with no callback supplied it leaves the URL unchanged, matching the source's no-op CTA.
+- The source has no drag, scroll, or carousel controls; the implementation likewise leaves the visual carousel non-interactive.
+- Reduced-motion CSS pauses the ring and disables the repeated glow flip.
+- Browser logs were inspected after the final mobile reload: 0 warnings and 0 errors; only Vite debug messages, React DevTools info, and the existing code-inspector log were present.
+- `npm run build`, targeted ESLint, and a targeted strict TypeScript compile passed. The repository-wide `npx tsc --noEmit` remains blocked by the existing referenced-project configuration (`TS6305`, `TS6306`, `TS6310`), unrelated to this component.
+
+**Residual P3 Notes**
+
+- Continuous animation means source and implementation screenshots can differ by a few rotation degrees.
+- The implementation adds a visible keyboard-only focus outline to the CTA; the unfocused visual state matches the source.
+
+final result: passed
+
+---
+
+Current QA target: Galaxy Button Source Recreation. Full evidence, findings, and the blocking source-capture gap are recorded in the Galaxy Button section above.
+
+final result: blocked
+
+---
+
+**Design QA — Wiza Button Source Recreation**
+
+**Comparison Target**
+
+- Source URL: `https://wiza.learnframer.site/`
+- Source visual truth: `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/source-desktop-1280x720.png`, `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/source-desktop-hover-1280x720.png`, and `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/source-mobile-390x844.png`.
+- Rendered implementation: `http://127.0.0.1:4173/preview/button-wiza`.
+- Implementation evidence: `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/implementation-desktop-1280x720.jpg`, `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/implementation-desktop-hover-1280x720.jpg`, and `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/implementation-mobile-390x844.jpg`.
+- States compared: violet default, violet hover, and mobile default. The neutral palette is the same measured component structure with the source's `#131415` surface and `#51565a` glow values.
+
+**Viewport And Normalization**
+
+- Desktop source and implementation: `1280 × 720` CSS px and `1280 × 720` capture px, device scale factor `1`.
+- Mobile source and implementation: `390 × 844` CSS px and `390 × 844` capture px, device scale factor `1`.
+- No density scaling was required. The component crops are `160 × 80` px and include the complete button plus surrounding black canvas.
+- Source default button: `131.4609 × 44 px`; implementation: `131.4844 × 44 px`. The `0.0235 px` width difference is accepted as rasterization variance.
+
+**Full-View Comparison Evidence**
+
+- Default and hover component comparison, arranged source-left / implementation-right: `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/comparison-default-hover.png`.
+- Mobile component comparison, source-left / implementation-right: `/Users/liaomeirong/dev/blocks/design-qa-assets/button-wiza/comparison-mobile.png`.
+
+**Focused Region Comparison Evidence**
+
+- The button itself is only `131.5 × 44 px`, and the full component crops render its typography, all three radii, one-pixel edge treatments, Canvas particles, and bottom glow clearly at 1:1 scale. A smaller crop would remove required edge/glow evidence, so no additional focused crop is needed.
+
+**Findings**
+
+- No actionable P0, P1, or P2 differences remain.
+- Fonts and typography: the source uses Satoshi 700 at `16/19.2 px`. The source font asset could not be bundled by the approved browser, so the closest available local system sans is used with `-0.017em` tracking. This matches the measured button width within `0.03 px`; the slight glyph-shape difference is accepted as P3.
+- Spacing and layout rhythm: `44 px` height, `24 px` horizontal padding, `12/10/9 px` nested radii, 2 px border inset, 3 px cover/particle inset, and vertical text centering match the source.
+- Colors and visual tokens: violet `#271950` surface, `#7043e0` glow, subtle outer border, white `0.15 → 0` default inner gradient, white `0.15 → 0.25` hover gradient, and glow opacity `0.25 → 0.8` match the measured source.
+- Image quality and asset fidelity: the source uses no image, icon, or SVG asset for this button. It uses two Canvas particle layers separated by a 1 px backdrop blur; the implementation reproduces that structure with deterministic, DPR-aware Canvas rendering and reduced-motion support.
+- Copy and content: the default `Get started` label matches the source and remains overridable through `children`.
+
+**Comparison History**
+
+1. Initial implementation used Inter 700 and measured `138.9844 px` wide, a visible P2 typography/geometry mismatch against the source's `131.4609 px`.
+2. Fix: switched to the closest available system sans and calibrated tracking while preserving the source's `16 px`, weight 700, and `19.2 px` line height.
+3. Post-fix evidence: desktop default/hover and mobile comparisons show the revised `131.4844 × 44 px` component with matching nested borders, glow response, particle treatment, and text baseline. No P0/P1/P2 mismatch remains.
+
+**Interactions And Runtime Checks**
+
+- Hover was measured and reproduced as a 250 ms transition: bottom glow opacity `0.25 → 0.8` and inner gradient bottom alpha `0 → 0.25`.
+- Click was exercised on desktop/mobile; it keeps the same URL and leaves focus on the semantic button, matching the source's no-op CTA.
+- Reduced-motion users receive a stable particle frame instead of continuous animation.
+- The final mobile viewport has no horizontal overflow and preserves the `131.4844 × 44 px` component size.
+- Browser console inspection found 0 warnings and 0 errors.
+- Targeted ESLint, registry generation/build, and the Vite production build passed. Vite reports only the repository's existing large-chunk advisory.
+
+**Implementation Checklist**
+
+- [x] Violet and neutral variants exposed through one reusable component.
+- [x] Source-matched nested surfaces, radii, border gradients, and hover glow.
+- [x] Two deterministic Canvas particle layers with DPR and reduced-motion handling.
+- [x] Semantic button behavior, focus-visible treatment, disabled state, and overridable content.
+- [x] Desktop/mobile browser verification, visual comparison, registry metadata, and install JSON.
+
+**Follow-up Polish**
+
+- P3: bundle Satoshi 700 if the project later adopts a registry asset-copy convention for font files.
+
+Current QA target: Wiza Button Source Recreation.
 
 final result: passed

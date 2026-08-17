@@ -3,117 +3,141 @@
 import { useState } from "react"
 import { Check } from "lucide-react"
 
-import { AI_SEO_SECTION, FadeIn, SectionHeading } from "../../shared/ai-seo/ai-seo-shared"
+type Plan = {
+  action: string
+  featured?: boolean
+  features: string[]
+  mobileHeight: string
+  monthly: number
+  name: string
+  yearly: number
+}
 
-const plans = [
+const plans: Plan[] = [
   {
-    name: "Launch",
-    monthly: 34,
-    yearly: 27,
-    description: "For focused sites finding their first repeatable growth loop.",
-    features: ["Two tracked properties", "Weekly opportunity map", "Technical health alerts", "Shareable reports"],
-    action: "Start exploring",
-    mobileHeight: "h-[348px]",
+    action: "Try for free",
+    features: ["Keyword optimization", "Automated meta tags", "SEO monitoring", "Monthly reports"],
+    mobileHeight: "h-[347.6px]",
+    monthly: 35,
+    name: "Basic",
+    yearly: 29,
   },
   {
-    name: "Scale",
-    monthly: 89,
-    yearly: 72,
-    description: "For teams coordinating content, technical work, and experiments.",
-    features: ["Ten tracked properties", "Content briefs", "Internal-link planner", "Competitor movement", "Team workspaces", "Priority support"],
-    action: "Choose Scale",
-    mobileHeight: "h-[421px]",
+    action: "Get started",
     featured: true,
+    features: [
+      "Keyword optimization",
+      "Automated meta tags",
+      "SEO monitoring",
+      "Monthly reports",
+      "Content suggestions",
+      "Link optimization",
+    ],
+    mobileHeight: "h-[421.2px]",
+    monthly: 85,
+    name: "Pro",
+    yearly: 79,
   },
   {
-    name: "Studio",
-    monthly: 169,
-    yearly: 139,
-    description: "For agencies and multi-brand teams that need flexible oversight.",
-    features: ["Unlimited properties", "Client-ready workspaces", "Custom scoring models", "API and exports", "Advanced permissions", "Onboarding session"],
-    action: "Talk to us",
-    mobileHeight: "h-[495px]",
+    action: "Get started",
+    features: [
+      "Keyword optimization",
+      "Automated meta tags",
+      "SEO monitoring",
+      "Monthly reports",
+      "Content suggestions",
+      "Link optimization",
+      "Multi-user access",
+      "API integration",
+    ],
+    mobileHeight: "h-[494.8px]",
+    monthly: 160,
+    name: "Business",
+    yearly: 149,
   },
 ]
+
+function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
+  return (
+    <article
+      className={`relative flex min-h-0 flex-col gap-5 overflow-hidden rounded-[10px] border border-white/[0.15] p-5 text-white min-[810px]:h-[500px] ${plan.mobileHeight} ${plan.featured ? "bg-[linear-gradient(180deg,#030204_0%,#251044_100%)] shadow-[0_20px_80px_rgba(140,69,255,0.28)]" : "bg-black/[0.03]"}`}
+    >
+      {plan.featured ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[url('/assets/ai-seo-source/pattern.png')] bg-repeat opacity-20 [mask-image:linear-gradient(180deg,transparent_15%,black_45%,black_100%)]"
+        />
+      ) : null}
+
+      <div className="relative">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-[24px] font-medium leading-[31.2px] tracking-[-0.24px] text-white">{plan.name}</h3>
+          {plan.featured ? (
+            <span className="mt-1 rounded-full bg-[#8c45ff] px-2 py-[2px] text-[8px] font-bold uppercase leading-3 tracking-[0.12px] text-white">
+              Popular
+            </span>
+          ) : null}
+        </div>
+        <p className="mt-1.5 text-[16px] leading-6 tracking-[-0.16px] text-white/70">
+          ${yearly ? plan.yearly : plan.monthly}/mo
+        </p>
+      </div>
+
+      <div aria-hidden="true" className="relative h-px shrink-0 bg-white/[0.15]" />
+
+      <ul className="relative space-y-5 pt-2.5">
+        {plan.features.map((feature) => (
+          <li className="flex h-[16.8px] items-center gap-1.5 text-[14px] leading-[16.8px] text-white/70" key={feature}>
+            <Check aria-hidden="true" className="size-[15px] shrink-0 text-white" strokeWidth={1.25} />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        className={`relative mt-auto inline-flex h-[38.2px] shrink-0 items-center justify-center rounded-[10px] px-[15px] text-[14px] font-normal leading-[18.2px] text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b987ff] ${plan.featured ? "bg-[#8c45ff]/65 shadow-[inset_0_0_6px_3px_rgba(255,255,255,0.15)] hover:bg-[#8c45ff]/80" : "bg-[#3d3d3d]/40 shadow-[inset_0_0_6px_3px_rgba(255,255,255,0.15)] hover:bg-[#505050]/50"}`}
+        href="#signup"
+      >
+        {plan.action}
+      </a>
+    </article>
+  )
+}
 
 export default function PricingAiSeo({ className = "" }: { className?: string }) {
   const [yearly, setYearly] = useState(true)
 
   return (
     <section
+      className={`relative scroll-mt-[68px] overflow-hidden bg-[radial-gradient(50%_50%_at_50%_50%,rgba(140,69,255,0.3)_0%,#000_100%)] px-5 py-20 text-white [font-family:Inter,sans-serif] min-[810px]:scroll-mt-[73.6px] min-[810px]:px-10 min-[810px]:py-[100px] ${className}`}
       id="pricing"
-      className={`relative scroll-mt-[68px] overflow-hidden bg-[#050505] py-20 text-white min-[810px]:scroll-mt-[74px] min-[810px]:py-[72px] ${className}`}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(140,69,255,0.2),transparent_40%)]" aria-hidden="true" />
-      <div className={AI_SEO_SECTION}>
-        <FadeIn>
-          <SectionHeading
-            eyebrow="Simple plans"
-            title="Choose the pace that fits."
-            description="Start with the essentials, then expand your workspace as more teams and sites join the workflow."
-            descriptionClassName="hidden min-[810px]:block"
-          />
-        </FadeIn>
+      <div className="mx-auto flex w-full max-w-[1345px] flex-col items-center gap-5 text-center">
+        <h2 className="text-[32px] font-medium leading-[35.2px] tracking-[-1.28px] min-[810px]:text-[56px] min-[810px]:leading-[61.6px] min-[810px]:tracking-[-2.24px]">
+          Pricing
+        </h2>
+        <p className="w-full max-w-[335px] text-[18px] leading-[25.2px] tracking-[-0.18px] text-white/70 min-[810px]:max-w-[470px] min-[810px]:text-[20px] min-[810px]:leading-7 min-[810px]:tracking-[-0.2px]">
+          Choose the right plan to meet your SEO needs and start optimizing today.
+        </p>
+      </div>
 
-        <FadeIn className="mt-6 flex justify-center min-[810px]:mt-9" delay={0.04}>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={yearly}
-            onClick={() => setYearly((value) => !value)}
-            className="group inline-flex min-h-11 items-center gap-3 rounded-full px-3 text-sm text-white/58 outline-none transition hover:text-white focus-visible:ring-2 focus-visible:ring-[#9b64f5]"
-          >
-            <span className={`relative h-6 w-10 rounded-full border transition ${yearly ? "border-[#aa79ff]/45 bg-[#8c45ff]" : "border-white/14 bg-white/[0.07]"}`}>
-              <span className={`absolute top-[3px] size-4 rounded-full bg-white shadow-sm transition-transform ${yearly ? "translate-x-[19px]" : "translate-x-[3px]"}`} />
-            </span>
-            <span>{yearly ? "Billed yearly · save up to 20%" : "Billed monthly"}</span>
-          </button>
-        </FadeIn>
+      <div className="mx-auto mt-10 flex w-full max-w-[1345px] flex-col items-center gap-5">
+        <button
+          aria-checked={yearly}
+          className="inline-flex h-[20.8px] items-center gap-2.5 text-[16px] font-medium leading-[20.8px] text-white/80 outline-none transition hover:text-white focus-visible:ring-2 focus-visible:ring-[#9b64f5]"
+          onClick={() => setYearly((value) => !value)}
+          role="switch"
+          type="button"
+        >
+          <span className={`relative h-5 w-[33px] rounded-full ring-1 ring-inset ring-white/[0.15] transition-colors ${yearly ? "bg-[#8c45ff]" : "bg-black"}`}>
+            <span className={`absolute left-0 top-[3px] size-[14px] rounded-full bg-white transition-transform ${yearly ? "translate-x-4" : "translate-x-[3px]"}`} />
+          </span>
+          <span>Billed yearly</span>
+        </button>
 
-        <div className="mx-auto mt-3 grid max-w-[940px] gap-2.5 min-[810px]:mt-6 min-[810px]:grid-cols-3 min-[810px]:items-stretch">
-          {plans.map((plan, index) => (
-            <FadeIn key={plan.name} delay={0.08 + index * 0.06} className="h-full">
-              <article
-                className={`relative flex min-h-0 flex-col overflow-hidden rounded-[12px] border p-5 transition duration-500 hover:-translate-y-1 min-[810px]:h-full min-[810px]:min-h-[500px] ${plan.mobileHeight} min-[810px]:h-auto ${plan.featured
-                  ? "border-[#a66eff]/36 bg-[linear-gradient(180deg,#070609_0%,#2a154d_100%)] shadow-[0_16px_70px_rgba(140,69,255,0.24)]"
-                  : "border-white/[0.1] bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.012))] hover:border-white/20"
-                }`}
-              >
-                {plan.featured ? (
-                  <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:34px_34px] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]" aria-hidden="true" />
-                ) : null}
-                <div className="relative">
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-2xl font-medium tracking-[-0.04em]">{plan.name}</h3>
-                    {plan.featured ? <span className="rounded-full bg-[#8c45ff] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-white">Popular</span> : null}
-                  </div>
-                  <div className="mt-4 flex items-end gap-1.5">
-                    <span className="text-[34px] font-medium leading-none tracking-[-0.05em]">${yearly ? plan.yearly : plan.monthly}</span>
-                    <span className="pb-0.5 text-xs text-white/36">/ month</span>
-                  </div>
-                  <p className="mt-4 hidden min-h-[66px] text-sm leading-6 text-white/45 min-[810px]:block">{plan.description}</p>
-                </div>
-
-                <ul className="relative mt-5 space-y-3.5 border-t border-white/[0.08] pt-5 min-[810px]:mt-7 min-[810px]:pt-6">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-[13px] leading-5 text-white/62">
-                      <Check className="mt-0.5 size-3.5 shrink-0 text-white/72" strokeWidth={1.8} aria-hidden="true" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#signup"
-                  className={`relative mt-auto inline-flex min-h-10 items-center justify-center rounded-[9px] border px-4 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b987ff] ${plan.featured
-                    ? "border-[#a96fff]/35 bg-[#8c45ff] text-white shadow-[0_8px_28px_rgba(140,69,255,0.28)] hover:bg-[#9b5aff]"
-                    : "border-white/12 bg-white/[0.065] text-white/82 hover:border-white/25 hover:bg-white/[0.1]"
-                  }`}
-                >
-                  {plan.action}
-                </a>
-              </article>
-            </FadeIn>
+        <div className="grid w-full max-w-[940px] gap-2.5 min-[810px]:grid-cols-3">
+          {plans.map((plan) => (
+            <PricingCard key={plan.name} plan={plan} yearly={yearly} />
           ))}
         </div>
       </div>

@@ -1,36 +1,21 @@
-const HERO_IMAGE =
-  "https://fsu.creght.com/site/2083536173505974272/1786355775493__creght_blocks_external_005.png"
-
-const heroImageSrcSet = [
-  `${HERO_IMAGE}?scale-down-to=512 512w`,
-  `${HERO_IMAGE}?scale-down-to=1024 1024w`,
-  `${HERO_IMAGE}?scale-down-to=2048 2048w`,
-  `${HERO_IMAGE} 2560w`,
-].join(", ")
-
-const orbitRings = [
-  { className: "animate-[spin_88s_linear_infinite]", size: 746 },
-  {
-    className:
-      "animate-[spin_102s_linear_infinite] [animation-direction:reverse]",
-    size: 1006,
-  },
-  { className: "animate-[spin_118s_linear_infinite]", size: 1266 },
-  {
-    className:
-      "animate-[spin_132s_linear_infinite] [animation-direction:reverse]",
-    size: 1526,
-  },
-  { className: "animate-[spin_148s_linear_infinite]", size: 1786 },
-  {
-    className:
-      "animate-[spin_164s_linear_infinite] [animation-direction:reverse]",
-    size: 2046,
-  },
-] as const
+const HERO_IMAGE = "/assets/ai-seo-source/hero-dashboard.png"
 
 export type HeroAiSeoProps = {
   className?: string
+}
+
+function OrbitNode({ className = "", outlined = false }: { className?: string; outlined?: boolean }) {
+  return (
+    <span aria-hidden="true" className={`pointer-events-none absolute inset-0 origin-center ${className}`}>
+      {outlined ? (
+        <span className="absolute left-1/2 top-0 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white">
+          <span className="size-[7px] rounded-full bg-white" />
+        </span>
+      ) : (
+        <span className="absolute left-1/2 top-0 size-[7px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" />
+      )}
+    </span>
+  )
 }
 
 export default function HeroAiSeo({ className = "" }: HeroAiSeoProps) {
@@ -39,57 +24,39 @@ export default function HeroAiSeo({ className = "" }: HeroAiSeoProps) {
       className={`relative isolate scroll-mt-[68px] overflow-hidden bg-black pt-20 text-white [font-family:Inter,sans-serif] min-[810px]:scroll-mt-[73.6px] ${className}`}
       id="top"
     >
-      <style>{`
-        @font-face {
-          font-family: "Inter";
-          src: url("https://framerusercontent.com/assets/vQyevYAyHtARFwPqUzQGpnDs.woff2") format("woff2");
-          font-display: swap;
-          font-style: normal;
-          font-weight: 400;
-        }
-        @font-face {
-          font-family: "Inter";
-          src: url("https://app.framerstatic.com/Inter-Medium.latin-Y3IVPL46.woff2") format("woff2");
-          font-display: swap;
-          font-style: normal;
-          font-weight: 500;
-        }
-        @font-face {
-          font-family: "Inter";
-          src: url("https://app.framerstatic.com/Inter-Bold.latin-UCM45LQF.woff2") format("woff2");
-          font-display: swap;
-          font-style: normal;
-          font-weight: 700;
-        }
-      `}</style>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 min-[810px]:hidden"
-        style={{
-          background:
-            "radial-gradient(125% 88% at 50% 78.3%, #d438ff 0%, #8c45ff 39.9916%, #190d2e 84.9328%, #000 100%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden min-[810px]:block"
-        style={{
-          background:
-            "radial-gradient(60% 88% at 50% 64.2%, #d438ff 0%, #8c45ff 39.9916%, #190d2e 84.9328%, #000 100%)",
-        }}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(125%_88%_at_50%_78.3%,#d438ff_0%,#8c45ff_39.9916%,#190d2e_84.9328%,#000_100%)] min-[810px]:bg-[radial-gradient(60%_88%_at_50%_64.2%,#d438ff_0%,#8c45ff_39.9916%,#190d2e_84.9328%,#000_100%)]"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-[699px] z-[1] hidden -translate-x-1/2 -translate-y-1/2 min-[810px]:block"
+        className="pointer-events-none absolute left-1/2 top-[-88px] hidden size-[1574px] -translate-x-1/2 opacity-50 mix-blend-overlay min-[810px]:block"
       >
-        {orbitRings.map((ring) => (
-          <span
-            className={`absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.075] border-t-[#d6a8ff]/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.025),0_-22px_90px_rgba(188,104,255,0.055)] motion-reduce:animate-none ${ring.className}`}
-            key={ring.size}
-            style={{ height: ring.size, width: ring.size }}
-          />
-        ))}
+        <span className="absolute left-1/2 top-1/2 size-[574px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white will-change-transform animate-[spin_60s_linear_infinite] motion-reduce:animate-none">
+          <OrbitNode className="rotate-[-135deg]" outlined />
+          <OrbitNode className="rotate-[-45deg]" />
+          <OrbitNode className="rotate-[45deg]" />
+          <OrbitNode className="rotate-[180deg]" />
+        </span>
+        <span className="absolute left-1/2 top-1/2 size-[774px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white will-change-transform animate-[spin_80s_linear_infinite_reverse] motion-reduce:animate-none" />
+        <span className="absolute left-1/2 top-1/2 size-[974px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white will-change-transform animate-[spin_50s_linear_infinite] motion-reduce:animate-none">
+          <OrbitNode className="rotate-[-130deg]" outlined />
+          <OrbitNode className="rotate-[-90deg]" />
+          <OrbitNode className="rotate-[-26deg]" />
+          <OrbitNode className="rotate-[0deg]" />
+          <OrbitNode className="rotate-[90deg]" outlined />
+          <OrbitNode className="rotate-[163deg]" />
+        </span>
+        <span className="absolute left-1/2 top-1/2 size-[1174px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white will-change-transform animate-[spin_100s_linear_infinite_reverse] motion-reduce:animate-none" />
+        <span className="absolute left-1/2 top-1/2 size-[1374px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white will-change-transform animate-[spin_40s_linear_infinite] motion-reduce:animate-none">
+          <OrbitNode className="rotate-[-118deg]" />
+          <OrbitNode className="rotate-[-20deg]" outlined />
+          <OrbitNode className="rotate-[44deg]" />
+          <OrbitNode className="rotate-[136deg]" outlined />
+          <OrbitNode className="rotate-[180deg]" />
+        </span>
+        <span className="absolute left-1/2 top-1/2 size-[1574px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white will-change-transform animate-[spin_80s_linear_infinite_reverse] motion-reduce:animate-none" />
       </div>
 
       <div className="relative z-20 mx-auto flex w-[calc(100%_-_40px)] max-w-[335px] flex-col items-center gap-5 text-center min-[810px]:max-w-[1000px]">
@@ -97,19 +64,13 @@ export default function HeroAiSeo({ className = "" }: HeroAiSeoProps) {
           className="inline-flex h-[39.6px] items-center gap-2 rounded-full bg-black px-3.5 text-[14px] font-medium leading-[19.6px] tracking-[-0.1px] text-[#8c45ff] ring-1 ring-inset ring-white/[0.15] transition hover:text-[#ad79ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b179ff]"
           href="#features"
         >
-          <span className="inline-flex h-4 w-[31.8px] items-center justify-center rounded-full bg-[#8c45ff] text-[8px] font-bold leading-none tracking-[0.24px] text-white">
-            NEW
+          <span className="inline-flex h-4 w-[31.8px] items-center justify-center rounded-full bg-[#8c45ff] text-[8px] font-bold uppercase leading-none tracking-[0.24px] text-white">
+            New
           </span>
           <span>Latest integration just arrived</span>
         </a>
 
-        <h1
-          className="w-full bg-clip-text text-[50px] font-medium leading-[50px] tracking-[-0.06em] text-transparent min-[810px]:max-w-[530px] min-[810px]:text-[64px] min-[810px]:leading-[64px] min-[1200px]:max-w-[600px] min-[1200px]:text-[82px] min-[1200px]:leading-[82px]"
-          style={{
-            backgroundImage:
-              "radial-gradient(71% 100% at 50% 133.9%, #7800ab 0%, #fff 100%)",
-          }}
-        >
+        <h1 className="w-full bg-clip-text text-[50px] font-medium leading-[50px] tracking-[-0.06em] text-transparent [background-image:radial-gradient(71%_100%_at_50%_133.9%,#7800ab_0%,#fff_100%)] min-[810px]:max-w-[530px] min-[810px]:text-[64px] min-[810px]:leading-[64px] min-[1200px]:max-w-[600px] min-[1200px]:text-[82px] min-[1200px]:leading-[82px]">
           <span className="block">Boost your</span>
           <span className="block min-[810px]:hidden">rankings with</span>
           <span className="block min-[810px]:hidden">AI.</span>
@@ -144,8 +105,7 @@ export default function HeroAiSeo({ className = "" }: HeroAiSeoProps) {
             height="1848"
             loading="eager"
             sizes="(max-width: 809px) calc(100vw - 50px), (max-width: 1199px) calc(100vw - 100px), 1280px"
-            src={`${HERO_IMAGE}?scale-down-to=2048`}
-            srcSet={heroImageSrcSet}
+            src={HERO_IMAGE}
             width="2560"
           />
         </div>
@@ -153,11 +113,7 @@ export default function HeroAiSeo({ className = "" }: HeroAiSeoProps) {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-[-4px] top-[-4px] z-[15]"
-        style={{
-          background:
-            "radial-gradient(54% 50% at 50% 57.2%, transparent 0%, rgba(0, 0, 0, 0.67) 64.5147%, #000 100%)",
-        }}
+        className="pointer-events-none absolute inset-x-0 bottom-[-4px] top-[-4px] z-[15] bg-[radial-gradient(54%_50%_at_50%_57.2%,transparent_0%,rgba(0,0,0,0.67)_64.5147%,#000_100%)]"
       />
       <div
         aria-hidden="true"

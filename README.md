@@ -46,4 +46,6 @@ MIT
 
 ## Design Studies
 
-`landing-ai-seo` and its installable section entries are a React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). Image assets are hosted on the Creght CDN; matching Inter font files and the navbar video temporarily reference source-hosted assets for visual parity. Replace or self-host appropriately licensed project assets before production. No generated Framer page code is embedded or reused.
+`landing-ai-seo` and its section entries are a from-scratch React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). At the user's direction, matching reference images, the animated mark, and Inter font files are temporarily stored in `public/assets/ai-seo-source/` for visual parity. Confirm that you have permission to use them and replace or re-license them before production. No generated Framer page code is embedded or reused.
+
+When installing an AI SEO section into another app, also copy `public/assets/ai-seo-source/` to that app's `public/assets/ai-seo-source/` directory and keep the matching Inter `@font-face` declarations from `src/globals.css`. The media directory is included in this package so the block can be moved without hotlinking the reference site.

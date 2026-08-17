@@ -1,57 +1,141 @@
-import { Github, Linkedin, Youtube } from "lucide-react"
+import { Instagram, X, Youtube } from "lucide-react"
 
-import { AI_SEO_SECTION, BrandMark } from "../../shared/ai-seo/ai-seo-shared"
+const footerColumns = [
+  {
+    title: "Product",
+    links: [
+      { label: "Features", href: "#features" },
+      { label: "Integrations", href: "#feature-list" },
+      { label: "Updates", href: "#feature-list" },
+      { label: "FAQ", href: "#footer" },
+      { label: "Pricing", href: "#pricing" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "#footer" },
+      { label: "Blog", href: "#stories" },
+      { label: "Careers", href: "#footer" },
+      { label: "Manifesto", href: "#footer" },
+      { label: "Press", href: "#footer" },
+      { label: "Contact", href: "#signup" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Examples", href: "#stories" },
+      { label: "Community", href: "#signup" },
+      { label: "Guides", href: "#feature-list" },
+      { label: "Docs", href: "#feature-list" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy", href: "#footer" },
+      { label: "Terms", href: "#footer" },
+      { label: "Security", href: "#footer" },
+    ],
+  },
+] as const
 
-const footerColumns: Array<{
-  title: string
-  links: Array<{ label: string; href?: string }>
-}> = [
-  { title: "Product", links: [{ label: "Platform", href: "#features" }, { label: "Opportunity map", href: "#features" }, { label: "Pricing", href: "#pricing" }, { label: "Private preview", href: "#signup" }] },
-  { title: "Company", links: [{ label: "About" }, { label: "Journal" }, { label: "Careers" }, { label: "Contact" }] },
-  { title: "Resources", links: [{ label: "Field notes" }, { label: "Templates" }, { label: "Community" }, { label: "Help center" }] },
-  { title: "Legal", links: [{ label: "Privacy" }, { label: "Terms" }, { label: "Security" }] },
-]
+const socialLinks = [
+  { label: "X", href: "https://x.com/framer", Icon: X },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/framer/",
+    Icon: Instagram,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UCW5gUZ7lKGrAbLOkHv2xfbw",
+    Icon: Youtube,
+  },
+] as const
 
-export default function FooterAiSeo({ className = "" }: { className?: string }) {
+function FooterBrandMark() {
   return (
-    <footer id="footer" className={`scroll-mt-[68px] border-t border-white/[0.1] bg-[#050505] py-[33px] text-white min-[810px]:min-h-[357px] min-[810px]:scroll-mt-[74px] min-[810px]:py-14 ${className}`}>
-      <div className={`${AI_SEO_SECTION} grid gap-[30px] min-[810px]:grid-cols-[minmax(260px,1fr)_minmax(0,560px)] min-[810px]:gap-20`}>
-        <div className="flex min-h-[160px] flex-col min-[810px]:min-h-[220px]">
-          <a href="#top" className="inline-flex w-fit items-center gap-3 text-sm font-medium text-white/88">
-            <BrandMark className="size-[34px]" />
-            <span>Auralis Intelligence</span>
+    <span
+      aria-hidden="true"
+      className="relative block size-[34px] shrink-0 overflow-hidden rounded-[7px] border border-white/15 bg-[radial-gradient(75%_50%_at_50%_100%,#1c1c1c_0%,#000_100%)]"
+    >
+      <span className="absolute left-1/2 top-1/2 size-[18px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[10px] shadow-[0_1px_10px_rgba(198,54,255,0.7),0_1px_6px_rgba(140,69,255,0.6)]">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/ai-seo-source/logo-poster.avif"
+          className="absolute left-1/2 top-1/2 size-[19.8px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover grayscale blur-[1px]"
+        >
+          <source src="/assets/ai-seo-source/logo.mp4" type="video/mp4" />
+        </video>
+        <span className="absolute inset-0 bg-gradient-to-b from-[#8c45ff] to-[#c145ff] mix-blend-color" />
+        <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_52%,rgba(255,255,255,0.25)_0%,rgba(140,69,255,0.08)_48%,rgba(0,0,0,0.2)_100%)]" />
+      </span>
+    </span>
+  )
+}
+
+export default function FooterAiSeo({
+  className = "",
+}: {
+  className?: string
+}) {
+  return (
+    <footer
+      id="footer"
+      className={`scroll-mt-[68px] bg-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] min-[810px]:scroll-mt-[74px] ${className}`}
+    >
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start gap-10 px-5 py-[60px] min-[810px]:flex-row min-[810px]:items-stretch min-[810px]:justify-between min-[810px]:gap-[100px]">
+        <div className="flex w-full flex-row items-center justify-between max-[374px]:flex-wrap max-[374px]:gap-y-5 min-[810px]:w-max min-[810px]:flex-col min-[810px]:items-start">
+          <a
+            href="#top"
+            className="flex w-max items-center gap-[10px]"
+            aria-label="Back to top"
+          >
+            <FooterBrandMark />
+            <span className="whitespace-nowrap text-[13px] font-medium leading-[1.3] tracking-[-0.01em] text-white">
+              AI Startup Website Kit
+            </span>
           </a>
-          <p className="mt-5 max-w-xs text-sm leading-6 text-white/34">
-            A calmer operating system for search teams building durable organic growth.
-          </p>
-          <div className="mt-auto flex gap-2 pt-9">
-            {[
-              { label: "GitHub", href: "https://github.com", Icon: Github },
-              { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
-              { label: "YouTube", href: "https://youtube.com", Icon: Youtube },
-            ].map(({ label, href, Icon }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="grid size-10 place-items-center rounded-full border border-white/8 text-white/38 transition hover:border-white/20 hover:bg-white/[0.05] hover:text-white">
-                <Icon className="size-4" aria-hidden="true" />
+
+          <div className="flex w-max items-center gap-5">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="relative grid size-6 place-items-center text-white/50 transition-opacity hover:text-white focus-visible:text-white focus-visible:outline-none"
+              >
+                <Icon aria-hidden="true" className="size-6" strokeWidth={2.5} />
               </a>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 min-[810px]:grid-cols-4">
+        <div className="flex w-full flex-col items-start gap-10 min-[810px]:w-max min-[810px]:flex-row min-[810px]:gap-[60px] min-[810px]:pb-0 min-[810px]:pr-10 min-[810px]:pt-[6px] min-[1200px]:pr-[100px]">
           {footerColumns.map((column) => (
-            <div key={column.title}>
-              <h3 className="text-[13px] font-medium text-white/88">{column.title}</h3>
-              <ul className="mt-5 space-y-4 text-[13px] text-white/36">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    {link.href ? (
-                      <a href={link.href} className="transition hover:text-white/80">{link.label}</a>
-                    ) : (
-                      <span>{link.label}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
+            <div
+              key={column.title}
+              className="flex w-full flex-col items-start gap-5 min-[810px]:w-max"
+            >
+              <h3 className="whitespace-nowrap text-[13px] font-medium leading-[1.3] tracking-[-0.01em] text-white">
+                {column.title}
+              </h3>
+              {column.links.map(({ label, href }) => (
+                <a
+                  href={href}
+                  key={label}
+                  className="whitespace-nowrap text-[13px] font-normal leading-[1.2] text-white/60"
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           ))}
         </div>

@@ -27,11 +27,20 @@ export function FadeIn({
 export function BrandMark({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`relative inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-white/15 bg-[#0b0811] shadow-[0_0_24px_rgba(140,69,255,0.26),inset_0_1px_0_rgba(255,255,255,0.08)] ${className}`}
+      className={`relative inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-white/15 bg-[radial-gradient(75%_50%_at_50%_100%,#1c1c1c_0%,#000_100%)] ${className}`}
       aria-hidden="true"
     >
-      <span className="absolute inset-[7px] rounded-full bg-[radial-gradient(circle_at_38%_32%,#f0dcff_0%,#b76dff_24%,#7b31ff_56%,#291047_100%)] shadow-[0_0_15px_#8c45ff]" />
-      <span className="absolute inset-x-2 bottom-1 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+      <span className="relative size-[52.63%] overflow-hidden rounded-[10px] shadow-[0_1px_10px_rgba(198,54,255,0.7),0_1px_6px_rgba(140,69,255,0.6)]">
+        <video
+          autoPlay
+          className="absolute left-1/2 top-1/2 size-[110%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+          loop
+          muted
+          playsInline
+          poster="/assets/ai-seo-source/logo-poster.avif"
+          src="/assets/ai-seo-source/logo.mp4"
+        />
+      </span>
     </span>
   )
 }

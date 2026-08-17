@@ -1,69 +1,270 @@
-import type { ButtonHTMLAttributes } from "react"
+"use client"
+
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ButtonHTMLAttributes,
+} from "react"
 import { twMerge } from "tailwind-merge"
 
 export type ButtonGalaxyProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-const PARTICLES = [
-  ["left-[5%] top-[58%]", "size-1", "delay-0"],
-  ["left-[9%] top-[38%]", "size-0.5", "delay-150"],
-  ["left-[14%] top-[70%]", "size-1.5", "delay-300"],
-  ["left-[19%] top-[48%]", "size-0.5", "delay-500"],
-  ["left-[24%] top-[76%]", "size-1", "delay-700"],
-  ["left-[29%] top-[31%]", "size-0.5", "delay-1000"],
-  ["left-[34%] top-[63%]", "size-1.5", "delay-200"],
-  ["left-[39%] top-[82%]", "size-0.5", "delay-700"],
-  ["left-[44%] top-[42%]", "size-1", "delay-500"],
-  ["left-[49%] top-[71%]", "size-0.5", "delay-1000"],
-  ["left-[54%] top-[28%]", "size-1", "delay-300"],
-  ["left-[59%] top-[58%]", "size-1.5", "delay-150"],
-  ["left-[64%] top-[79%]", "size-0.5", "delay-500"],
-  ["left-[69%] top-[39%]", "size-1", "delay-700"],
-  ["left-[74%] top-[68%]", "size-0.5", "delay-1000"],
-  ["left-[79%] top-[51%]", "size-1.5", "delay-300"],
-  ["left-[84%] top-[78%]", "size-1", "delay-150"],
-  ["left-[89%] top-[35%]", "size-0.5", "delay-700"],
-  ["left-[94%] top-[61%]", "size-1", "delay-500"],
-] as const
+type Particle = {
+  x: number
+  y: number
+  radius: number
+  speed: number
+  drift: number
+  phase: number
+  opacity: number
+}
+
+const GLOW_SHADOW = [
+  "0 4px 15px -8px rgb(255 255 255)",
+  "0 1px 1px -0.4px rgb(63 63 232 / 19%)",
+  "0 2px 2px -0.8px rgb(63 63 232 / 19%)",
+  "0 4px 4px -1.2px rgb(63 63 232 / 19%)",
+  "0 7px 7px -1.6px rgb(63 63 232 / 18%)",
+  "0 11px 11px -2px rgb(63 63 232 / 18%)",
+  "0 18px 18px -2.4px rgb(63 63 232 / 17%)",
+  "0 30px 30px -2.8px rgb(63 63 232 / 15%)",
+  "0 55px 55px -3.25px rgb(63 63 232 / 11%)",
+  "0 0 10px -4px rgb(82 130 235 / 60%)",
+].join(", ")
+
+function GalaxyParticles({ active }: { active: boolean }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const context = canvas.getContext("2d")
+    if (!context) return
+
+    let animationFrame = 0
+    let width = 0
+    let height = 0
+    let particles: Particle[] = []
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    const resize = () => {
+      const bounds = canvas.getBoundingClientRect()
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      width = bounds.width
+      height = bounds.height
+      canvas.width = Math.max(1, Math.round(width * dpr))
+      canvas.height = Math.max(1, Math.round(height * dpr))
+      context.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      let seed = 0x6d2b79f5
+      const random = () => {
+        seed += 0x6d2b79f5
+        let value = seed
+        value = Math.imul(value ^ (value >>> 15), value | 1)
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61)
+        return ((value ^ (value >>> 14)) >>> 0) / 4294967296
+      }
+
+      const visibleStart = 40
+      const visibleHeight = height / 3
+
+      particles = Array.from({ length: 128 }, (_, index) => ({
+        x: random() * width,
+        y: visibleStart + random() * visibleHeight,
+        radius: index % 13 === 0 ? 1.9 + random() : 0.45 + random() * 1.25,
+        speed: 8 + random() * 24,
+        drift: 2 + random() * 8,
+        phase: random() * Math.PI * 2,
+        opacity: 0.28 + random() * 0.72,
+      }))
+    }
+
+    const draw = (time: number) => {
+      context.clearRect(0, 0, width, height)
+      const elapsed = time / 1000
+
+      for (const particle of particles) {
+        const visibleStart = 40
+        const visibleHeight = height / 3
+        const y =
+          visibleStart +
+          ((particle.y - visibleStart - elapsed * particle.speed + visibleHeight) %
+            visibleHeight)
+        const x = particle.x + Math.sin(elapsed * 0.7 + particle.phase) * particle.drift
+        const twinkle = 0.62 + Math.sin(elapsed * 2.2 + particle.phase) * 0.38
+        const visibleBand = Math.max(
+          0,
+          1 - Math.abs(y - (visibleStart + visibleHeight * 0.62)) / (visibleHeight * 0.68),
+        )
+        const alpha = particle.opacity * twinkle * visibleBand
+
+        if (alpha <= 0.02) continue
+
+        const halo = context.createRadialGradient(x, y, 0, x, y, particle.radius * 4.5)
+        halo.addColorStop(0, `rgb(238 242 255 / ${Math.min(1, alpha)})`)
+        halo.addColorStop(0.2, `rgb(163 181 255 / ${alpha * 0.72})`)
+        halo.addColorStop(1, "rgb(93 91 245 / 0)")
+        context.fillStyle = halo
+        context.beginPath()
+        context.arc(x, y, particle.radius * 4.5, 0, Math.PI * 2)
+        context.fill()
+
+        context.fillStyle = `rgb(248 250 255 / ${Math.min(1, alpha + 0.18)})`
+        context.beginPath()
+        context.arc(x, y, particle.radius, 0, Math.PI * 2)
+        context.fill()
+      }
+
+      if (active && !reduceMotion) {
+        animationFrame = window.requestAnimationFrame(draw)
+      }
+    }
+
+    resize()
+    draw(0)
+    if (active && !reduceMotion) {
+      animationFrame = window.requestAnimationFrame(draw)
+    }
+
+    const observer = new ResizeObserver(resize)
+    observer.observe(canvas)
+
+    return () => {
+      observer.disconnect()
+      window.cancelAnimationFrame(animationFrame)
+    }
+  }, [active])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      className={twMerge(
+        "pointer-events-none absolute -top-10 left-0 h-[300%] w-full transition-opacity duration-700",
+        active ? "opacity-100" : "opacity-0",
+      )}
+    />
+  )
+}
 
 export function ButtonGalaxy({
   children = "Generate",
   className,
+  disabled,
+  onBlur,
+  onFocus,
+  onPointerCancel,
+  onPointerEnter,
+  onPointerLeave,
   type = "button",
   ...props
 }: ButtonGalaxyProps) {
+  const [pointerActive, setPointerActive] = useState(false)
+  const [focusActive, setFocusActive] = useState(false)
+  const active = !disabled && (pointerActive || focusActive)
+
   return (
     <button
+      {...props}
       type={type}
+      disabled={disabled}
+      data-active={active ? "true" : "false"}
+      data-testid="galaxy-button"
       className={twMerge(
-        "group relative isolate inline-flex h-[138px] w-[432px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#7e85b5] p-[2px] shadow-[0_0_1px_rgba(255,255,255,0.2),0_2px_8px_rgba(63,63,232,0.25),0_16px_55px_-14px_rgba(63,63,232,0.45)] transition duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_0_1px_rgba(255,255,255,0.45),0_2px_10px_rgba(112,126,255,0.55),0_20px_70px_-8px_rgba(63,63,232,0.72)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a9b1ff] focus-visible:ring-offset-4 focus-visible:ring-offset-[#080609] active:translate-y-0 active:scale-[0.985] disabled:cursor-not-allowed disabled:opacity-50",
+        "group relative isolate inline-flex aspect-[72/23] w-[432px] max-w-full flex-none cursor-pointer items-center justify-center overflow-visible rounded-full border-0 bg-transparent p-0 font-sans transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a9b1ff] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0a0609] active:scale-[0.985] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
-      {...props}
+      onPointerEnter={(event) => {
+        setPointerActive(true)
+        onPointerEnter?.(event)
+      }}
+      onPointerLeave={(event) => {
+        setPointerActive(false)
+        onPointerLeave?.(event)
+      }}
+      onPointerCancel={(event) => {
+        setPointerActive(false)
+        onPointerCancel?.(event)
+      }}
+      onFocus={(event) => {
+        setFocusActive(true)
+        onFocus?.(event)
+      }}
+      onBlur={(event) => {
+        setFocusActive(false)
+        onBlur?.(event)
+      }}
     >
-      <span className="absolute inset-[2px] overflow-hidden rounded-full bg-[#0a0609] shadow-[inset_0_0_2px_3px_rgba(0,0,0,0.45),inset_0_0_4px_8px_rgba(89,98,201,0.25)]">
-        <span className="absolute inset-0 bg-[radial-gradient(75%_130%_at_50%_112%,rgba(93,91,245,0.48)_0%,rgba(31,26,105,0.16)_37%,rgba(10,6,9,0)_69%)] opacity-35 transition-opacity duration-700 group-hover:opacity-100 group-focus-visible:opacity-100" />
-        <span className="absolute -bottom-[125%] left-1/2 h-[205%] w-[92%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(circle,rgba(78,125,255,0.58)_0%,rgba(47,58,199,0.2)_35%,transparent_68%)] opacity-0 blur-xl transition-all duration-700 group-hover:-bottom-[105%] group-hover:opacity-100 group-focus-visible:-bottom-[105%] group-focus-visible:opacity-100" />
-        <span className="absolute inset-x-[9%] bottom-[-60%] h-[88%] rounded-[50%] border-t border-[#9ba8ff]/0 shadow-[0_-18px_45px_rgba(55,94,255,0)] transition-all duration-700 group-hover:border-[#9ba8ff]/55 group-hover:shadow-[0_-18px_45px_rgba(55,94,255,0.42)] group-focus-visible:border-[#9ba8ff]/55 group-focus-visible:shadow-[0_-18px_45px_rgba(55,94,255,0.42)]" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-full bg-[#7e85b5]"
+      />
 
-        <span className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
-          {PARTICLES.map(([position, size, delay]) => (
-            <span
-              key={position}
-              className={twMerge(
-                "absolute animate-pulse rounded-full bg-[#eef2ff] shadow-[0_0_7px_2px_rgba(136,163,255,0.8)]",
-                position,
-                size,
-                delay,
-              )}
-            />
-          ))}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-full transition-[background,box-shadow] duration-700 ease-out"
+        style={{
+          background: active
+            ? "linear-gradient(180deg, rgb(126 133 181) 0%, rgb(201 245 255) 100%)"
+            : "linear-gradient(180deg, rgb(126 133 181) 0%, rgb(126 133 181) 100%)",
+          boxShadow: active ? GLOW_SHADOW : "none",
+        }}
+      />
+
+      <span
+        aria-hidden="true"
+        data-galaxy-surface="true"
+        className="pointer-events-none absolute inset-[2px] overflow-hidden rounded-full bg-[#0a0609] shadow-[inset_0_0_2px_3px_rgba(0,0,0,0.3),inset_0_0_4px_8px_rgba(89,98,201,0.25)]"
+      >
+        <span
+          className="absolute inset-0 z-[1] rounded-full transition-[background,box-shadow,opacity] duration-700"
+          style={{
+            background: active
+              ? "radial-gradient(53% 100% at 50% 77.7%, rgb(31 26 105) 0%, rgb(21 18 84 / 0%) 100%)"
+              : "radial-gradient(53% 100% at 50% 77.7%, rgb(31 26 105 / 0%) 0%, rgb(21 18 84 / 0%) 100%)",
+            boxShadow: active
+              ? "inset 0 -27px 27px -10px rgb(36 31 184 / 46%)"
+              : "inset 0 0 0 0 rgb(36 31 184 / 0%)",
+            opacity: active ? 0.55 : 1,
+          }}
+        />
+
+        <span
+          className={twMerge(
+            "absolute inset-0 z-[2] rounded-full blur-[5px] transition-[background,opacity] duration-1000",
+            active ? "animate-pulse opacity-60" : "opacity-0",
+          )}
+          style={{
+            background: active
+              ? "radial-gradient(129% 219% at 50% 88.7%, rgb(32 69 138 / 0%) 0%, rgb(38 118 209 / 50%) 93.4%, rgb(32 69 138 / 0%) 97%)"
+              : "radial-gradient(129% 219% at 50% 88.7%, rgb(38 118 209 / 0%) 0%, rgb(32 69 138 / 0%) 2.7%)",
+          }}
+        />
+
+        <span
+          className="absolute inset-0 z-[3] rounded-full transition-[background,box-shadow] duration-700"
+          style={{
+            background: active
+              ? "radial-gradient(58% 75% at 50% 100%, rgb(19 49 112) 0%, rgb(21 18 84 / 0%) 100%)"
+              : "radial-gradient(58% 75% at 50% 100%, rgb(19 49 112 / 0%) 0%, rgb(21 18 84 / 0%) 100%)",
+            boxShadow: active
+              ? "inset 0 -12px 12px -7px rgb(93 91 245 / 72%)"
+              : "inset 0 0 0 0 rgb(93 91 245 / 0%)",
+          }}
+        />
+
+        <span
+          className="absolute inset-0 z-[4] overflow-hidden rounded-full [mask-image:radial-gradient(50%_142%_at_50%_100%,#000_0%,transparent_100%)]"
+        >
+          <GalaxyParticles active={active} />
         </span>
 
-        <span className="absolute -left-[16%] bottom-[15%] h-px w-[58%] -rotate-[12deg] bg-gradient-to-r from-transparent via-[#a7b8ff]/70 to-transparent opacity-0 blur-[0.5px] transition-all delay-150 duration-700 group-hover:left-[4%] group-hover:opacity-70 group-focus-visible:left-[4%] group-focus-visible:opacity-70" />
-        <span className="absolute -right-[18%] bottom-[29%] h-px w-[48%] rotate-[9deg] bg-gradient-to-r from-transparent via-[#728cff]/65 to-transparent opacity-0 blur-[0.5px] transition-all delay-300 duration-700 group-hover:right-[3%] group-hover:opacity-60 group-focus-visible:right-[3%] group-focus-visible:opacity-60" />
+        <span className="absolute inset-0 z-[7] rounded-full shadow-[inset_0_0_2px_3px_rgba(0,0,0,0.3),inset_0_0_4px_8px_rgba(89,98,201,0.25)]" />
       </span>
 
-      <span className="relative z-10 bg-[linear-gradient(0deg,#9699a8_20%,#fff_42%)] bg-clip-text text-[clamp(2rem,5vw,3.5rem)] font-medium leading-none tracking-[-0.01em] text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">
+      <span className="relative z-[9] select-none whitespace-nowrap bg-[linear-gradient(0deg,#9699a8_20%,#fff_42%)] bg-clip-text text-[clamp(2rem,5vw,3.5rem)] font-medium leading-[1.2] tracking-[-0.01em] text-transparent">
         {children}
       </span>
     </button>

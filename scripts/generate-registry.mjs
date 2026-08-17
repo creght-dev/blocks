@@ -12,6 +12,7 @@ const SCHEMA_URL = "https://ui.shadcn.com/schema/registry.json"
 const REGISTRY_NAME = "creght"
 const HOMEPAGE_URL = "https://github.com/creght-dev/blocks"
 const CATEGORY_ORDER = ["hero", "logoWall", "features", "effects", "footer"]
+const REGISTRY_SOURCE_EXTENSIONS = [".tsx", ".ts", ".css"]
 const COVER_OVERRIDES = {
   "rainbow-stretching-footer": "https://fsu.creght.com/site/2081689097969078272/1785148393646__rainbow_footer.png",
   "timeline-01": "https://fsu.creght.com/project/mDzERvIUUmW/lZKFrnwKLQS__area.gif",
@@ -19,6 +20,7 @@ const COVER_OVERRIDES = {
 const TITLE_OVERRIDES = {
   "3d-split": "Effects · 3D Split",
   "cards-expand": "Effects · Cards Expand",
+  "image-carousel": "Effects · Image Carousel",
   "image-intro": "Effects · Image Intro",
   "inner-globe": "Effects · Inner Globe",
   "rainbow-stretching-footer": "Footer · Rainbow Stretching",
@@ -100,7 +102,7 @@ async function listFilesInDir(dirPath) {
   return entries
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name)
-    .filter((name) => (name.endsWith(".tsx") || name.endsWith(".ts")) && !name.endsWith(".d.ts"))
+    .filter((name) => REGISTRY_SOURCE_EXTENSIONS.some((extension) => name.endsWith(extension)) && !name.endsWith(".d.ts"))
     .sort((a, b) => a.localeCompare(b))
 }
 
@@ -166,7 +168,7 @@ async function collectTransitiveRegistryFiles(itemDir, initialFileNames) {
 
     if (filePaths.has(normalized)) continue
     if (!normalized.startsWith(registryCreghtRoot)) continue
-    if (!normalized.endsWith(".ts") && !normalized.endsWith(".tsx")) continue
+    if (!REGISTRY_SOURCE_EXTENSIONS.some((extension) => normalized.endsWith(extension))) continue
 
     try {
       await fs.access(normalized)
@@ -284,7 +286,7 @@ async function generate() {
         categories: [category || "section"],
         files: registryFilePaths.map((filePath) => ({
           path: path.relative(ROOT_DIR, filePath).split(path.sep).join("/"),
-          type: "registry:component",
+          type: filePath.endsWith(".css") ? "registry:style" : "registry:component",
         })),
       }
 

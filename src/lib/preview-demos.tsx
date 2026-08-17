@@ -1,6 +1,19 @@
-import { createElement, type ComponentType, type ReactNode } from "react"
+import {
+  createElement,
+  lazy,
+  Suspense,
+  type ElementType,
+  type ReactNode,
+} from "react"
 
 import registryData from "@/registry.json"
+
+const DevWizaButtonConfigurator = import.meta.env.DEV
+  ? lazy(async () => {
+      const module = await import("@/src/components/WizaButtonConfigurator")
+      return { default: module.WizaButtonConfigurator }
+    })
+  : null
 
 type RegistryFile = {
   path: string
@@ -14,26 +27,31 @@ type RegistryItem = {
 
 type ModuleRecord = Record<string, unknown>
 
+function isRenderableComponent(candidate: unknown): candidate is ElementType {
+  return (
+    typeof candidate === "function" ||
+    (typeof candidate === "object" && candidate !== null && "$$typeof" in candidate)
+  )
+}
+
 const registryModules = import.meta.glob("../../registry/creght/*/*/*.{ts,tsx}", {
   eager: true,
 }) as Record<string, ModuleRecord>
 
 function getComponentFromModule(moduleRecord: ModuleRecord, itemName: string) {
   const fromDefault = moduleRecord.default
-  if (typeof fromDefault === "function") {
-    return fromDefault as ComponentType<object>
+  if (isRenderableComponent(fromDefault)) {
+    return fromDefault
   }
 
   const fromName = moduleRecord[itemName]
-  if (typeof fromName === "function") {
-    return fromName as ComponentType<object>
+  if (isRenderableComponent(fromName)) {
+    return fromName
   }
 
-  const firstFunction = Object.values(moduleRecord).find(
-    (candidate) => typeof candidate === "function"
-  )
-  if (typeof firstFunction === "function") {
-    return firstFunction as ComponentType<object>
+  const firstComponent = Object.values(moduleRecord).find(isRenderableComponent)
+  if (firstComponent) {
+    return firstComponent
   }
 
   return null
@@ -56,11 +74,41 @@ export const demos: Record<string, ReactNode> = (registryData.items as RegistryI
     const Component = getComponentFromModule(moduleRecord, item.name)
     if (!Component) return result
 
+    if (item.name === "button-wiza" && DevWizaButtonConfigurator) {
+      result[item.name] = createElement(
+        Suspense,
+        {
+          fallback: createElement("div", {
+            className: "min-h-dvh bg-black",
+          }),
+        },
+        createElement(DevWizaButtonConfigurator),
+      )
+      return result
+    }
+
     const component = createElement(Component)
+    if (item.name === "button-glass") {
+      result[item.name] = createElement(
+        "div",
+        { className: "glass-button-preview-stage" },
+        component,
+      )
+      return result
+    }
+
     result[item.name] = item.categories?.includes("button")
       ? createElement(
           "div",
-          { className: "flex min-h-dvh items-center justify-center bg-[#080c0f] p-8" },
+          {
+            className: `flex min-h-dvh items-center justify-center p-8 ${
+              item.name === "button-galaxy"
+                ? "bg-[#0a0609]"
+                : item.name === "button-wiza"
+                  ? "bg-black"
+                  : "bg-[#080c0f]"
+            }`,
+          },
           component,
         )
       : component

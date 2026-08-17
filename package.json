@@ -15,6 +15,7 @@
   "files": [
     "registry.json",
     "registry",
+    "public/assets/ai-seo-source",
     "public/r",
     "README.md"
   ],

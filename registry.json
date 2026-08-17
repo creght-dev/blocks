@@ -468,14 +468,7 @@
         {
           "path": "registry/creght/logoWall/logo-wall-ai-seo/logo-wall-ai-seo.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
         }
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -616,6 +609,22 @@
       ]
     },
     {
+      "name": "image-carousel",
+      "type": "registry:block",
+      "title": "Effects · Image Carousel",
+      "description": "Effects · Image Carousel section.",
+      "categories": [
+        "effects"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/effects/image-carousel/image-carousel.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/image-carousel.png"
+    },
+    {
       "name": "image-intro",
       "type": "registry:block",
       "title": "Effects · Image Intro",
@@ -729,10 +738,6 @@
         {
           "path": "registry/creght/footer/footer-ai-seo/footer-ai-seo.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
         }
       ],
       "dependencies": [
@@ -806,6 +811,10 @@
         {
           "path": "registry/creght/button/button-01/button-01.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/button/button-01/button-01.css",
+          "type": "registry:style"
         }
       ],
       "cover": "https://fsu.creght.com/site/2083536173505974272/1785589260307__button_01.jpg",
@@ -828,7 +837,46 @@
           "type": "registry:component"
         }
       ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355293071__creght_blocks_covers_button_galaxy.svg",
+      "cover": "/covers/button-galaxy.png",
+      "dependencies": [
+        "tailwind-merge"
+      ]
+    },
+    {
+      "name": "button-glass",
+      "type": "registry:block",
+      "title": "Button · Glass",
+      "description": "Button · Glass component.",
+      "categories": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/button/button-glass/button-glass.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/button/button-glass/button-glass.css",
+          "type": "registry:style"
+        }
+      ],
+      "cover": "/covers/button-glass.png"
+    },
+    {
+      "name": "button-wiza",
+      "type": "registry:block",
+      "title": "Button · Wiza",
+      "description": "Button · Wiza component.",
+      "categories": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/button/button-wiza/button-wiza.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/button-wiza.png",
       "dependencies": [
         "tailwind-merge"
       ]
@@ -845,14 +893,7 @@
         {
           "path": "registry/creght/cta/cta-ai-seo/cta-ai-seo.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
         }
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -910,7 +951,6 @@
         }
       ],
       "dependencies": [
-        "framer-motion",
         "lucide-react"
       ]
     },
@@ -964,10 +1004,6 @@
         {
           "path": "registry/creght/pricing/pricing-ai-seo/pricing-ai-seo.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
         }
       ],
       "dependencies": [
@@ -1008,15 +1044,7 @@
         {
           "path": "registry/creght/testimonials/testimonials-ai-seo/testimonials-ai-seo.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
         }
-      ],
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
       ]
     },
     {
