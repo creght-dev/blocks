@@ -77,7 +77,7 @@ function HeroTickerRow({ row, index }: { row: TickerRow; index: number }) {
         {duplicatedItems.map((item, itemIndex) => (
           <a
             key={`${item.name}-${itemIndex}`}
-            href={`/preview/${item.name}`}
+            href={`/blocks/${item.name}`}
             className={`group block w-[62vw] max-w-[500px] min-w-[240px] overflow-hidden outline-none ring-white/0 transition duration-300 hover:z-10 hover:scale-[1.035] hover:ring-2 focus-visible:z-10 focus-visible:scale-[1.035] focus-visible:ring-2 sm:w-[38vw] lg:w-[29vw] ${row.cardClassNames[itemIndex % row.cardClassNames.length]}`}
           >
             <div className="relative aspect-[4/3] overflow-hidden">

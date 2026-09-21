@@ -1,0 +1,273 @@
+@font-face {
+  font-family: "Creght Satoshi";
+  src: url("/assets/button-gradient-border/satoshi-bold.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@property --creght-gradient-border-angle {
+  inherits: false;
+  initial-value: 270deg;
+  syntax: "<angle>";
+}
+
+@property --creght-gradient-border-x {
+  inherits: false;
+  initial-value: 13.4503%;
+  syntax: "<percentage>";
+}
+
+.creght-gradient-border-button {
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  appearance: none;
+  background: rgb(255 255 255 / 10%);
+  border: 0;
+  border-radius: 19px;
+  box-shadow:
+    0 0.602187px 1.08394px -0.833333px rgb(0 0 0 / 5%),
+    0 2.28853px 4.11936px -1.66667px rgb(0 0 0 / 5%),
+    0 10px 18px -2.5px rgb(0 0 0 / 5%);
+  box-sizing: border-box;
+  color: #050505;
+  cursor: pointer;
+  display: inline-flex;
+  flex: none;
+  height: 74px;
+  justify-content: center;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  transition: opacity 160ms ease;
+  width: auto;
+}
+
+.creght-gradient-border-button::after {
+  border: 0.5px solid rgb(255 255 255 / 20%);
+  border-radius: inherit;
+  box-sizing: border-box;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 7;
+}
+
+.creght-gradient-border-button:focus-visible {
+  outline: 2px solid rgb(153 204 255 / 88%);
+  outline-offset: 4px;
+}
+
+.creght-gradient-border-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+.creght-gradient-border-button__content {
+  align-items: center;
+  background: linear-gradient(180deg, #fff 0%, rgb(255 255 255 / 80%) 100%);
+  border: 0;
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  height: 66px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 28px;
+  position: relative;
+  z-index: 5;
+}
+
+.creght-gradient-border-button__content::after {
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: inherit;
+  box-sizing: border-box;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.creght-gradient-border-button__label {
+  color: #050505;
+  display: block;
+  font-family: "Creght Satoshi", "Satoshi", Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1.2;
+  position: relative;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.creght-gradient-border-button__border-mask {
+  border-radius: 19px;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.creght-gradient-border-button__border-light {
+  --creght-gradient-border-angle: 270deg;
+  --creght-gradient-border-x: 13.4503%;
+  animation: creght-gradient-border-button-light 4.8s linear infinite;
+  background: conic-gradient(
+    from var(--creght-gradient-border-angle) at var(--creght-gradient-border-x) 50%,
+    transparent 317deg,
+    #fff 335deg,
+    transparent 351deg
+  );
+  inset: 0;
+  position: absolute;
+}
+
+.creght-gradient-border-button__blur {
+  backdrop-filter: blur(10px);
+  background: rgb(255 255 255 / 1%);
+  border-radius: 18px;
+  inset: 1px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.creght-gradient-border-button__glow {
+  background: radial-gradient(
+    87% 100% at 50% 100%,
+    rgb(0 153 255) 0%,
+    rgb(255 255 255 / 0%) 100%
+  );
+  border-radius: 16px;
+  inset: 4px;
+  opacity: 0.3;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 6;
+}
+
+.creght-gradient-border-button__particles {
+  height: 218px;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: -72px;
+  transform-origin: center;
+  width: 218px;
+  z-index: 1;
+}
+
+.creght-gradient-border-button__particles--1 {
+  animation: creght-gradient-border-button-orbit-one 22.7s linear infinite;
+  opacity: 0.3;
+}
+
+.creght-gradient-border-button__particles--2 {
+  animation: creght-gradient-border-button-orbit-two 15.1s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes creght-gradient-border-button-light {
+  0% {
+    --creght-gradient-border-angle: 270deg;
+    --creght-gradient-border-x: 13.4503%;
+  }
+
+  10.5% {
+    --creght-gradient-border-angle: 308deg;
+    --creght-gradient-border-x: 13.4503%;
+  }
+
+  15% {
+    --creght-gradient-border-angle: 323deg;
+    --creght-gradient-border-x: 28.5425%;
+  }
+
+  20.5% {
+    --creght-gradient-border-angle: 344deg;
+    --creght-gradient-border-x: 44.8443%;
+  }
+
+  27.2% {
+    --creght-gradient-border-angle: 368deg;
+    --creght-gradient-border-x: 64.5447%;
+  }
+
+  36.2% {
+    --creght-gradient-border-angle: 400deg;
+    --creght-gradient-border-x: 86.5497%;
+  }
+
+  59.6% {
+    --creght-gradient-border-angle: 445deg;
+    --creght-gradient-border-x: 86.5497%;
+  }
+
+  65.5% {
+    --creght-gradient-border-angle: 506deg;
+    --creght-gradient-border-x: 69.5566%;
+  }
+
+  71.3% {
+    --creght-gradient-border-angle: 527deg;
+    --creght-gradient-border-x: 52.7364%;
+  }
+
+  78.2% {
+    --creght-gradient-border-angle: 551deg;
+    --creght-gradient-border-x: 32.5751%;
+  }
+
+  83.6% {
+    --creght-gradient-border-angle: 571deg;
+    --creght-gradient-border-x: 16.7341%;
+  }
+
+  89% {
+    --creght-gradient-border-angle: 590deg;
+    --creght-gradient-border-x: 13.4503%;
+  }
+
+  100% {
+    --creght-gradient-border-angle: 630deg;
+    --creght-gradient-border-x: 13.4503%;
+  }
+}
+
+@keyframes creght-gradient-border-button-orbit-one {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes creght-gradient-border-button-orbit-two {
+  from {
+    transform: translateX(-50%) rotate(180deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(540deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creght-gradient-border-button__border-light,
+  .creght-gradient-border-button__particles {
+    animation-play-state: paused;
+  }
+}

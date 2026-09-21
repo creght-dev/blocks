@@ -2,6 +2,12 @@
 
 Creght Blocks provides reusable page section components for websites, product pages, landing pages, and similar scenarios. Components are published as [shadcn registry](https://ui.shadcn.com/docs/registry/getting-started) JSON and can be installed into any React project configured with shadcn using the official CLI.
 
+## Public Registry
+
+Published component entries are generated from `registry/creght/` into `registry.json` and `public/r`. There is no private sibling repository, entitlement lookup, or token-protected download in the current phase.
+
+All blocks use the same public install and copy flow; there are no access tiers or Pro gates. Run `npm run registry:build` to rebuild the complete public registry.
+
 ## Configure Registry
 
 Add the `registries` configuration to `components.json` in the consuming project:
@@ -40,12 +46,54 @@ npx shadcn@latest add https://unpkg.com/@creght/creght-blocks@latest/public/r/re
 
 If `unpkg` is delayed, replace `latest` with a published semver version.
 
+## Install with the Package CLI
+
+Every block can also be installed with the package CLI, without a token:
+
+```bash
+npx @creght/creght-blocks add hero-lodestar
+```
+
+The installer accepts the same options as `shadcn add`, for example `--yes`, `--overwrite`, `--cwd`, and `--path`.
+
 ## License
 
-MIT
+The repository is MIT licensed. Individual third-party study assets or attributed source portions may carry additional permission requirements documented below.
 
 ## Design Studies
 
-`landing-ai-seo` and its section entries are a from-scratch React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). At the user's direction, matching reference images, the animated mark, and Inter font files are temporarily stored in `public/assets/ai-seo-source/` for visual parity. Confirm that you have permission to use them and replace or re-license them before production. No generated Framer page code is embedded or reused.
+`landing-ai-seo` and its sections remain in this repository for the standalone page demo but are excluded from the Blocks catalog and installable registry. They are a from-scratch React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). At the user's direction, matching reference images, the animated mark, and Inter font files are temporarily stored in `public/assets/ai-seo-source/` for visual parity. Confirm that you have permission to use them and replace or re-license them before production. No generated Framer page code is embedded or reused.
 
-When installing an AI SEO section into another app, also copy `public/assets/ai-seo-source/` to that app's `public/assets/ai-seo-source/` directory and keep the matching Inter `@font-face` declarations from `src/globals.css`. The media directory is included in this package so the block can be moved without hotlinking the reference site.
+`hero-flip` and `stack-scroll` share ten generated WebP images in `public/assets/flip-hero/`. Copy that image directory to the same public path when installing either block in another app. `hero-flip` loads Inter plus Nunito Sans from Google Fonts; `stack-scroll` also requires the local font in `public/assets/stack-scroll/`. Earlier reference images and unused fonts have been removed.
+
+`infinite-canvas` and `scramble-glitch` load their default images from the Creght CDN. The three custom JPG originals in `public/assets/infinite-canvas/` are retained for maintaining the CDN assets; they are not required in the npm package.
+
+`hero-lodestar` now includes a source-based particle port from [ricardochance.com](https://www.ricardochance.com/), requested explicitly for visual reproduction. The original star mesh and GLSL are attributed in `lodestar-source.ts`; the renderer adapts the source's surface sampling, orthographic projection, twinkle, pointer tilt, repulsion, and background trail to a standalone React component. The existing demo copy and brand remain customizable. Public availability is not a license grant: the third-party source portions require appropriate permission before redistribution or commercial use and are not represented as original MIT-licensed code.
+
+`showcase-3d` is a React/CSS source reconstruction of the [Rotating 3D Showcase](https://3d-showcase.learnframer.site/) interaction. Its default portrait imagery is loaded from the reference page's public Framer CDN URLs for parity; replace or re-license those defaults before production use if you do not control the source assets.
+
+`unroll-scroll` is a React/CSS source reconstruction of the [Image Unroll Scroll](https://unroll-scroll.learnframer.site/) interaction. Its four reference images and matching font files are stored in `public/assets/unroll-scroll/` for offline parity; confirm reuse permission or replace them before production use.
+
+`button-gradient-border` is a React/CSS/canvas reconstruction of the animated button from [Gradient Border Button Component](https://gradient-border-v2.learnframer.site/). It uses a locally stored Satoshi Bold font file copied from the reference page for parity. Confirm that you have permission to use it before production, and copy `public/assets/button-gradient-border/` with the component when installing it outside this package.
+
+## Creght Hosted Site
+
+The Creght-hosted Blocks library has a local working copy in `apps/creght-site/`.
+This directory and `apps/ai-seo-creght-template/` are ignored by Git; their local
+files and Creght sync state are retained for maintenance. The Blocks copy's
+`.creght/state.json` binds it to project `p35l7ulie6he` and site `p35l7ulpwviq`.
+The commands below use that existing local working copy.
+
+```bash
+npm run site:pull
+npm run site:sync:report
+npm run site:diff
+npm run site:push
+npm run site:preview
+```
+
+`registry/creght/` remains the canonical source for distributable blocks.
+Before pushing the hosted site, pull remote editor changes, review the source
+sync report, and inspect `site:diff`. See
+[`docs/creght-site-management.md`](docs/creght-site-management.md) for the
+ownership rules and the new-section checklist.

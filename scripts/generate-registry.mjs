@@ -3,35 +3,52 @@ import path from "node:path"
 
 const ROOT_DIR = process.cwd()
 const REGISTRY_ROOT = path.join(ROOT_DIR, "registry", "creght")
-const OUTPUT_PATH = path.join(ROOT_DIR, "registry.json")
 const PACKAGE_JSON_PATH = path.join(ROOT_DIR, "package.json")
+const CATALOG_OUTPUT_PATH = path.join(ROOT_DIR, "registry.catalog.json")
 const COVERS_DIR = path.join(ROOT_DIR, "public", "covers")
 const CDN_ASSET_MANIFEST_PATH = path.join(ROOT_DIR, "scripts", "creght-cdn-assets.json")
 
 const SCHEMA_URL = "https://ui.shadcn.com/schema/registry.json"
 const REGISTRY_NAME = "creght"
 const HOMEPAGE_URL = "https://github.com/creght-dev/blocks"
-const CATEGORY_ORDER = ["hero", "logoWall", "features", "effects", "footer"]
+const CATEGORY_ORDER = ["hero", "features", "background", "effects", "showcase", "footer"]
 const REGISTRY_SOURCE_EXTENSIONS = [".tsx", ".ts", ".css"]
+// Keep the AI SEO page source for its standalone demo, but omit the page and its
+// sections from the distributable Blocks registry.
+const UNLISTED_ITEMS = new Set([
+  "landing-ai-seo",
+  "navbar-ai-seo",
+  "hero-ai-seo",
+  "logo-wall-ai-seo",
+  "features-ai-seo",
+  "feature-list-ai-seo",
+  "testimonials-ai-seo",
+  "pricing-ai-seo",
+  "cta-ai-seo",
+  "footer-ai-seo",
+])
 const COVER_OVERRIDES = {
   "rainbow-stretching-footer": "https://fsu.creght.com/site/2081689097969078272/1785148393646__rainbow_footer.png",
   "timeline-01": "https://fsu.creght.com/project/mDzERvIUUmW/lZKFrnwKLQS__area.gif",
 }
 const TITLE_OVERRIDES = {
+  "ai-liquid-background": "Background · AI Liquid",
+  "neuro-noise": "Background · Neuro Noise",
   "3d-split": "Effects · 3D Split",
   "cards-expand": "Effects · Cards Expand",
   "image-carousel": "Effects · Image Carousel",
   "image-intro": "Effects · Image Intro",
   "inner-globe": "Effects · Inner Globe",
+  "hero-flip": "Hero · Photography Portfolio",
+  "hero-orb-particles": "Hero · Orb Particles",
   "rainbow-stretching-footer": "Footer · Rainbow Stretching",
   "sphere-wall": "Effects · Sphere Wall",
-  "logo-wall-01": "Logo Wall · Trust Grid",
-  "logo-wall-02": "Logo Wall · Infinite Marquee",
-  "logo-wall-03": "Logo Wall · Interactive Spotlight",
-  "logo-wall-04": "Logo Wall · 3D Marquee",
-  "logo-wall-05": "Logo Wall · Integration Ticker",
-  "logo-wall-06": "Logo Wall · Floating Integrations",
-  "logo-wall-07": "Logo Wall · Integration Pills",
+  "stack-scroll": "Effects · Stack Scroll",
+  "scramble-glitch": "Showcase · Scramble Glitch",
+  "infinite-canvas": "Showcase · Infinite Canvas",
+  "showcase-3d": "Showcase · Rotating 3D",
+  "unroll-scroll": "Showcase · Image Unroll Scroll",
+  "button-generate": "Button · 05",
 }
 
 function sortCategories(categories) {
@@ -48,6 +65,26 @@ function sortCategories(categories) {
 async function readJson(filePath) {
   const raw = await fs.readFile(filePath, "utf-8")
   return JSON.parse(raw)
+}
+
+function readArgument(name) {
+  const prefix = `${name}=`
+  const inline = process.argv.find((argument) => argument.startsWith(prefix))
+  if (inline) return inline.slice(prefix.length)
+
+  const index = process.argv.indexOf(name)
+  return index >= 0 ? process.argv[index + 1] : undefined
+}
+
+function resolveBuildOptions() {
+  const defaultOutput = path.join(ROOT_DIR, "registry.json")
+  const requestedOutput = readArgument("--output")
+
+  return {
+    outputPath: requestedOutput
+      ? path.resolve(ROOT_DIR, requestedOutput)
+      : defaultOutput,
+  }
 }
 
 function toTitleCase(input) {
@@ -227,8 +264,11 @@ async function getCoverPath(itemName, cdnAssets) {
 }
 
 async function generate() {
-  const packageJson = await readJson(PACKAGE_JSON_PATH)
-  const cdnAssetManifest = await readJson(CDN_ASSET_MANIFEST_PATH)
+  const { outputPath } = resolveBuildOptions()
+  const [packageJson, cdnAssetManifest] = await Promise.all([
+    readJson(PACKAGE_JSON_PATH),
+    readJson(CDN_ASSET_MANIFEST_PATH),
+  ])
   const cdnAssets = cdnAssetManifest.assets ?? {}
   const knownDependencies = new Set([
     ...Object.keys(packageJson.dependencies ?? {}),
@@ -253,6 +293,8 @@ async function generate() {
       .sort((a, b) => a.localeCompare(b))
 
     for (const itemName of itemDirs) {
+      if (UNLISTED_ITEMS.has(itemName)) continue
+
       const itemDir = path.join(categoryDir, itemName)
       const files = await listFilesInDir(itemDir)
       if (files.length === 0) continue
@@ -310,8 +352,21 @@ async function generate() {
     items,
   }
 
-  await fs.writeFile(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`, "utf-8")
-  console.log(`Generated registry.json with ${items.length} items.`)
+  const catalog = {
+    name: REGISTRY_NAME,
+    homepage: HOMEPAGE_URL,
+    items,
+  }
+
+  await fs.mkdir(path.dirname(outputPath), { recursive: true })
+  await Promise.all([
+    fs.writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf-8"),
+    fs.writeFile(CATALOG_OUTPUT_PATH, `${JSON.stringify(catalog, null, 2)}\n`, "utf-8"),
+  ])
+  console.log(
+    `Generated ${path.relative(ROOT_DIR, outputPath)} with ${items.length} items.`,
+  )
+  console.log(`Generated registry.catalog.json with ${items.length} catalog items.`)
 }
 
 generate().catch((error) => {

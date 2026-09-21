@@ -2,7 +2,7 @@
 
 import { forwardRef, type ButtonHTMLAttributes } from "react"
 
-import "./button-glass.css"
+import { BUTTON_GLASS_CSS } from "./button-glass.styles"
 
 export type ButtonGlassProps = ButtonHTMLAttributes<HTMLButtonElement>
 
@@ -15,13 +15,15 @@ export const ButtonGlass = forwardRef<HTMLButtonElement, ButtonGlassProps>(
     ref,
   ) {
     return (
-      <button
-        {...props}
-        ref={ref}
-        type={type}
-        className={`creght-glass-button ${className}`.trim()}
-        data-testid="glass-button"
-      >
+      <>
+        <style>{BUTTON_GLASS_CSS}</style>
+        <button
+          {...props}
+          ref={ref}
+          type={type}
+          className={`creght-glass-button ${className}`.trim()}
+          data-testid="glass-button"
+        >
         <span className="creght-glass-button__shell" aria-hidden="true">
           <span className="creght-glass-button__inner">
             <span className="creght-glass-button__outer-shadow">
@@ -49,7 +51,8 @@ export const ButtonGlass = forwardRef<HTMLButtonElement, ButtonGlassProps>(
 
         <span className="creght-glass-button__depth" aria-hidden="true" />
         <span className="creght-glass-button__sr-only">{children}</span>
-      </button>
+        </button>
+      </>
     )
   },
 )

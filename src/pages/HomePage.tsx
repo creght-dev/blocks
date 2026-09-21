@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Copy, ExternalLink, Eye, X } from "lucide-react"
+import { Copy, ExternalLink } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
-import registryData from "@/registry.json"
-import { PreviewFrame } from "@/src/components/PreviewFrame"
-import { PreviewDeviceSwitcher, type PreviewDevice } from "@/src/components/PreviewDeviceSwitcher"
+import registryData from "@/registry.catalog.json"
 import { demos } from "@/src/lib/preview-demos"
 
 type RegistryItem = {
@@ -15,10 +14,11 @@ type RegistryItem = {
 }
 
 const PAGE_SIZE = 6
-const CATEGORY_ORDER = ["hero", "logoWall", "features", "effects", "footer"]
+const CATEGORY_ORDER = ["hero", "features", "background", "effects", "showcase", "footer"]
 const CATEGORY_LABELS: Record<string, string> = {
+  background: "Background 背景",
   button: "按钮",
-  logoWall: "Logo Wall",
+  showcase: "Showcase 展示",
 }
 
 function getCategoryLabel(category: string) {
@@ -45,11 +45,10 @@ function getInstallPrompt(slug: string) {
 }
 
 export function HomePage() {
+  const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState("all")
   const [query, setQuery] = useState("")
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null)
-  const [previewDevice, setPreviewDevice] = useState<PreviewDevice>("desktop")
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null)
   const sentinelRef = useRef<HTMLDivElement | null>(null)
 
@@ -94,8 +93,6 @@ export function HomePage() {
 
   const visibleItems = filteredItems.slice(0, visibleCount)
   const hasMore = visibleCount < filteredItems.length
-  const selectedItem = selectedSlug ? items.find((item) => item.name === selectedSlug) ?? null : null
-  const selectedPreviewUrl = selectedSlug ? `/preview/${selectedSlug}` : ""
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
   }, [activeCategory, query])
@@ -120,16 +117,11 @@ export function HomePage() {
     return () => window.clearTimeout(timer)
   }, [copiedSlug])
 
-  useEffect(() => {
-    if (selectedSlug) return
-    setPreviewDevice("desktop")
-  }, [selectedSlug])
-
-  const copyPromptToClipboard = async (slug: string) => {
-    const prompt = getInstallPrompt(slug)
+  const copyPromptToClipboard = async (item: RegistryItem) => {
+    const prompt = getInstallPrompt(item.name)
     try {
       await navigator.clipboard.writeText(prompt)
-      setCopiedSlug(slug)
+      setCopiedSlug(item.name)
     } catch {
       const textarea = document.createElement("textarea")
       textarea.value = prompt
@@ -140,18 +132,8 @@ export function HomePage() {
       textarea.select()
       document.execCommand("copy")
       document.body.removeChild(textarea)
-      setCopiedSlug(slug)
+      setCopiedSlug(item.name)
     }
-  }
-
-  const handleCopyPrompt = () => {
-    if (!selectedSlug) return
-    void copyPromptToClipboard(selectedSlug)
-  }
-
-  const handleOpenPreview = () => {
-    if (!selectedPreviewUrl) return
-    window.open(selectedPreviewUrl, "_blank", "noopener,noreferrer")
   }
 
   return (
@@ -220,58 +202,53 @@ export function HomePage() {
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visibleItems.map((item) => (
               <article
-                key={item.name}
-                role="button"
-                tabIndex={0}
-                onClick={() => setSelectedSlug(item.name)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault()
-                    setSelectedSlug(item.name)
-                  }
-                }}
-                className="group cursor-pointer overflow-hidden rounded-2xl border border-zinc-200/80 bg-white text-left shadow-[0_8px_30px_-18px_rgba(15,23,42,0.45)] transition hover:-translate-y-1 hover:shadow-[0_24px_40px_-20px_rgba(79,70,229,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900">
-                  <img
-                    src={item.cover ?? "https://fsu.creght.com/site/2083536173505974272/1786356116545__creght_blocks_logo.svg"}
-                    alt={item.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-zinc-950/0 transition group-hover:bg-zinc-950/45" />
-                  <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 transition group-hover:opacity-100">
-                    <button
-                      type="button"
-                      onClick={(event) => {
-                        event.stopPropagation()
-                        void copyPromptToClipboard(item.name)
-                      }}
-                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/95 px-3 py-1.5 text-xs font-medium text-zinc-800 shadow-sm transition hover:bg-white"
-                    >
-                      <Copy className="h-3.5 w-3.5" aria-hidden="true" />
-                      {copiedSlug === item.name ? "Copied" : "Copy prompt"}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={(event) => {
-                        event.stopPropagation()
-                        setSelectedSlug(item.name)
-                      }}
-                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-indigo-300/80 bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-indigo-500"
-                    >
-                      <Eye className="h-3.5 w-3.5" aria-hidden="true" />
-                      Preview
-                    </button>
+                  key={item.name}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => navigate(`/blocks/${item.name}`)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault()
+                      navigate(`/blocks/${item.name}`)
+                    }
+                  }}
+                  className="group cursor-pointer overflow-hidden rounded-2xl border border-zinc-200/80 bg-white text-left shadow-[0_8px_30px_-18px_rgba(15,23,42,0.45)] transition hover:-translate-y-1 hover:shadow-[0_24px_40px_-20px_rgba(79,70,229,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900">
+                    <img
+                      src={item.cover ?? "https://fsu.creght.com/site/2083536173505974272/1786356116545__creght_blocks_logo.svg"}
+                      alt={item.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-zinc-950/0 transition group-hover:bg-zinc-950/45" />
+                    <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 transition group-hover:opacity-100">
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          void copyPromptToClipboard(item)
+                        }}
+                        className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/95 px-3 py-1.5 text-xs font-medium text-zinc-800 shadow-sm transition hover:bg-white"
+                      >
+                        <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+                        {copiedSlug === item.name ? "Copied" : "Copy prompt"}
+                      </button>
+                      <a
+                        href={`/preview/${item.name}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(event) => {
+                          event.stopPropagation()
+                        }}
+                        className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-indigo-300/80 bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-indigo-500"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                        Open preview
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div className="space-y-1.5 p-4">
-                  <h3 className="line-clamp-1 font-semibold text-zinc-900">{item.title}</h3>
-                  <p className="line-clamp-2 text-xs leading-relaxed text-zinc-600">
-                    {item.description ?? "Click to preview this section."}
-                  </p>
-                </div>
-              </article>
+                </article>
             ))}
           </div>
 
@@ -290,53 +267,6 @@ export function HomePage() {
         </section>
       </div>
 
-      {selectedSlug ? (
-        <div className="fixed inset-0 z-50 bg-zinc-950/70 p-2 backdrop-blur-sm md:p-6">
-          <div className="mx-auto flex h-full w-full max-w-7xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl 2xl:max-w-[92vw]">
-            <div className="border-b border-zinc-200 px-4 py-3">
-              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold text-zinc-900">
-                    {selectedItem?.title ?? selectedSlug}
-                  </p>
-                  <p className="truncate text-xs text-zinc-500">{selectedSlug}</p>
-                </div>
-                <PreviewDeviceSwitcher value={previewDevice} onChange={setPreviewDevice} />
-                <div className="flex items-center justify-end gap-2">
-                  <button
-                    type="button"
-                    onClick={handleCopyPrompt}
-                    className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-100"
-                  >
-                    {copiedSlug === selectedSlug ? "Copied" : "Copy prompt"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleOpenPreview}
-                    aria-label="Open preview in new window"
-                    title="Open preview in new window"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-300 text-zinc-700 transition hover:bg-zinc-100"
-                  >
-                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedSlug(null)}
-                    aria-label="Close"
-                    title="Close"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-300 text-zinc-700 transition hover:bg-zinc-100"
-                  >
-                    <X className="h-4 w-4" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="min-h-0 flex-1 overflow-hidden bg-zinc-100 p-4 md:p-6">
-              <PreviewFrame slug={selectedSlug} device={previewDevice} />
-            </div>
-          </div>
-        </div>
-      ) : null}
     </div>
   )
 }

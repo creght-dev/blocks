@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react"
 
-import registryData from "@/registry.json"
+import registryData from "@/registry.catalog.json"
 
 const DevWizaButtonConfigurator = import.meta.env.DEV
   ? lazy(async () => {
@@ -104,9 +104,13 @@ export const demos: Record<string, ReactNode> = (registryData.items as RegistryI
             className: `flex min-h-dvh items-center justify-center p-8 ${
               item.name === "button-galaxy"
                 ? "bg-[#0a0609]"
-                : item.name === "button-wiza"
+                : item.name === "button-generate"
                   ? "bg-black"
-                  : "bg-[#080c0f]"
+                  : item.name === "button-gradient-border"
+                    ? "bg-[#050505]"
+                    : item.name === "button-wiza"
+                      ? "bg-black"
+                      : "bg-[#080c0f]"
             }`,
           },
           component,

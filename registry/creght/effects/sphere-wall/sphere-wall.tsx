@@ -19,11 +19,12 @@ const DEFAULT_IMAGES = [
 ] as const
 
 const VISIBLE_HALF_WINDOW = 1.3
+const COLUMN_BUFFER = 2
+const INITIAL_EAGER_COLUMNS = 4
 
 type Column = {
   c: number
-  end: number
-  start: number
+  slot: number
 }
 
 type Layout = {
@@ -50,6 +51,8 @@ export type SphereWallProps = {
   duration?: number
   gap?: number
   images?: readonly string[]
+  dragEnabled?: boolean
+  wheelEnabled?: boolean
   interactive?: boolean
   padding?: number
   rows?: number
@@ -100,28 +103,21 @@ function computeLayout(
   const rowSpacing = cardH + gap
   const panEnd = stepLon * options.imageCount
   const rows: number[] = []
-  const maxRow = Math.ceil((height / 2 + cardH) / rowSpacing)
+  const firstRow = -Math.floor(options.rows / 2)
 
-  for (let row = -maxRow; row <= maxRow; row += 1) {
-    rows.push(row)
+  for (let row = 0; row < options.rows; row += 1) {
+    rows.push(firstRow + row)
   }
 
-  const columns: Column[] = []
-  const minColumn = Math.ceil(-VISIBLE_HALF_WINDOW / stepLon)
-  const maxColumn = Math.floor(
-    options.imageCount + VISIBLE_HALF_WINDOW / stepLon,
+  const columnCount = Math.max(
+    3,
+    Math.ceil((VISIBLE_HALF_WINDOW * 2) / stepLon) + COLUMN_BUFFER * 2 + 1,
   )
+  const firstColumn = getFirstRenderedColumn(0, stepLon)
+  const columns: Column[] = []
 
-  for (let column = minColumn; column <= maxColumn; column += 1) {
-    const start = Math.max(
-      0,
-      (column * stepLon - VISIBLE_HALF_WINDOW) / panEnd,
-    )
-    const end = Math.min(
-      1,
-      (column * stepLon + VISIBLE_HALF_WINDOW) / panEnd,
-    )
-    if (end > start) columns.push({ c: column, start, end })
+  for (let slot = 0; slot < columnCount; slot += 1) {
+    columns.push({ c: firstColumn + slot, slot })
   }
 
   return {
@@ -139,6 +135,14 @@ function computeLayout(
   }
 }
 
+function getFirstRenderedColumn(progress: number, stepLon: number) {
+  return (
+    Math.floor(progress / stepLon) +
+    Math.ceil(-VISIBLE_HALF_WINDOW / stepLon) -
+    COLUMN_BUFFER
+  )
+}
+
 function wrap(value: number, length: number) {
   return ((value % length) + length) % length
 }
@@ -153,10 +157,14 @@ export function SphereWall({
   duration = 20,
   gap = 2,
   images = DEFAULT_IMAGES,
+  dragEnabled,
+  wheelEnabled,
   interactive = true,
   padding = 13,
   rows = 5,
 }: SphereWallProps) {
+  const resolvedDragEnabled = dragEnabled ?? interactive
+  const resolvedWheelEnabled = wheelEnabled ?? interactive
   const rootRef = useRef<HTMLElement>(null)
   const rotorRef = useRef<HTMLDivElement>(null)
   const columnRefs = useRef(new Map<number, HTMLDivElement>())
@@ -218,20 +226,77 @@ export function SphereWall({
   }, [])
 
   useEffect(() => {
+    const root = rootRef.current
     const rotor = rotorRef.current
-    if (!layout || !rotor) return
+    if (!layout || !root || !rotor) return
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const updateMotionPreference = () => {
-      reduceMotionRef.current = motionQuery.matches
-    }
-    updateMotionPreference()
-    motionQuery.addEventListener("change", updateMotionPreference)
-
     progressRef.current = wrap(progressRef.current, layout.panEnd)
     let previousTime = performance.now()
     let frame = 0
+    let isIntersecting = true
+    let isDocumentVisible = !document.hidden
+
+    const stop = () => {
+      if (frame !== 0) {
+        window.cancelAnimationFrame(frame)
+        frame = 0
+      }
+    }
+
+    const canAnimate = () =>
+      isIntersecting && isDocumentVisible && !reduceMotionRef.current
+
+    const updateColumnImages = (column: Column, activeColumn: number) => {
+      const element = columnRefs.current.get(column.slot)
+      if (!element || column.c === activeColumn) return
+
+      column.c = activeColumn
+      element.querySelectorAll<HTMLImageElement>("img").forEach((image, index) => {
+        const row = layout.rows[index] ?? 0
+        image.src = resolvedImages[
+          wrap(activeColumn + row * layout.rowSlotOffset, resolvedImages.length)
+        ]
+      })
+    }
+
+    const updateColumns = (progress: number) => {
+      const firstColumn = getFirstRenderedColumn(progress, layout.stepLon)
+
+      layout.columns.forEach((column) => {
+        const activeColumn = firstColumn + column.slot
+        const element = columnRefs.current.get(column.slot)
+        if (!element) return
+
+        updateColumnImages(column, activeColumn)
+        const effectiveLongitude = activeColumn * layout.stepLon - progress
+        const sphereRadius = layout.sphereRadius.toFixed(2)
+        element.style.transform = `translateZ(${sphereRadius}px) rotateY(${(-activeColumn * layout.stepLon).toFixed(6)}rad) translateZ(-${sphereRadius}px)`
+        element.style.visibility =
+          Math.abs(effectiveLongitude) <= VISIBLE_HALF_WINDOW
+            ? "visible"
+            : "hidden"
+      })
+    }
+
+    function schedule() {
+      if (!canAnimate() || frame !== 0) return
+      frame = window.requestAnimationFrame(renderFrame)
+    }
+
+    const updateMotionPreference = () => {
+      reduceMotionRef.current = motionQuery.matches
+      if (canAnimate()) schedule()
+      else stop()
+    }
+
+    const updateDocumentVisibility = () => {
+      isDocumentVisible = !document.hidden
+      if (canAnimate()) schedule()
+      else stop()
+    }
 
     const renderFrame = (now: number) => {
+      frame = 0
       const deltaTime = Math.min(50, now - previousTime)
       previousTime = now
       const gesture = gestureRef.current
@@ -252,28 +317,34 @@ export function SphereWall({
 
       progressRef.current = wrap(progressRef.current, layout.panEnd)
       const progress = progressRef.current
-      const sphereRadius = layout.sphereRadius.toFixed(2)
-      rotor.style.transform = `translateZ(${sphereRadius}px) rotateY(${progress.toFixed(6)}rad) translateZ(-${sphereRadius}px)`
-
-      layout.columns.forEach((column) => {
-        const element = columnRefs.current.get(column.c)
-        if (!element) return
-        const effectiveLongitude = column.c * layout.stepLon - progress
-        element.style.visibility =
-          Math.abs(effectiveLongitude) <= VISIBLE_HALF_WINDOW
-            ? "visible"
-            : "hidden"
-      })
-
-      frame = window.requestAnimationFrame(renderFrame)
+      rotor.style.transform = `translateZ(${layout.sphereRadius.toFixed(2)}px) rotateY(${progress.toFixed(6)}rad) translateZ(-${layout.sphereRadius.toFixed(2)}px)`
+      updateColumns(progress)
+      schedule()
     }
 
-    frame = window.requestAnimationFrame(renderFrame)
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry?.isIntersecting ?? false
+        if (canAnimate()) schedule()
+        else stop()
+      },
+      { threshold: 0.01 },
+    )
+
+    visibilityObserver.observe(root)
+    motionQuery.addEventListener("change", updateMotionPreference)
+    document.addEventListener("visibilitychange", updateDocumentVisibility)
+    reduceMotionRef.current = motionQuery.matches
+    updateColumns(progressRef.current)
+    schedule()
+
     return () => {
-      window.cancelAnimationFrame(frame)
+      stop()
+      visibilityObserver.disconnect()
       motionQuery.removeEventListener("change", updateMotionPreference)
+      document.removeEventListener("visibilitychange", updateDocumentVisibility)
     }
-  }, [layout, resolvedOptions.duration])
+  }, [layout, resolvedImages, resolvedOptions.duration])
 
   const panByPixels = useCallback((pixels: number) => {
     const currentLayout = layoutRef.current
@@ -295,7 +366,7 @@ export function SphereWall({
 
   const onPointerDown = useCallback(
     (event: ReactPointerEvent<HTMLElement>) => {
-      if (!interactive || (event.pointerType === "mouse" && event.button !== 0)) {
+      if (!resolvedDragEnabled || (event.pointerType === "mouse" && event.button !== 0)) {
         return
       }
 
@@ -308,7 +379,7 @@ export function SphereWall({
       setGrabbing(true)
       event.currentTarget.setPointerCapture(event.pointerId)
     },
-    [interactive, stopInertia],
+    [resolvedDragEnabled, stopInertia],
   )
 
   const onPointerMove = useCallback(
@@ -346,7 +417,7 @@ export function SphereWall({
 
   useEffect(() => {
     const root = rootRef.current
-    if (!root || !interactive) return
+    if (!root || !resolvedWheelEnabled) return
 
     const onWheel = (event: WheelEvent) => {
       event.preventDefault()
@@ -364,14 +435,18 @@ export function SphereWall({
 
     root.addEventListener("wheel", onWheel, { passive: false })
     return () => root.removeEventListener("wheel", onWheel)
-  }, [interactive, panByPixels, stopInertia])
+  }, [panByPixels, resolvedWheelEnabled, stopInertia])
 
   return (
     <section
       ref={rootRef}
       aria-label="Interactive rotating sphere wall"
       className={`relative h-dvh min-h-[560px] w-full select-none overflow-hidden ${
-        interactive ? (grabbing ? "cursor-grabbing touch-none" : "cursor-grab touch-none") : ""
+        resolvedDragEnabled
+          ? grabbing
+            ? "cursor-grabbing touch-none"
+            : "cursor-grab touch-none"
+          : ""
       } ${className}`}
       style={{ backgroundColor }}
       onPointerCancel={onPointerEnd}
@@ -393,10 +468,10 @@ export function SphereWall({
 
               return (
                 <div
-                  key={column.c}
+                  key={column.slot}
                   ref={(element) => {
-                    if (element) columnRefs.current.set(column.c, element)
-                    else columnRefs.current.delete(column.c)
+                    if (element) columnRefs.current.set(column.slot, element)
+                    else columnRefs.current.delete(column.slot)
                   }}
                   className="absolute inset-0 [transform-style:preserve-3d]"
                   style={{
@@ -427,7 +502,7 @@ export function SphereWall({
                           className="block size-full object-cover"
                           decoding="async"
                           draggable={false}
-                          loading="eager"
+                          loading={column.slot < INITIAL_EAGER_COLUMNS ? "eager" : "lazy"}
                           src={resolvedImages[imageIndex]}
                         />
                       </div>

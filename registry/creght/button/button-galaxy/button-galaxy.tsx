@@ -35,6 +35,18 @@ const GLOW_SHADOW = [
 
 function GalaxyParticles({ active }: { active: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const activeRef = useRef(active)
+  const startAnimationRef = useRef<(() => void) | null>(null)
+  const stopAnimationRef = useRef<(() => void) | null>(null)
+
+  useEffect(() => {
+    activeRef.current = active
+    if (active) {
+      startAnimationRef.current?.()
+    } else {
+      stopAnimationRef.current?.()
+    }
+  }, [active])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -43,7 +55,8 @@ function GalaxyParticles({ active }: { active: boolean }) {
     const context = canvas.getContext("2d")
     if (!context) return
 
-    let animationFrame = 0
+    let animationFrame: number | null = null
+    let disposed = false
     let width = 0
     let height = 0
     let particles: Particle[] = []
@@ -52,11 +65,16 @@ function GalaxyParticles({ active }: { active: boolean }) {
     const resize = () => {
       const bounds = canvas.getBoundingClientRect()
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      width = bounds.width
-      height = bounds.height
+      width = Number.isFinite(bounds.width) ? Math.max(0, bounds.width) : 0
+      height = Number.isFinite(bounds.height) ? Math.max(0, bounds.height) : 0
       canvas.width = Math.max(1, Math.round(width * dpr))
       canvas.height = Math.max(1, Math.round(height * dpr))
       context.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      if (width === 0 || height === 0) {
+        particles = []
+        return
+      }
 
       let seed = 0x6d2b79f5
       const random = () => {
@@ -81,17 +99,48 @@ function GalaxyParticles({ active }: { active: boolean }) {
       }))
     }
 
-    const draw = (time: number) => {
+    const schedule = () => {
+      if (disposed || !activeRef.current || reduceMotion || animationFrame !== null) return
+
+      animationFrame = window.requestAnimationFrame((time) => {
+        animationFrame = null
+        draw(time)
+      })
+    }
+
+    const stop = () => {
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame)
+        animationFrame = null
+      }
+    }
+
+    function draw(time: number) {
+      if (disposed) return
+
       context.clearRect(0, 0, width, height)
+
+      // The canvas can briefly have no layout size while a preview mounts or
+      // switches devices. Modulo by a zero visible height would make y `NaN`
+      // and cause createRadialGradient to throw on the next line that uses it.
+      if (width === 0 || height === 0) {
+        schedule()
+        return
+      }
+
       const elapsed = time / 1000
+      const visibleStart = 40
+      const visibleHeight = height / 3
 
       for (const particle of particles) {
-        const visibleStart = 40
-        const visibleHeight = height / 3
+        // `%` keeps the sign of its left operand in JavaScript. Once the
+        // animation has run for longer than one loop, the old expression
+        // therefore produced negative y values and every particle faded out.
+        // Reduce the travelled distance first, then wrap into [0, visibleHeight).
+        const loopOffset = (elapsed * particle.speed) % visibleHeight
         const y =
           visibleStart +
-          ((particle.y - visibleStart - elapsed * particle.speed + visibleHeight) %
-            visibleHeight)
+          ((particle.y - visibleStart - loopOffset + visibleHeight) % visibleHeight)
         const x = particle.x + Math.sin(elapsed * 0.7 + particle.phase) * particle.drift
         const twinkle = 0.62 + Math.sin(elapsed * 2.2 + particle.phase) * 0.38
         const visibleBand = Math.max(
@@ -117,25 +166,25 @@ function GalaxyParticles({ active }: { active: boolean }) {
         context.fill()
       }
 
-      if (active && !reduceMotion) {
-        animationFrame = window.requestAnimationFrame(draw)
-      }
+      schedule()
     }
 
+    startAnimationRef.current = schedule
+    stopAnimationRef.current = stop
     resize()
     draw(0)
-    if (active && !reduceMotion) {
-      animationFrame = window.requestAnimationFrame(draw)
-    }
 
     const observer = new ResizeObserver(resize)
     observer.observe(canvas)
 
     return () => {
+      disposed = true
       observer.disconnect()
-      window.cancelAnimationFrame(animationFrame)
+      stop()
+      startAnimationRef.current = null
+      stopAnimationRef.current = null
     }
-  }, [active])
+  }, [])
 
   return (
     <canvas

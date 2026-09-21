@@ -105,18 +105,30 @@
       ]
     },
     {
-      "name": "hero-ai-seo",
+      "name": "hero-andromeda",
       "type": "registry:block",
-      "title": "Hero · Ai Seo",
-      "description": "Hero · Ai Seo section.",
+      "title": "Hero · Andromeda",
+      "description": "Hero · Andromeda section.",
       "categories": [
         "hero"
       ],
       "files": [
         {
-          "path": "registry/creght/hero/hero-ai-seo/hero-ai-seo.tsx",
+          "path": "registry/creght/hero/hero-andromeda/hero-andromeda.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/orbita-shared/orbita-hero-scene.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/orbita-shared/orbita-hero-shell.tsx",
           "type": "registry:component"
         }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789356286416__hero_andromeda.png",
+      "dependencies": [
+        "three"
       ]
     },
     {
@@ -134,6 +146,49 @@
         }
       ],
       "cover": "https://fsu.creght.com/site/2083536173505974272/1786355301797__creght_blocks_covers_hero_before_after.jpg"
+    },
+    {
+      "name": "hero-flip",
+      "type": "registry:block",
+      "title": "Hero · Photography Portfolio",
+      "description": "Hero · Photography Portfolio section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-flip/hero-flip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787307262180__hero_flip_cover.png"
+    },
+    {
+      "name": "hero-gargantua",
+      "type": "registry:block",
+      "title": "Hero · Gargantua",
+      "description": "Hero · Gargantua section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-gargantua/hero-gargantua.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/orbita-shared/orbita-hero-scene.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/orbita-shared/orbita-hero-shell.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789356290529__hero_gargantua.png",
+      "dependencies": [
+        "three"
+      ]
     },
     {
       "name": "hero-globe",
@@ -185,6 +240,22 @@
       ]
     },
     {
+      "name": "hero-infinite-particles",
+      "type": "registry:block",
+      "title": "Hero · Infinite Particles",
+      "description": "Hero · Infinite Particles section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-infinite-particles/hero-infinite-particles.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-infinite-particles.png"
+    },
+    {
       "name": "hero-laserFlow",
       "type": "registry:block",
       "title": "Hero · Laser Flow",
@@ -234,6 +305,37 @@
       ]
     },
     {
+      "name": "hero-lodestar",
+      "type": "registry:block",
+      "title": "Hero · Lodestar",
+      "description": "Hero · Lodestar section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-lodestar/hero-lodestar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-lodestar/hero-lodestar.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "registry/creght/hero/hero-lodestar/lodestar-particles.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-lodestar/lodestar-source.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-lodestar.png",
+      "dependencies": [
+        "three"
+      ]
+    },
+    {
       "name": "hero-mileone",
       "type": "registry:block",
       "title": "Hero · Mileone",
@@ -254,6 +356,29 @@
       "cover": "https://fsu.creght.com/_assets/site/2064188570427461632/1782288506983__hero_mileone.png",
       "dependencies": [
         "lucide-react"
+      ]
+    },
+    {
+      "name": "hero-milky-way",
+      "type": "registry:block",
+      "title": "Hero · Milky Way",
+      "description": "Hero · Milky Way section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-milky-way/hero-milky-way.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/orbita-shared/orbita-hero-scene.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789356269056__hero_milky_way.png",
+      "dependencies": [
+        "three"
       ]
     },
     {
@@ -300,6 +425,65 @@
       ]
     },
     {
+      "name": "hero-orb-particles",
+      "type": "registry:block",
+      "title": "Hero · Orb Particles",
+      "description": "Hero · Orb Particles section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-orb-particles/hero-orb-particles.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-orb-particles/orb-particles-scene.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-orb-particles.png",
+      "dependencies": [
+        "lucide-react",
+        "three"
+      ]
+    },
+    {
+      "name": "hero-stellar-flow",
+      "type": "registry:block",
+      "title": "Hero · Stellar Flow",
+      "description": "Hero · Stellar Flow section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-stellar-flow/hero-stellar-flow.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/stellar-flow/bloom.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/stellar-flow/orbits.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/stellar-flow/ParticleField.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/effects/stellar-flow/particles.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/hero-stellar-flow.png",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
       "name": "hero-surge",
       "type": "registry:block",
       "title": "Hero · Surge",
@@ -321,176 +505,6 @@
       "dependencies": [
         "lucide-react",
         "three"
-      ]
-    },
-    {
-      "name": "logo-wall-01",
-      "type": "registry:block",
-      "title": "Logo Wall · Trust Grid",
-      "description": "Logo Wall · Trust Grid section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-01/logo-wall-01.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355364806__creght_blocks_covers_logo_wall_01.png",
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "logo-wall-02",
-      "type": "registry:block",
-      "title": "Logo Wall · Infinite Marquee",
-      "description": "Logo Wall · Infinite Marquee section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-02/logo-wall-02.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355364865__creght_blocks_covers_logo_wall_02.png",
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "logo-wall-03",
-      "type": "registry:block",
-      "title": "Logo Wall · Interactive Spotlight",
-      "description": "Logo Wall · Interactive Spotlight section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-03/logo-wall-03.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355383926__creght_blocks_covers_logo_wall_03.png",
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "logo-wall-04",
-      "type": "registry:block",
-      "title": "Logo Wall · 3D Marquee",
-      "description": "Logo Wall · 3D Marquee section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-04/logo-wall-04.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355387572__creght_blocks_covers_logo_wall_04.png",
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "logo-wall-05",
-      "type": "registry:block",
-      "title": "Logo Wall · Integration Ticker",
-      "description": "Logo Wall · Integration Ticker section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-05/logo-wall-05.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355390762__creght_blocks_covers_logo_wall_05.png",
-      "dependencies": [
-        "react-icons"
-      ]
-    },
-    {
-      "name": "logo-wall-06",
-      "type": "registry:block",
-      "title": "Logo Wall · Floating Integrations",
-      "description": "Logo Wall · Floating Integrations section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-06/logo-wall-06.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355385346__creght_blocks_covers_logo_wall_06.png",
-      "dependencies": [
-        "react-icons"
-      ]
-    },
-    {
-      "name": "logo-wall-07",
-      "type": "registry:block",
-      "title": "Logo Wall · Integration Pills",
-      "description": "Logo Wall · Integration Pills section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-07/logo-wall-07.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355380943__creght_blocks_covers_logo_wall_07.png",
-      "dependencies": [
-        "react-icons"
-      ]
-    },
-    {
-      "name": "logo-wall-ai-seo",
-      "type": "registry:block",
-      "title": "Logo Wall · Wall Ai Seo",
-      "description": "Logo Wall · Wall Ai Seo section.",
-      "categories": [
-        "logoWall"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/logoWall/logo-wall-ai-seo/logo-wall-ai-seo.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "feature-list-ai-seo",
-      "type": "registry:block",
-      "title": "Features · List Ai Seo",
-      "description": "Features · List Ai Seo section.",
-      "categories": [
-        "features"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/features/feature-list-ai-seo/feature-list-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -546,33 +560,43 @@
           "type": "registry:component"
         }
       ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1785589257626__features_03.png",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789714776295__features_03_showcase_cover.png",
       "dependencies": [
         "framer-motion",
         "lucide-react"
       ]
     },
     {
-      "name": "features-ai-seo",
+      "name": "ai-liquid-background",
       "type": "registry:block",
-      "title": "Features · Ai Seo",
-      "description": "Features · Ai Seo section.",
+      "title": "Background · AI Liquid",
+      "description": "Background · AI Liquid section.",
       "categories": [
-        "features"
+        "background"
       ],
       "files": [
         {
-          "path": "registry/creght/features/features-ai-seo/features-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
+          "path": "registry/creght/background/ai-liquid-background/ai-liquid-background.tsx",
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "lucide-react"
-      ]
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1788402652071__background_ai_liquid_cover.png"
+    },
+    {
+      "name": "neuro-noise",
+      "type": "registry:block",
+      "title": "Background · Neuro Noise",
+      "description": "Background · Neuro Noise section.",
+      "categories": [
+        "background"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/background/neuro-noise/neuro-noise.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1788336621574__background_neuro_noise_cover.png"
     },
     {
       "name": "3d-split",
@@ -727,22 +751,84 @@
       "cover": "https://fsu.creght.com/site/2083536173505974272/1785746500451__sphere_wall.jpg"
     },
     {
-      "name": "footer-ai-seo",
+      "name": "stack-scroll",
       "type": "registry:block",
-      "title": "Footer · Ai Seo",
-      "description": "Footer · Ai Seo section.",
+      "title": "Effects · Stack Scroll",
+      "description": "Effects · Stack Scroll section.",
       "categories": [
-        "footer"
+        "effects"
       ],
       "files": [
         {
-          "path": "registry/creght/footer/footer-ai-seo/footer-ai-seo.tsx",
+          "path": "registry/creght/effects/stack-scroll/stack-scroll.tsx",
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "lucide-react"
-      ]
+      "cover": "/covers/stack-scroll.png"
+    },
+    {
+      "name": "infinite-canvas",
+      "type": "registry:block",
+      "title": "Showcase · Infinite Canvas",
+      "description": "Showcase · Infinite Canvas section.",
+      "categories": [
+        "showcase"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/showcase/infinite-canvas/infinite-canvas.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787295543502__showcase_cover_infinite_canvas.jpg"
+    },
+    {
+      "name": "scramble-glitch",
+      "type": "registry:block",
+      "title": "Showcase · Scramble Glitch",
+      "description": "Showcase · Scramble Glitch section.",
+      "categories": [
+        "showcase"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/showcase/scramble-glitch/scramble-glitch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787295543468__showcase_cover_scramble_glitch.jpg"
+    },
+    {
+      "name": "showcase-3d",
+      "type": "registry:block",
+      "title": "Showcase · Rotating 3D",
+      "description": "Showcase · Rotating 3D section.",
+      "categories": [
+        "showcase"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/showcase/showcase-3d/showcase-3d.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787295543463__showcase_cover_3d.jpg"
+    },
+    {
+      "name": "unroll-scroll",
+      "type": "registry:block",
+      "title": "Showcase · Image Unroll Scroll",
+      "description": "Showcase · Image Unroll Scroll section.",
+      "categories": [
+        "showcase"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/showcase/unroll-scroll/unroll-scroll.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/unroll-scroll.png"
     },
     {
       "name": "rainbow-stretching-footer",
@@ -780,26 +866,6 @@
       ]
     },
     {
-      "name": "about-us-01",
-      "type": "registry:block",
-      "title": "About Us · Us 01",
-      "description": "About Us · Us 01 section.",
-      "categories": [
-        "aboutUs"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/aboutUs/about-us-01/about-us-01.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1785589254147__about_us_01.png",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ]
-    },
-    {
       "name": "button-01",
       "type": "registry:block",
       "title": "Button · 01",
@@ -811,10 +877,6 @@
         {
           "path": "registry/creght/button/button-01/button-01.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/button/button-01/button-01.css",
-          "type": "registry:style"
         }
       ],
       "cover": "https://fsu.creght.com/site/2083536173505974272/1785589260307__button_01.jpg",
@@ -843,6 +905,26 @@
       ]
     },
     {
+      "name": "button-generate",
+      "type": "registry:block",
+      "title": "Button · 05",
+      "description": "Button · 05 component.",
+      "categories": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/button/button-generate/button-generate.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/button-generate.jpg",
+      "dependencies": [
+        "lucide-react",
+        "tailwind-merge"
+      ]
+    },
+    {
       "name": "button-glass",
       "type": "registry:block",
       "title": "Button · Glass",
@@ -856,11 +938,31 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/creght/button/button-glass/button-glass.css",
-          "type": "registry:style"
+          "path": "registry/creght/button/button-glass/button-glass.styles.ts",
+          "type": "registry:component"
         }
       ],
       "cover": "/covers/button-glass.png"
+    },
+    {
+      "name": "button-gradient-border",
+      "type": "registry:block",
+      "title": "Button · Gradient Border",
+      "description": "Button · Gradient Border component.",
+      "categories": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/button/button-gradient-border/button-gradient-border.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/button/button-gradient-border/button-gradient-border.css",
+          "type": "registry:style"
+        }
+      ],
+      "cover": "/covers/button-gradient-border.png"
     },
     {
       "name": "button-wiza",
@@ -882,172 +984,6 @@
       ]
     },
     {
-      "name": "cta-ai-seo",
-      "type": "registry:block",
-      "title": "Cta · Ai Seo",
-      "description": "Cta · Ai Seo section.",
-      "categories": [
-        "cta"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/cta/cta-ai-seo/cta-ai-seo.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "landing-ai-seo",
-      "type": "registry:block",
-      "title": "Landing · Ai Seo",
-      "description": "Landing · Ai Seo section.",
-      "categories": [
-        "landing"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/landing/landing-ai-seo/landing-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/cta/cta-ai-seo/cta-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/features/feature-list-ai-seo/feature-list-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/features/features-ai-seo/features-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/footer/footer-ai-seo/footer-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/hero/hero-ai-seo/hero-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/logoWall/logo-wall-ai-seo/logo-wall-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/navbar/navbar-ai-seo/navbar-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/pricing/pricing-ai-seo/pricing-ai-seo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/shared/ai-seo/ai-seo-shared.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/creght/testimonials/testimonials-ai-seo/testimonials-ai-seo.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "navbar-ai-seo",
-      "type": "registry:block",
-      "title": "Navbar · Ai Seo",
-      "description": "Navbar · Ai Seo section.",
-      "categories": [
-        "navbar"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/navbar/navbar-ai-seo/navbar-ai-seo.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "pricing-01",
-      "type": "registry:block",
-      "title": "Pricing · 01",
-      "description": "Pricing · 01 section.",
-      "categories": [
-        "pricing"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/pricing/pricing-01/pricing-01.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1785589262812__pricing_01.png",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "pricing-ai-seo",
-      "type": "registry:block",
-      "title": "Pricing · Ai Seo",
-      "description": "Pricing · Ai Seo section.",
-      "categories": [
-        "pricing"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/pricing/pricing-ai-seo/pricing-ai-seo.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "testimonials-01",
-      "type": "registry:block",
-      "title": "Testimonials · 01",
-      "description": "Testimonials · 01 section.",
-      "categories": [
-        "testimonials"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/testimonials/testimonials-01/Testimonials-01.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1786355402351__creght_blocks_covers_testimonials_01.svg",
-      "dependencies": [
-        "clsx",
-        "framer-motion",
-        "lucide-react",
-        "tailwind-merge"
-      ]
-    },
-    {
-      "name": "testimonials-ai-seo",
-      "type": "registry:block",
-      "title": "Testimonials · Ai Seo",
-      "description": "Testimonials · Ai Seo section.",
-      "categories": [
-        "testimonials"
-      ],
-      "files": [
-        {
-          "path": "registry/creght/testimonials/testimonials-ai-seo/testimonials-ai-seo.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "timeline-01",
       "type": "registry:block",
       "title": "Timeline · 01",
@@ -1065,6 +1001,22 @@
       "dependencies": [
         "lucide-react"
       ]
+    },
+    {
+      "name": "timeline-02",
+      "type": "registry:block",
+      "title": "Timeline · 02",
+      "description": "Timeline · 02 section.",
+      "categories": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/timeline/timeline-02/timeline-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "/covers/timeline-02.png"
     }
   ]
 }

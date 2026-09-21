@@ -9,11 +9,12 @@ const DEFAULT_CONFIG = {
   columnGap: 2,
   columns: 5,
   cornerRadius: 0.5,
+  dragEnabled: true,
   duration: 20,
   gap: 2,
-  interactive: true,
   padding: 13,
   rows: 5,
+  wheelEnabled: true,
 }
 
 type SphereWallPreviewConfig = typeof DEFAULT_CONFIG
@@ -57,6 +58,36 @@ function RangeControl({
         value={value}
       />
     </label>
+  )
+}
+
+type ToggleControlProps = {
+  label: string
+  onChange: () => void
+  value: boolean
+}
+
+function ToggleControl({ label, onChange, value }: ToggleControlProps) {
+  return (
+    <button
+      aria-pressed={value}
+      className="flex w-full items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-left transition hover:bg-white/10"
+      onClick={onChange}
+      type="button"
+    >
+      <span className="text-xs text-zinc-200">{label}</span>
+      <span
+        className={`relative h-5 w-9 rounded-full transition ${
+          value ? "bg-indigo-500" : "bg-zinc-700"
+        }`}
+      >
+        <span
+          className={`absolute top-0.5 size-4 rounded-full bg-white shadow-sm transition-transform ${
+            value ? "translate-x-[18px]" : "translate-x-0.5"
+          }`}
+        />
+      </span>
+    </button>
   )
 }
 
@@ -199,25 +230,16 @@ export function SphereWallPreview() {
                 suffix="秒"
                 value={config.duration}
               />
-              <button
-                aria-pressed={config.interactive}
-                className="flex w-full items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-left transition hover:bg-white/10"
-                onClick={() => updateConfig("interactive", !config.interactive)}
-                type="button"
-              >
-                <span className="text-xs text-zinc-200">拖拽和滚轮交互</span>
-                <span
-                  className={`relative h-5 w-9 rounded-full transition ${
-                    config.interactive ? "bg-indigo-500" : "bg-zinc-700"
-                  }`}
-                >
-                  <span
-                    className={`absolute top-0.5 size-4 rounded-full bg-white shadow-sm transition-transform ${
-                      config.interactive ? "translate-x-[18px]" : "translate-x-0.5"
-                    }`}
-                  />
-                </span>
-              </button>
+              <ToggleControl
+                label="拖拽交互"
+                onChange={() => updateConfig("dragEnabled", !config.dragEnabled)}
+                value={config.dragEnabled}
+              />
+              <ToggleControl
+                label="滚轮交互"
+                onChange={() => updateConfig("wheelEnabled", !config.wheelEnabled)}
+                value={config.wheelEnabled}
+              />
             </section>
 
             <section className="space-y-3 border-t border-white/10 pt-5" aria-labelledby="sphere-appearance-settings">

@@ -1,6 +1,6 @@
 {
   "name": "@creght/creght-blocks",
-  "version": "0.1.1",
+  "version": "0.1.10",
   "description": "Creght landing blocks as a shadcn-compatible registry (Hero-first).",
   "private": false,
   "license": "MIT",
@@ -12,10 +12,20 @@
   "bugs": {
     "url": "https://github.com/creght-dev/blocks/issues"
   },
+  "bin": {
+    "creght-blocks": "bin/creght-blocks.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "files": [
+    "bin",
     "registry.json",
-    "registry",
     "public/assets/ai-seo-source",
+    "public/assets/flip-hero",
+    "public/assets/stack-scroll",
+    "public/assets/unroll-scroll",
+    "public/assets/button-gradient-border",
     "public/r",
     "README.md"
   ],
@@ -24,9 +34,17 @@
     "build": "npm run registry:build && vite build",
     "preview": "vite preview",
     "lint": "eslint",
-    "registry:generate": "node scripts/generate-registry.mjs",
-    "registry:build": "npm run registry:generate && shadcn build",
-    "prepublishOnly": "npm run registry:build"
+    "registry:generate": "node scripts/generate-registry.mjs --output=registry.json",
+    "registry:clean:public": "node scripts/clean-registry-output.mjs public/r",
+    "registry:build": "npm run registry:generate && npm run registry:clean:public && shadcn build registry.json -o public/r && npm run registry:check",
+    "registry:check": "node scripts/check-registry-consistency.mjs",
+    "site:pull": "creght pull --dir=apps/creght-site",
+    "site:diff": "creght diff --dir=apps/creght-site",
+    "site:push": "creght push --dir=apps/creght-site",
+    "site:preview": "creght preview --site_id=p35l7ulie6he/p35l7ulpwviq",
+    "site:sync:report": "node scripts/check-creght-site-sync.mjs",
+    "site:sync:check": "node scripts/check-creght-site-sync.mjs --strict",
+    "prepublishOnly": "npm run registry:build && npm run registry:check"
   },
   "dependencies": {
     "clsx": "^2.1.1",

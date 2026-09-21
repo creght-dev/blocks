@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@source "../registry/creght/effects/stellar-flow";
+@source "../registry/creght/hero/hero-lodestar";
+@source "../registry/creght/hero/hero-stellar-flow";
+@source "../registry/creght/hero/hero-orb-particles";
 
 @font-face {
   font-family: "Inter";
