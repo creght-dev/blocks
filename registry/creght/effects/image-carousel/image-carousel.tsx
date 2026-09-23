@@ -3,71 +3,71 @@ import type { CSSProperties } from "react"
 const PANEL_ANGLES = [90, 120, 150, 180, 0, 30, 60] as const
 
 const DEFAULT_BEFORE_IMAGES = [
-  "/assets/image-carousel/after-00.png",
-  "/assets/image-carousel/after-01.avif",
-  "/assets/image-carousel/after-02.avif",
-  "/assets/image-carousel/after-03.avif",
-  "/assets/image-carousel/after-04.avif",
-  "/assets/image-carousel/after-05.avif",
-  "/assets/image-carousel/after-06.avif",
-  "/assets/image-carousel/after-07.avif",
-  "/assets/image-carousel/after-08.avif",
-  "/assets/image-carousel/after-09.avif",
-  "/assets/image-carousel/after-10.avif",
-  "/assets/image-carousel/after-11.avif",
-  "/assets/image-carousel/after-12.avif",
-  "/assets/image-carousel/after-13.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974850591__creght_blocks_image_carousel_after_00.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789974851455__creght_blocks_image_carousel_after_01.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974852311__creght_blocks_image_carousel_after_02.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974853204__creght_blocks_image_carousel_after_03.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974853991__creght_blocks_image_carousel_after_04.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974854861__creght_blocks_image_carousel_after_05.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974855726__creght_blocks_image_carousel_after_06.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974856512__creght_blocks_image_carousel_after_07.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974857386__creght_blocks_image_carousel_after_08.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974858228__creght_blocks_image_carousel_after_09.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974859089__creght_blocks_image_carousel_after_10.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974860017__creght_blocks_image_carousel_after_11.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974860961__creght_blocks_image_carousel_after_12.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974861824__creght_blocks_image_carousel_after_13.avif",
 ] as const
 
 const DEFAULT_BEFORE_REMOTE_IMAGES = [
-  "https://framerusercontent.com/images/jkvt4GScwgn58aKTWP1IyQrP6o.png",
-  "https://framerusercontent.com/images/MaqFgSWyMnWdt6TTA7LlCCvQg.png",
-  "https://framerusercontent.com/images/f3R7TRGodiZwmYBOIVVwHgIdk.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/6dgyz14DgJTUvjcztS7bEzSLc.png",
-  "https://framerusercontent.com/images/sYunxHxrbLT3jatAdOq2UZzECWw.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/TbTTeDwvDzO8t1tqiQUZzdw0.png",
-  "https://framerusercontent.com/images/cCzz27tREAJBv4lA8wUYKrbdVE.png",
-  "https://framerusercontent.com/images/HCiO6iJz8xgBfiQ6dsl2f21Ls.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/GZn09cJEvNLW9HrnDlepFV9goaA.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/V2zptxoPUUzyDCXSEsyzTAN6xEI.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/yOysGlFjA7sG3tXhJhfO6irZ4IE.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/tVzpobFAc3R8VgaJMl6DaJRi7M.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/NN5fen3BStJ9gcaJlUI8FYmwXA.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/JTkL3FalhmWRPnzOGT241rfbYY.png?scale-down-to=1024",
+  "https://fsu.creght.com/site/2083536173505974272/1789974850591__creght_blocks_image_carousel_after_00.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977886634__creght_blocks_image_carousel_fallback_02.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977888323__creght_blocks_image_carousel_fallback_03.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977889527__creght_blocks_image_carousel_fallback_04.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977891424__creght_blocks_image_carousel_fallback_05.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977892893__creght_blocks_image_carousel_fallback_06.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977894094__creght_blocks_image_carousel_fallback_07.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977896039__creght_blocks_image_carousel_fallback_08.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977897851__creght_blocks_image_carousel_fallback_09.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977899184__creght_blocks_image_carousel_fallback_10.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977901225__creght_blocks_image_carousel_fallback_11.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977903273__creght_blocks_image_carousel_fallback_12.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977905525__creght_blocks_image_carousel_fallback_13.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977907539__creght_blocks_image_carousel_fallback_14.png",
 ] as const
 
 const DEFAULT_AFTER_IMAGES = [
-  "/assets/image-carousel/before-01.avif",
-  "/assets/image-carousel/before-02.avif",
-  "/assets/image-carousel/before-03.avif",
-  "/assets/image-carousel/before-04.avif",
-  "/assets/image-carousel/before-05.avif",
-  "/assets/image-carousel/before-06.avif",
-  "/assets/image-carousel/before-07.avif",
-  "/assets/image-carousel/before-08.avif",
-  "/assets/image-carousel/before-09.avif",
-  "/assets/image-carousel/before-10.avif",
-  "/assets/image-carousel/before-11.avif",
-  "/assets/image-carousel/before-12.avif",
-  "/assets/image-carousel/before-13.avif",
-  "/assets/image-carousel/before-14.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1786355168282__creght_blocks_assets_image_intro_image_02.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1786355177232__creght_blocks_assets_image_intro_image_07.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974864251__creght_blocks_image_carousel_before_03.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974865170__creght_blocks_image_carousel_before_04.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974866023__creght_blocks_image_carousel_before_05.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974866923__creght_blocks_image_carousel_before_06.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974867792__creght_blocks_image_carousel_before_07.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1786355177751__creght_blocks_assets_image_intro_image_08.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974868962__creght_blocks_image_carousel_before_09.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974869819__creght_blocks_image_carousel_before_10.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1786355166308__creght_blocks_assets_image_intro_image_03.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974871099__creght_blocks_image_carousel_before_12.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974872083__creght_blocks_image_carousel_before_13.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974872996__creght_blocks_image_carousel_before_14.avif",
 ] as const
 
 const DEFAULT_AFTER_REMOTE_IMAGES = [
-  "https://framerusercontent.com/images/DFMYuERcJoJGVvcvbEs1kwyBdYM.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/wfLwTutRL9d4vcFUlWVIoCRx6k.png",
-  "https://framerusercontent.com/images/aOeSPidcq4lfYYRl2bGyAT690.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/k9q0WoxJdidbkUrKCYB1y93xcY.png",
-  "https://framerusercontent.com/images/lFqvt6jd1Q1lc2N27GTKfytlDzA.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/afCXIj0M1EERp1FYjuxSTqOEDzY.png",
-  "https://framerusercontent.com/images/93ZjjVOoj3FOBrxFKJhOyDoc0.png",
-  "https://framerusercontent.com/images/mNvx8vd1Mlur8lWhkT2boxGmLVU.png?scale-down-to=1024",
-  "https://framerusercontent.com/images/yzYum2Q9sG5zLn6o0pehW6zhQ.jpeg?scale-down-to=1024",
-  "https://framerusercontent.com/images/a3bAsgsD4wSkHKrxrMhe0gh9U.jpeg?scale-down-to=1024",
-  "https://framerusercontent.com/images/rdAiwjgVMgELDY8O9j1E58bJa2g.jpeg?scale-down-to=1024",
-  "https://framerusercontent.com/images/loKMlPefb7XImhWwRKIRIgZ0QQ.jpeg?scale-down-to=1024",
-  "https://framerusercontent.com/images/SqU8XyHaNMxWnk287JUfITV0vrA.jpeg?scale-down-to=1024",
-  "https://framerusercontent.com/images/ch6HWQCqZRP3zfIxeOotUYpttoc.jpeg?scale-down-to=1024",
+  "https://fsu.creght.com/site/2083536173505974272/1789977908817__creght_blocks_image_carousel_fallback_15.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977910258__creght_blocks_image_carousel_fallback_16.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977912531__creght_blocks_image_carousel_fallback_17.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977913924__creght_blocks_image_carousel_fallback_18.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977915321__creght_blocks_image_carousel_fallback_19.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977916916__creght_blocks_image_carousel_fallback_20.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977918025__creght_blocks_image_carousel_fallback_21.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977919219__creght_blocks_image_carousel_fallback_22.png",
+  "https://fsu.creght.com/site/2083536173505974272/1789977920876__creght_blocks_image_carousel_fallback_23.jpeg",
+  "https://fsu.creght.com/site/2083536173505974272/1789977922237__creght_blocks_image_carousel_fallback_24.jpeg",
+  "https://fsu.creght.com/site/2083536173505974272/1789977923519__creght_blocks_image_carousel_fallback_25.jpeg",
+  "https://fsu.creght.com/site/2083536173505974272/1789977925556__creght_blocks_image_carousel_fallback_26.jpeg",
+  "https://fsu.creght.com/site/2083536173505974272/1789977927138__creght_blocks_image_carousel_fallback_27.jpeg",
+  "https://fsu.creght.com/site/2083536173505974272/1789977928583__creght_blocks_image_carousel_fallback_28.jpeg",
 ] as const
 
 const ARROW_RIGHT_DATA_URI =
@@ -242,25 +242,7 @@ export function ImageCarousel({
 }
 
 const IMAGE_CAROUSEL_STYLES = `
-  @font-face {
-    font-family: "Creght Image Carousel Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src:
-      url("/assets/image-carousel/inter-display-400.woff2") format("woff2"),
-      url("https://framerusercontent.com/assets/nCpxWS6DaPlPe0lHzStXAPCo3lw.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Creght Image Carousel Inter";
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src:
-      url("/assets/image-carousel/inter-display-500.woff2") format("woff2"),
-      url("https://framerusercontent.com/assets/8yoV9pUxquX7VD7ZXlNYKQmkmk.woff2") format("woff2");
-  }
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
   .creght-image-carousel,
   .creght-image-carousel * {
@@ -273,7 +255,7 @@ const IMAGE_CAROUSEL_STYLES = `
     color: #fff;
     display: flex;
     flex-direction: column;
-    font-family: "Creght Image Carousel Inter", Inter, Arial, sans-serif;
+    font-family: "Inter", Arial, sans-serif;
     height: 100svh;
     isolation: isolate;
     justify-content: center;

@@ -21,11 +21,6 @@
   "files": [
     "bin",
     "registry.json",
-    "public/assets/ai-seo-source",
-    "public/assets/flip-hero",
-    "public/assets/stack-scroll",
-    "public/assets/unroll-scroll",
-    "public/assets/button-gradient-border",
     "public/r",
     "README.md"
   ],

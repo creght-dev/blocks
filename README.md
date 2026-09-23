@@ -62,9 +62,9 @@ The repository is MIT licensed. Individual third-party study assets or attribute
 
 ## Design Studies
 
-`landing-ai-seo` and its sections remain in this repository for the standalone page demo but are excluded from the Blocks catalog and installable registry. They are a from-scratch React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). At the user's direction, matching reference images, the animated mark, and Inter font files are temporarily stored in `public/assets/ai-seo-source/` for visual parity. Confirm that you have permission to use them and replace or re-license them before production. No generated Framer page code is embedded or reused.
+`landing-ai-seo` and its sections remain in this repository for the standalone page demo but are excluded from the Blocks catalog and installable registry. They are a from-scratch React/Tailwind source implementation informed by the layout and interaction patterns of the [Free AI Startup Website Kit](https://lime-arrow-820805.framer.app/). The demo references its images, video, and Inter fonts through the Creght CDN. Confirm that you have permission to use them and replace or re-license them before production. No generated Framer page code is embedded or reused.
 
-`hero-flip` and `stack-scroll` share ten generated WebP images in `public/assets/flip-hero/`. Copy that image directory to the same public path when installing either block in another app. `hero-flip` loads Inter plus Nunito Sans from Google Fonts; `stack-scroll` also requires the local font in `public/assets/stack-scroll/`. Earlier reference images and unused fonts have been removed.
+`hero-flip` and `stack-scroll` use the shared generated images and font assets hosted on the Creght CDN. Installed blocks do not require copying an asset directory into the consuming project. Earlier reference images and unused fonts have been removed.
 
 `infinite-canvas` and `scramble-glitch` load their default images from the Creght CDN. The three custom JPG originals in `public/assets/infinite-canvas/` are retained for maintaining the CDN assets; they are not required in the npm package.
 
@@ -72,9 +72,9 @@ The repository is MIT licensed. Individual third-party study assets or attribute
 
 `showcase-3d` is a React/CSS source reconstruction of the [Rotating 3D Showcase](https://3d-showcase.learnframer.site/) interaction. Its default portrait imagery is loaded from the reference page's public Framer CDN URLs for parity; replace or re-license those defaults before production use if you do not control the source assets.
 
-`unroll-scroll` is a React/CSS source reconstruction of the [Image Unroll Scroll](https://unroll-scroll.learnframer.site/) interaction. Its four reference images and matching font files are stored in `public/assets/unroll-scroll/` for offline parity; confirm reuse permission or replace them before production use.
+`unroll-scroll` is a React/CSS source reconstruction of the [Image Unroll Scroll](https://unroll-scroll.learnframer.site/) interaction. Its four reference images and matching font files are served from the Creght CDN; confirm reuse permission or replace them before production use.
 
-`button-gradient-border` is a React/CSS/canvas reconstruction of the animated button from [Gradient Border Button Component](https://gradient-border-v2.learnframer.site/). It uses a locally stored Satoshi Bold font file copied from the reference page for parity. Confirm that you have permission to use it before production, and copy `public/assets/button-gradient-border/` with the component when installing it outside this package.
+`button-gradient-border` is a React/CSS/canvas reconstruction of the animated button from [Gradient Border Button Component](https://gradient-border-v2.learnframer.site/). It uses a Satoshi Bold font file served from the Creght CDN. Confirm that you have permission to use it before production.
 
 ## Creght Hosted Site
 

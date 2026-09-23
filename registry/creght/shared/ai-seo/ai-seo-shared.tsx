@@ -37,8 +37,8 @@ export function BrandMark({ className = "" }: { className?: string }) {
           loop
           muted
           playsInline
-          poster="/assets/ai-seo-source/logo-poster.avif"
-          src="/assets/ai-seo-source/logo.mp4"
+          poster="https://fsu.creght.com/site/2083536173505974272/1789974846437__creght_blocks_ai_seo_source_logo_poster.avif"
+          src="https://fsu.creght.com/site/2083536173505974272/1789974847225__creght_blocks_ai_seo_source_logo.mp4"
         />
       </span>
     </span>

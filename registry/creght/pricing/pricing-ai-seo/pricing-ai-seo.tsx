@@ -65,7 +65,7 @@ function PricingCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
       {plan.featured ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[url('/assets/ai-seo-source/pattern.png')] bg-repeat opacity-20 [mask-image:linear-gradient(180deg,transparent_15%,black_45%,black_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[url('https://fsu.creght.com/site/2083536173505974272/1789974848065__creght_blocks_ai_seo_source_pattern.png')] bg-repeat opacity-20 [mask-image:linear-gradient(180deg,transparent_15%,black_45%,black_100%)]"
         />
       ) : null}
 

@@ -253,7 +253,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/hero-infinite-particles.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789975261252__creght_blocks_hero_infinite_particles.png"
     },
     {
       "name": "hero-laserFlow",
@@ -330,7 +330,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/hero-lodestar.png",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789389317552__hero_lodestar_pro_cover.png",
       "dependencies": [
         "three"
       ]
@@ -442,7 +442,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/hero-orb-particles.png",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789389319787__hero_orb_particles_pro_cover.png",
       "dependencies": [
         "lucide-react",
         "three"
@@ -478,7 +478,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/hero-stellar-flow.png",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789389318776__hero_stellar_flow_pro_cover.png",
       "dependencies": [
         "lucide-react"
       ]
@@ -646,7 +646,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/image-carousel.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789975263076__creght_blocks_image_carousel.png"
     },
     {
       "name": "image-intro",
@@ -764,7 +764,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/stack-scroll.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789975264108__creght_blocks_stack_scroll.png"
     },
     {
       "name": "infinite-canvas",
@@ -828,7 +828,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/unroll-scroll.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789975265285__creght_blocks_unroll_scroll.png"
     },
     {
       "name": "rainbow-stretching-footer",
@@ -899,7 +899,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/button-galaxy.png",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787023323482__button_galaxy_cover",
       "dependencies": [
         "tailwind-merge"
       ]
@@ -918,7 +918,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/button-generate.jpg",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787121622221__button_generate.jpg",
       "dependencies": [
         "lucide-react",
         "tailwind-merge"
@@ -942,7 +942,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/button-glass.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787023326778__button_glass_cover"
     },
     {
       "name": "button-gradient-border",
@@ -962,7 +962,7 @@
           "type": "registry:style"
         }
       ],
-      "cover": "/covers/button-gradient-border.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789975267320__creght_blocks_button_gradient_border.png"
     },
     {
       "name": "button-wiza",
@@ -978,7 +978,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/button-wiza.png",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1787023326839__button_wiza_cover",
       "dependencies": [
         "tailwind-merge"
       ]
@@ -1016,7 +1016,7 @@
           "type": "registry:component"
         }
       ],
-      "cover": "/covers/timeline-02.png"
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1789975268781__creght_blocks_timeline_02.png"
     }
   ]
 }

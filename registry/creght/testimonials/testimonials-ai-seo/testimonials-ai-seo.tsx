@@ -30,7 +30,7 @@ export default function TestimonialsAiSeo({
 
           <div className="relative z-10 size-[217px] overflow-hidden rounded-[20px] border border-white/15 shadow-[0_0_50px_20px_rgba(0,0,0,0.3)]">
             <img
-              src="/assets/ai-seo-source/testimonial.avif"
+              src="https://fsu.creght.com/site/2083536173505974272/1789974848876__creght_blocks_ai_seo_source_testimonial.avif"
               alt="Talia Taylor"
               className="absolute inset-0 size-full object-cover object-center grayscale"
             />

@@ -20,7 +20,7 @@ export default function CtaAiSeo({ className = "" }: { className?: string }) {
       <div className="relative mx-auto flex h-[336.8px] w-full max-w-[1100px] flex-col items-center overflow-hidden rounded-[10px] border border-white/[0.15] bg-[radial-gradient(43%_85%_at_50%_-1.6%,#4a208a_0%,#000_100%)] p-10 text-center min-[810px]:h-[433.8px] min-[810px]:p-[100px]">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[250px] bg-[url('/assets/ai-seo-source/pattern.png')] bg-repeat opacity-10 [mask-image:linear-gradient(180deg,black_0%,rgba(0,0,0,0.7)_42%,transparent_82%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[250px] bg-[url('https://fsu.creght.com/site/2083536173505974272/1789974848065__creght_blocks_ai_seo_source_pattern.png')] bg-repeat opacity-10 [mask-image:linear-gradient(180deg,black_0%,rgba(0,0,0,0.7)_42%,transparent_82%)]"
         />
 
         <h2 className="relative w-[255px] text-[32px] font-medium leading-[35.2px] tracking-[-1.28px] min-[810px]:w-[420px] min-[810px]:text-[56px] min-[810px]:leading-[61.6px] min-[810px]:tracking-[-2.24px]">

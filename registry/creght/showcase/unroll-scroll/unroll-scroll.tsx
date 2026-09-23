@@ -3,10 +3,10 @@
 import { useEffect, useRef, type CSSProperties } from "react"
 
 const DEFAULT_IMAGES = [
-  "/assets/unroll-scroll/image-01.avif",
-  "/assets/unroll-scroll/image-02.avif",
-  "/assets/unroll-scroll/image-04.avif",
-  "/assets/unroll-scroll/image-03.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974877456__creght_blocks_unroll_scroll_image_01.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974878337__creght_blocks_unroll_scroll_image_02.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974880191__creght_blocks_unroll_scroll_image_04.avif",
+  "https://fsu.creght.com/site/2083536173505974272/1789974879277__creght_blocks_unroll_scroll_image_03.avif",
 ] as const
 
 const ROW_POSITIONS = ["30%", "59.5%", ".5%", "59.5%"] as const
@@ -19,8 +19,6 @@ export type UnrollScrollProps = {
   eyebrow?: string
   headline?: string
   images?: readonly string[]
-  remixHref?: string
-  remixLabel?: string
 }
 
 export function UnrollScroll({
@@ -29,8 +27,6 @@ export function UnrollScroll({
   eyebrow = "Framer Component",
   headline = "Image Unroll Scroll",
   images = DEFAULT_IMAGES,
-  remixHref = "https://framer.link/827gyPd",
-  remixLabel = "Remix",
 }: UnrollScrollProps) {
   const rootRef = useRef<HTMLElement>(null)
   const pageRefs = useRef<Array<HTMLDivElement | null>>([])
@@ -161,11 +157,6 @@ export function UnrollScroll({
         </div>
       </section>
 
-      <section className="unroll-scroll__outro">
-        <a href={remixHref} rel="noreferrer" target="_blank">
-          {remixLabel}
-        </a>
-      </section>
     </main>
   )
 }
@@ -176,7 +167,7 @@ const UNROLL_SCROLL_STYLES = `
     font-family: "Unroll Inter Display";
     font-style: normal;
     font-weight: 600;
-    src: url("/assets/unroll-scroll/inter-display-semibold.woff2") format("woff2");
+    src: url("https://fsu.creght.com/site/2083536173505974272/1789974881082__creght_blocks_unroll_scroll_inter_display_semibold.woff2") format("woff2");
   }
 
   @font-face {
@@ -184,7 +175,7 @@ const UNROLL_SCROLL_STYLES = `
     font-family: "Unroll Inter";
     font-style: normal;
     font-weight: 500;
-    src: url("/assets/unroll-scroll/inter-medium.woff2") format("woff2");
+    src: url("https://fsu.creght.com/site/2075503192795254784/1783673565691__inter_500.woff2") format("woff2");
   }
 
   @font-face {
@@ -192,7 +183,7 @@ const UNROLL_SCROLL_STYLES = `
     font-family: "Unroll Bebas Neue";
     font-style: normal;
     font-weight: 400;
-    src: url("/assets/unroll-scroll/bebas-neue.woff2") format("woff2");
+    src: url("https://fsu.creght.com/site/2083536173505974272/1789974876653__creght_blocks_unroll_scroll_bebas_neue.woff2") format("woff2");
   }
 
   .unroll-scroll,
@@ -343,36 +334,6 @@ const UNROLL_SCROLL_STYLES = `
     display: none;
   }
 
-  .unroll-scroll__outro {
-    align-items: center;
-    display: flex;
-    height: 100svh;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-  }
-
-  .unroll-scroll__outro a {
-    color: #b3b3b3;
-    font-family: "Unroll Bebas Neue", Impact, sans-serif;
-    font-size: 36px;
-    font-weight: 400;
-    line-height: .8;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color .2s ease;
-  }
-
-  .unroll-scroll__outro a:hover,
-  .unroll-scroll__outro a:focus-visible {
-    color: #fff;
-  }
-
-  .unroll-scroll__outro a:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 8px;
-  }
-
   @media (max-width: 809px) {
     .unroll-scroll__hero {
       display: flex;
@@ -423,8 +384,7 @@ const UNROLL_SCROLL_STYLES = `
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .unroll-scroll__page,
-    .unroll-scroll__outro a {
+    .unroll-scroll__page {
       transition: none;
     }
   }

@@ -3,16 +3,16 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 
 const DEFAULT_IMAGES = [
-  "/assets/flip-hero/generated-initial-cabin.webp",
-  "/assets/flip-hero/generated-initial-blue.webp",
-  "/assets/flip-hero/generated-initial-interior.webp",
-  "/assets/flip-hero/generated-initial-linen.webp",
-  "/assets/flip-hero/generated-initial-orange.webp",
-  "/assets/flip-hero/generated-final-eye.webp",
-  "/assets/flip-hero/generated-final-motion.webp",
-  "/assets/flip-hero/generated-final-chair.webp",
-  "/assets/flip-hero/generated-final-fabric.webp",
-  "/assets/flip-hero/generated-final-figure.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295542098__showcase_infinite_canvas_generated_initial_cabin.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295541535__showcase_infinite_canvas_generated_initial_blue.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295542575__showcase_infinite_canvas_generated_initial_interior.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787307265381__hero_flip_generated_initial_linen.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295544031__showcase_infinite_canvas_generated_initial_orange.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295543162__showcase_shared_generated_final_eye.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295543415__showcase_scramble_glitch_generated_final_motion.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295541350__showcase_scramble_glitch_generated_final_chair.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295542129__showcase_scramble_glitch_generated_final_fabric.webp",
+  "https://fsu.creght.com/site/2083536173505974272/1787295541915__showcase_shared_generated_final_figure.webp",
 ] as const
 
 const CARD_ORDER = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 3, 1, 7, 2, 8, 4, 6, 9, 0, 5] as const
@@ -141,7 +141,7 @@ const STACK_SCROLL_STYLES = `
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
-    src: url("/assets/stack-scroll/inter.woff2") format("woff2");
+    src: url("https://fsu.creght.com/site/2083536173505974272/1789974797322__creght_blocks_stack_scroll_inter.woff2") format("woff2");
   }
 
   .stack-scroll,

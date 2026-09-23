@@ -329,7 +329,7 @@ export function HeroInfiniteParticles({
         </nav>
 
         <a
-          href="https://animation.appsrow.com/"
+          href="https://blocks.creght.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex min-h-9 items-center justify-center rounded-full border border-white/35 px-3 text-[11px] font-medium tracking-[0.04em] text-white no-underline transition-opacity hover:opacity-75 sm:px-5 sm:text-[13px]"

@@ -1,4 +1,4 @@
-const HERO_IMAGE = "/assets/ai-seo-source/hero-dashboard.png"
+const HERO_IMAGE = "https://fsu.creght.com/site/2083536173505974272/1786355775493__creght_blocks_external_005.png"
 
 export type HeroAiSeoProps = {
   className?: string

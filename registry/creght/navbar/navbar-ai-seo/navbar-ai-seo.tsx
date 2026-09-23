@@ -31,8 +31,8 @@ export type NavbarAiSeoProps = {
   className?: string
 }
 
-const LOGO_IMAGE = "/assets/ai-seo-source/logo-poster.avif"
-const LOGO_VIDEO = "/assets/ai-seo-source/logo.mp4"
+const LOGO_IMAGE = "https://fsu.creght.com/site/2083536173505974272/1789974846437__creght_blocks_ai_seo_source_logo_poster.avif"
+const LOGO_VIDEO = "https://fsu.creght.com/site/2083536173505974272/1789974847225__creght_blocks_ai_seo_source_logo.mp4"
 
 const featureItems: MenuItem[] = [
   { description: "Perform SEO audits", href: "#features", icon: Gauge, label: "Dashboard" },
@@ -97,7 +97,7 @@ function FeaturesPanel({ id, labelledBy, onNavigate }: { id: string; labelledBy:
               alt=""
               aria-hidden="true"
               className="absolute inset-0 size-full object-cover object-top opacity-75 transition duration-500 group-hover:scale-[1.02]"
-              src="/assets/ai-seo-source/hero-dashboard.png"
+              src="https://fsu.creght.com/site/2083536173505974272/1786355775493__creght_blocks_external_005.png"
             />
             <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(87,34,154,0.16)_0%,rgba(5,3,10,0.18)_45%,#07040c_100%)]" />
             <span className="absolute right-2.5 top-2.5 rounded-full bg-[#8c45ff] px-2 py-0.5 text-[8px] font-bold uppercase leading-[12px] text-black">

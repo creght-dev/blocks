@@ -67,10 +67,10 @@ function FooterBrandMark() {
           loop
           muted
           playsInline
-          poster="/assets/ai-seo-source/logo-poster.avif"
+          poster="https://fsu.creght.com/site/2083536173505974272/1789974846437__creght_blocks_ai_seo_source_logo_poster.avif"
           className="absolute left-1/2 top-1/2 size-[19.8px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover grayscale blur-[1px]"
         >
-          <source src="/assets/ai-seo-source/logo.mp4" type="video/mp4" />
+          <source src="https://fsu.creght.com/site/2083536173505974272/1789974847225__creght_blocks_ai_seo_source_logo.mp4" type="video/mp4" />
         </video>
         <span className="absolute inset-0 bg-gradient-to-b from-[#8c45ff] to-[#c145ff] mix-blend-color" />
         <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_52%,rgba(255,255,255,0.25)_0%,rgba(140,69,255,0.08)_48%,rgba(0,0,0,0.2)_100%)]" />

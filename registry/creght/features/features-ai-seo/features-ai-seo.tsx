@@ -48,7 +48,7 @@ export default function FeaturesAiSeo({ className = "" }: FeaturesAiSeoProps) {
         <div className="grid gap-[10px] min-[810px]:grid-cols-3">
           <FadeIn className={cardClass}>
             <img
-              src="/assets/ai-seo-source/feature-goal.avif"
+              src="https://fsu.creght.com/site/2083536173505974272/1789974841753__creght_blocks_ai_seo_source_feature_goal.avif"
               alt=""
               width="1011"
               height="1024"
@@ -63,7 +63,7 @@ export default function FeaturesAiSeo({ className = "" }: FeaturesAiSeoProps) {
 
           <FadeIn className={`${cardClass} min-[810px]:col-span-2`}>
             <img
-              src="/assets/ai-seo-source/dashboard.png"
+              src="https://fsu.creght.com/site/2083536173505974272/1789974840637__creght_blocks_ai_seo_source_dashboard.png"
               alt=""
               width="2200"
               height="1848"
@@ -83,7 +83,7 @@ export default function FeaturesAiSeo({ className = "" }: FeaturesAiSeoProps) {
 
           <FadeIn className={`${cardClass} min-[810px]:col-span-2`}>
             <img
-              src="/assets/ai-seo-source/analytics.avif"
+              src="https://fsu.creght.com/site/2083536173505974272/1789974839698__creght_blocks_ai_seo_source_analytics.avif"
               alt=""
               width="1024"
               height="593"
@@ -99,7 +99,7 @@ export default function FeaturesAiSeo({ className = "" }: FeaturesAiSeoProps) {
 
           <FadeIn className={cardClass}>
             <img
-              src="/assets/ai-seo-source/keyword.avif"
+              src="https://fsu.creght.com/site/2083536173505974272/1789974845549__creght_blocks_ai_seo_source_keyword.avif"
               alt=""
               width="1011"
               height="1024"
