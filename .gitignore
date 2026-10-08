@@ -43,3 +43,6 @@ npm-debug.log*
 # editors
 .idea
 .vscode
+
+# local experiments
+/local-tests/
