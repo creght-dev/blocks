@@ -32,6 +32,8 @@ const COVER_OVERRIDES = {
   "timeline-01": "https://fsu.creght.com/project/mDzERvIUUmW/lZKFrnwKLQS__area.gif",
 }
 const TITLE_OVERRIDES = {
+  "cunda-hero-background": "Background · Cunda Hero Rays",
+  "hero-sphere-ai": "Hero · CreghtAI",
   "ai-liquid-background": "Background · AI Liquid",
   "neuro-noise": "Background · Neuro Noise",
   "3d-split": "Effects · 3D Split",

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Copy, ExternalLink } from "lucide-react"
+import { Copy, ExternalLink, Layers3 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 import registryData from "@/registry.catalog.json"
@@ -197,7 +197,17 @@ export function HomePage() {
         <section className="min-w-0 flex-1 p-4 md:p-6">
 
 
-          <h1 className="mb-4 text-3xl font-semibold tracking-tight text-zinc-900">{sectionTitle}</h1>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">{sectionTitle}</h1>
+            <button
+              type="button"
+              onClick={() => navigate("/hero-studio")}
+              className="inline-flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-3.5 py-2 text-sm font-medium text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100"
+            >
+              <Layers3 className="h-4 w-4" aria-hidden="true" />
+              Hero Studio
+            </button>
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visibleItems.map((item) => (

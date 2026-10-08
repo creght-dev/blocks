@@ -1,10 +1,12 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 import { HomePage } from "./pages/HomePage"
 import { IndexPage } from "./pages/IndexPage"
 import { AiSeoLandingPage } from "./pages/ai-seo/AiSeoLandingPage"
 import { BlockDetailPage } from "./pages/BlockDetailPage"
 import { PreviewPage } from "./pages/PreviewPage"
+import { HeroStudioPage } from "./pages/HeroStudioPage"
+import { HeroStudioPreviewPage } from "./pages/HeroStudioPreviewPage"
 
 export default function App() {
   return (
@@ -21,6 +23,9 @@ export default function App() {
       <Route path="/ai-seo-landing" element={<AiSeoLandingPage />} />
       <Route path="/blocks/:slug" element={<BlockDetailPage />} />
       <Route path="/preview/:slug" element={<PreviewPage />} />
+      <Route path="/hero-studio" element={<HeroStudioPage />} />
+      <Route path="/hero-studio/preview" element={<HeroStudioPreviewPage />} />
+      <Route path="/background-switcher" element={<Navigate to="/hero-studio" replace />} />
     </Routes>
   )
 }

@@ -147,6 +147,43 @@
       "cover": "https://fsu.creght.com/site/2083536173505974272/1786355301797__creght_blocks_covers_hero_before_after.jpg"
     },
     {
+      "name": "hero-cunda",
+      "type": "registry:block",
+      "title": "Hero · Cunda",
+      "description": "Hero · Cunda section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-cunda/hero-cunda.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-cunda/DashboardPreview.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-cunda/HeroBackground.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-cunda/SideRays.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-cunda/useRevealMotion.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1790153799365__hero_cunda_cover.png",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "ogl"
+      ]
+    },
+    {
       "name": "hero-flip",
       "type": "registry:block",
       "title": "Hero · Photography Portfolio",
@@ -448,6 +485,41 @@
       ]
     },
     {
+      "name": "hero-sphere-ai",
+      "type": "registry:block",
+      "title": "Hero · CreghtAI",
+      "description": "Hero · CreghtAI section.",
+      "categories": [
+        "hero"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/hero/hero-sphere-ai/hero-sphere-ai.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-sphere-ai/arc-flow-shaders.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-sphere-ai/ArcFlowBackground.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/hero/hero-sphere-ai/hero-sphere-ai.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "registry/creght/hero/hero-sphere-ai/orb-asset.ts",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1790430741908__hero_sphere_ai_creghtai.png",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
       "name": "hero-stellar-flow",
       "type": "registry:block",
       "title": "Hero · Stellar Flow",
@@ -580,6 +652,29 @@
         }
       ],
       "cover": "https://fsu.creght.com/site/2083536173505974272/1788402652071__background_ai_liquid_cover.png"
+    },
+    {
+      "name": "cunda-hero-background",
+      "type": "registry:block",
+      "title": "Background · Cunda Hero Rays",
+      "description": "Background · Cunda Hero Rays section.",
+      "categories": [
+        "background"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/background/cunda-hero-background/cunda-hero-background.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/background/cunda-hero-background/SideRays.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1790153799366__cunda_hero_background_cover.png",
+      "dependencies": [
+        "ogl"
+      ]
     },
     {
       "name": "neuro-noise",

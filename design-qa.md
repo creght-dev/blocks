@@ -1244,3 +1244,101 @@ Earlier P1 mismatch (guessed rotating volume) fixed by porting the original 66-v
 Targeted lint/type checks, full registry and production build pass. No local-origin browser errors were observed. Physical mobile hardware and OS reduced-motion switching remain test gaps. Source attribution and the absence of a third-party license grant are recorded in the component and README; no publishing was performed.
 
 final result: passed
+
+---
+
+**Design QA — Hero Studio MVP (2026-09-24)**
+
+**Comparison target and evidence**
+
+- Existing visual direction: `docs/hero-studio-evidence/original-switcher.jpg`, 1265 × 712 JPEG pixels. The approved product scope intentionally replaces the fixed Cunda foreground with four presets and replaces the tall background list with a parameter inspector.
+- Final editor: `docs/hero-studio-evidence/final-editor.jpg`, 1265 × 712 CSS/bitmap pixels, DPR 1. Both images were viewed together. Dark surfaces, blue selection color, typography family, and preview/inspector hierarchy were retained; the new compact workspace and controls are intentional changes.
+- Source for export fidelity: `docs/hero-studio-evidence/composition-source.jpg` (Studio renderer, mockup-split, Cunda, Chinese title, speed 2.2, custom purple color).
+- Independent exported implementation: `docs/hero-studio-evidence/standalone-export.jpg`, rendered from the TSX in the export dialog without any local component imports.
+- Both composition/export images are 1200 × 860 CSS px and bitmap px at DPR 1, captured together and inspected in the same comparison. Preliminary mismatched viewport captures were discarded. Differences in the moving ray pattern are expected animation phase differences.
+- Mobile evidence: `docs/hero-studio-evidence/mobile-preview.jpg` and `mobile-controls.jpg`. Requested browser CSS viewport 390 × 844 at DPR 1; in-app capture fitted this to 375 × 812 bitmap pixels. These screenshots establish usability and overflow behavior, not pixel fidelity to an external mobile reference. DOM confirmed no horizontal page overflow.
+- Runtime URLs: `/hero-studio`, `/hero-studio/preview`, and disposable `/artifacts/hero-studio/export-preview.html`.
+
+**Findings and comparison history**
+
+1. Initial editor had a rounding-induced horizontal scrollbar and clipped tall device frames. The frame now fits both available width and height on desktop; compact screens use width fitting and a stacked inspector. Final evidence shows no sideways scrolling or hidden persistent controls.
+2. Layout thumbnails originally contained nested button elements. Thumbnails now use a keyboard-operable selection container with an inert preview, and each prompt field has a unique React ID. Fresh final-tab console check has no errors or warnings.
+3. Mobile reset initially lost its accessible name when its text was hidden. It now has an explicit accessible label. Full reset also remounts the preview to clear temporary prompt input.
+4. Shared foreground/background/CSS source is used for export. Font declarations were included in the exported styles so typography remains available outside the library.
+
+**Required fidelity surfaces**
+
+- Fonts/typography: Inter and system CJK fallback; the preview and standalone export agree on title wrapping, letter spacing, line height, and body text. The 1200px full-view comparison is detailed enough to read the mockup's metric and chart labels without separate crops.
+- Spacing/layout: corresponding title, CTA, dashboard frame, and inner card positions match in the normalized export comparison. Centered and split layouts were exercised; mobile stacks the split layouts.
+- Colors/tokens: existing dark navy surfaces, muted secondary text, blue selection outlines, and pale primary buttons continue through the editor. Configured foreground overlay, custom ray color, and speed are preserved in export.
+- Image/assets: original dashboard markup and background renderers are reused; layout thumbnails render the real foreground components. Existing background cover assets remain unchanged. The very dark Cunda thumbnail is a P3 polish opportunity; its label and selected state remain readable.
+- Copy/content: Chinese inspector labels; edited Chinese title and line breaks survived layout changes, background switches, refresh, and export. AI submit feedback explicitly identifies the interaction as a demo.
+
+**Interactions and validation**
+
+- Tested all four layout selections, all three backgrounds, colors, sliders, Liquid shape selector, Neuro pointer toggle, desktop/mobile device switching, content editing, draft restoration after reload, reset, example prompt insertion and demo submission.
+- Verified exported dialog source includes selected layout, Chinese title, custom color, and speed; copy button reports success. Browser automation clipboard readback did not expose the system clipboard, so actual clipboard contents were not independently verified. Download remains an alternative.
+- Standalone export rendered without console errors. Fresh final editor console: no errors or warnings.
+- `npm run build`: passed, including 51-item public registry consistency check. Vite retains the repository's large-bundle warning.
+- App TypeScript validation passed with the existing broken root project references removed in a disposable check config. No production tsconfig change. Targeted ESLint passed.
+- `node scripts/check-hero-studio.mjs` and exported-code typecheck: passed for all 12 compositions, saved config round-trip, malformed/out-of-range inputs, and unsafe URL handling.
+
+**Remaining scope**
+
+- AI inputs are interactive demos without a connected model. Drafts are local to this browser; no cloud accounts or publishing added.
+- Liquid and fonts retain existing CDN runtime/assets. Cunda thumbnail can be refreshed in a later polish pass.
+
+final result: passed
+
+---
+
+**Design QA — Footer Pandabase (2026-10-01)**
+
+**Comparison target and evidence**
+
+- Source visual truth: user attachment `/var/folders/7f/bvb1j4j552z0rrvk3yvzbwxc0000gn/T/codex-clipboard-78f1d411-2ccc-4b9f-9f1a-437e44b94c85.png` (1200 × 917 pixels); persistent equivalent: `public/covers/footer-pandabase.webp` (1200 × 917 pixels).
+- Rendered implementation: `http://127.0.0.1:4173/preview/footer-pandabase`, captured in the Codex in-app Browser at a 1200 × 917 CSS viewport, DPR 1, 1200 × 917 screenshot pixels. The browser capture is inline in this task; the browser tool did not expose a local screenshot file path.
+- Full-view paired comparison: source image and live implementation were displayed side by side at 50% scale in one temporary in-app Browser comparison view. The paired capture is inline in this task. A focused 1200 × 917 rendering was also inspected for the hero title, CTA, navigation, form, and resource cards. Both captures use the default state.
+- Responsive captures: 390 × 844 and 320 × 700 CSS viewports at DPR 1, captured inline in the in-app Browser. The source has no mobile reference, so these checks cover legibility and overflow rather than pixel matching.
+
+**Findings and comparison history**
+
+1. Initial desktop comparison showed the content below the hero 8px too low. Reducing the top section's bottom padding aligned the two dividers, form, and card row with the source.
+2. Initial narrow-screen comparison showed three resource cards too compressed. Mobile cards now scroll horizontally at a readable text size; the page itself has no horizontal overflow.
+3. Initial hero relied on rasterized CTA and title. A soft center image mask now lets the CTA and heading render as accessible, editable UI. The final paired comparison shows no visible duplicate text or hard mask seam.
+
+**Required fidelity surfaces**
+
+- Fonts/typography: Inter weights, heading wrap, form text, and footer labels match the reference at the source viewport. The title and CTA are now live text.
+- Spacing/layout: hero bottom, two content rules, left form, right card trio, and legal row align with the reference at 1200 × 917.
+- Colors/tokens: near-black surfaces, emerald rim light, muted gray links, and white CTA/button follow the source.
+- Image/assets: this initial version used the supplied screenshot as an embedded art source. Superseded by the AI artwork update below.
+- Copy/content: visible strings follow the provided reference, including its 2024 copyright line.
+
+**Interactions and validation**
+
+- Tested a valid email entry and the explicit unavailable state when no `onSubscribe` handler is supplied. The prop permits a consuming app to connect a real subscription service.
+- Verified navigation/legal URL targets resolve and checked the browser console: no runtime errors.
+- Targeted ESLint, Vite production build, and 53-item registry consistency check pass. The repo's root `tsc --noEmit` command remains blocked by existing project-reference configuration errors; it was not changed for this footer.
+
+**Remaining scope**
+
+- The screenshot does not define a mobile layout; the mobile stack and horizontally scrollable resources are intentional adaptations. Newsletter storage requires an `onSubscribe` integration in the consuming app.
+
+final result: passed
+
+---
+
+**Design QA — Footer Pandabase AI artwork update (2026-10-01)**
+
+- Visual reference: the user's attached 1200 × 917 screenshot. The reference is used for composition and color only; its pixels are no longer used by the component, cover, or installable registry item.
+- AI source: `public/assets/footer-pandabase/panda-head-v2.webp`, 1536 × 1024 with alpha, generated and refined with the built-in Image Gen tool. `public/covers/footer-pandabase.webp` is also AI generated.
+- Implementation: `http://127.0.0.1:4173/preview/footer-pandabase`, reviewed in the Codex in-app Browser at 1200 × 917 CSS px and 390 × 844 CSS px, DPR 1. Browser screenshots are inline in this task; the browser tool did not expose a local screenshot path.
+- Fonts/typography and copy: heading, CTA, footer labels, and input remain live text. At desktop size they retain the established visual hierarchy and wrapping.
+- Spacing/layout: the generated silhouette is centered with ears near the reference's x/y anchors; it fades behind the live title. Mobile shows the upper silhouette with a soft fade and no horizontal page overflow.
+- Colors/assets: emerald rim light and dark head are original AI output. The previous screenshot mask, rasterized logo crop, and screenshot cover are removed. The small brand mark now comes from the `react-icons` icon library.
+- Interaction/extensibility: `heroImageSrc` replaces the default embedded artwork with another image. CTA, navigation, and email form behavior remain available.
+- Intentional differences: the AI silhouette has a brighter rim than the reference and the old angular screenshot divider is now a simple border. Both are acceptable for the requested original-image replacement.
+- Validation: targeted ESLint, Vite production build, and 53-item registry consistency check pass. The built registry item contains only the generated art and lists `lucide-react` and `react-icons` dependencies.
+
+final result: passed

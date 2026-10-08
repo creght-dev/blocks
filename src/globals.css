@@ -3,6 +3,8 @@
 @source "../registry/creght/hero/hero-lodestar";
 @source "../registry/creght/hero/hero-stellar-flow";
 @source "../registry/creght/hero/hero-orb-particles";
+@source "../registry/creght/hero/hero-cunda";
+@source "../registry/creght/background/cunda-hero-background";
 
 @font-face {
   font-family: "Inter";
