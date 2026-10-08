@@ -8,7 +8,7 @@ import {
 } from "react"
 
 export type AiLiquidShape = "Checks" | "Stripes" | "Edge"
-export type AiLiquidBlendMode = "screen" | "normal" | "lighten"
+export type AiLiquidBlendMode = "hard-light" | "screen" | "normal" | "lighten"
 
 export type AiLiquidSettings = {
   color1: string
@@ -32,9 +32,9 @@ export type AiLiquidSettings = {
 }
 
 export const AI_LIQUID_DEFAULTS: AiLiquidSettings = {
-  color1: "#050505",
+  color1: "#000000",
   color2: "#0586FF",
-  color3: "#050505",
+  color3: "#000000",
   scale: 0.1,
   rotation: 140,
   speed: 5,
@@ -49,7 +49,7 @@ export const AI_LIQUID_DEFAULTS: AiLiquidSettings = {
   noise: 20,
   maxPixelRatio: 1,
   opacity: 0.6,
-  blendMode: "screen",
+  blendMode: "hard-light",
 }
 
 const LIQUID_BACKGROUND_SRC_DOC = `
@@ -70,9 +70,9 @@ const LIQUID_BACKGROUND_SRC_DOC = `
       var instance = null;
       var pendingOptions = null;
       var initialOptions = {
-        color1: '#050505',
+        color1: '#000000',
         color2: '#0586FF',
-        color3: '#050505',
+        color3: '#000000',
         scale: 0.1,
         rotation: 140,
         speed: 5,
@@ -137,7 +137,9 @@ const LIQUID_BACKGROUND_SRC_DOC = `
   </html>
 `
 
+// The remote shader has a gray matte; hard-light plus a filter keeps black areas black.
 const BLEND_MODE_CLASSES: Record<AiLiquidBlendMode, string> = {
+  "hard-light": "mix-blend-hard-light",
   screen: "mix-blend-screen",
   normal: "mix-blend-normal",
   lighten: "mix-blend-lighten",
@@ -240,7 +242,8 @@ export function AiLiquidBackground({
   return (
     <section
       ref={sectionRef}
-      className={`relative isolate min-h-dvh w-full overflow-hidden bg-[#050505] ${className}`}
+      className={`relative isolate min-h-dvh w-full overflow-hidden ${className}`}
+      style={{ backgroundColor: color1 }}
       aria-label="AI liquid animated background"
     >
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -250,11 +253,15 @@ export function AiLiquidBackground({
             srcDoc={LIQUID_BACKGROUND_SRC_DOC}
             onLoad={syncOptions}
             className={`size-full border-0 ${BLEND_MODE_CLASSES[blendMode]}`}
+            style={blendMode === "hard-light" ? { filter: "brightness(0.7) contrast(2)" } : undefined}
             title="Animated liquid background"
             tabIndex={-1}
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505]" />
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(to bottom, transparent, transparent, ${color1})` }}
+        />
       </div>
 
       {children ? <div className="relative z-10 min-h-dvh">{children}</div> : null}
