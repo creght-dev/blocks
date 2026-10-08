@@ -1031,7 +1031,7 @@
           "type": "registry:style"
         }
       ],
-      "cover": "https://fsu.creght.com/site/2083536173505974272/1791431445177__creght_blocks_footer_pandabase.webp",
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1791446565471__creght_blocks_footer_pandabase_screenshot.webp",
       "dependencies": [
         "lucide-react",
         "react-icons"
