@@ -830,6 +830,118 @@
       "cover": "https://fsu.creght.com/site/2083536173505974272/1789975265285__creght_blocks_unroll_scroll.png"
     },
     {
+      "name": "footer-foxline",
+      "type": "registry:block",
+      "title": "Footer · Foxline",
+      "description": "Footer · Foxline section.",
+      "categories": [
+        "footer"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/footer/footer-foxline/footer-foxline.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-foxline/footer-foxline-art.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-foxline/footer-foxline.css",
+          "type": "registry:style"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1791431446697__creght_blocks_footer_foxline.webp",
+      "dependencies": [
+        "lucide-react",
+        "react-icons"
+      ]
+    },
+    {
+      "name": "footer-hopstack",
+      "type": "registry:block",
+      "title": "Footer · Hopstack",
+      "description": "Footer · Hopstack section.",
+      "categories": [
+        "footer"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/footer/footer-hopstack/footer-hopstack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-hopstack/footer-hopstack-art.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-hopstack/footer-hopstack.css",
+          "type": "registry:style"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1791431447299__creght_blocks_footer_hopstack.webp",
+      "dependencies": [
+        "lucide-react",
+        "react-icons"
+      ]
+    },
+    {
+      "name": "footer-nightcat",
+      "type": "registry:block",
+      "title": "Footer · Nightcat",
+      "description": "Footer · Nightcat section.",
+      "categories": [
+        "footer"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/footer/footer-nightcat/footer-nightcat.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-nightcat/footer-nightcat-art.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-nightcat/footer-nightcat.css",
+          "type": "registry:style"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1791431446028__creght_blocks_footer_nightcat.webp",
+      "dependencies": [
+        "lucide-react",
+        "react-icons"
+      ]
+    },
+    {
+      "name": "footer-pandabase",
+      "type": "registry:block",
+      "title": "Footer · Pandabase",
+      "description": "Footer · Pandabase section.",
+      "categories": [
+        "footer"
+      ],
+      "files": [
+        {
+          "path": "registry/creght/footer/footer-pandabase/footer-pandabase.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-pandabase/footer-pandabase-art.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/creght/footer/footer-pandabase/footer-pandabase.css",
+          "type": "registry:style"
+        }
+      ],
+      "cover": "https://fsu.creght.com/site/2083536173505974272/1791431445177__creght_blocks_footer_pandabase.webp",
+      "dependencies": [
+        "lucide-react",
+        "react-icons"
+      ]
+    },
+    {
       "name": "rainbow-stretching-footer",
       "type": "registry:block",
       "title": "Footer · Rainbow Stretching",
